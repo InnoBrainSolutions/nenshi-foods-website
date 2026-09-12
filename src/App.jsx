@@ -15,12 +15,12 @@ export default function App() {
   const [cartItems, setCartItems] = useState([
     {
       id: "nenshi-kaju-katli",
-      name: "Nenshi Shahi Kaju Katli (500g Casket)",
-      weight: "500g · 24 Cut Diamonds",
+      name: "Kaju Katli (500g Box)",
+      weight: "500g · 24 Pieces",
       priceINR: 1450,
       priceUSD: 24,
       quantity: 1,
-      image: "/images/nenshi_kaju_katli.jpg"
+      image: "/images/kaju_katli_luxury.jpg"
     }
   ]);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -101,17 +101,17 @@ export default function App() {
           onQuickAdd={handleAddToCart}
         />
 
-        {/* The Repertoire Collection */}
+        {/* Signature Mithai Collection */}
         <Collection 
           currency={currency}
           onSelectProduct={(product) => setSelectedProduct(product)}
           onAddToCart={handleAddToCart}
         />
 
-        {/* The Crafts of the Halwai */}
+        {/* How We Make It - Made with Patience */}
         <Craftsmanship />
 
-        {/* Bespoke Gifting Concierge */}
+        {/* Gifting & Celebrations */}
         <GiftingConcierge 
           currency={currency}
           onAddBespokeHamper={handleAddToCart}

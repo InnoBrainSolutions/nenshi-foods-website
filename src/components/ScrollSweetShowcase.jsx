@@ -169,12 +169,12 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
           
           {/* Poetic Central Headline */}
           <div className="desserto-headline-wrap">
-            <span className="desserto-eyebrow">ROYAL ATELIER CONFECTIONERY</span>
+            <span className="desserto-eyebrow">TRADITIONAL RECIPES · EST. 1968</span>
             <h1 className="desserto-headline">
-              We are obsessed with <em>true sweets</em>
+              Made the slow, <em>traditional way.</em>
             </h1>
             <p className="desserto-subhead">
-              {currentSweet.tagline}
+              Rich milk. Real ingredients. Time-tested recipes.
             </p>
           </div>
 
@@ -228,11 +228,11 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
               })}
             >
               <Plus size={14} />
-              <span>Acquire This Casket · ₹{currentSweet.priceINR}</span>
+              <span>Order {currentSweet.name} · ₹{currentSweet.priceINR}</span>
             </button>
 
             <a href="#collection" className="btn-desserto-secondary" onClick={onExploreClick}>
-              <span>Explore Collection</span>
+              <span>Explore Mithai</span>
               <ArrowRight size={14} />
             </a>
           </div>

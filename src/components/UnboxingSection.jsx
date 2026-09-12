@@ -17,10 +17,10 @@ export default function UnboxingSection({ onQuickAdd }) {
         
         {/* Clean Editorial Section Header */}
         <div className="clean-section-header text-center">
-          <span className="clean-section-eyebrow">THE RITUAL OF UNBOXING</span>
-          <h2 className="clean-section-title font-royal">Lifting The Golden Lid</h2>
+          <span className="clean-section-eyebrow">THOUGHTFUL PACKAGING</span>
+          <h2 className="clean-section-title font-royal">Freshly made. Beautifully packed.</h2>
           <p className="clean-section-lead font-serif">
-            Opening the ivory lid reveals an architectural velvet tray where each confection rests in calibrated harmony.
+            Every box is packed with care so your sweets arrive just as fresh, fragrant, and delicate as they leave our kitchen.
           </p>
         </div>
 
@@ -61,12 +61,12 @@ export default function UnboxingSection({ onQuickAdd }) {
                       name: current.name,
                       priceINR: current.id === 'milkcake' ? 1350 : 1450,
                       priceUSD: current.id === 'milkcake' ? 22 : 24,
-                      weight: "500g Signature Box",
+                      weight: "500g Box",
                       image: current.image
                     })}
                   >
                     <Plus size={15} />
-                    <span>Acquire This Casket</span>
+                    <span>Add to Bag</span>
                   </button>
                 </div>
               </div>

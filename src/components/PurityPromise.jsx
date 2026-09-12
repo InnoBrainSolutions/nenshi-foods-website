@@ -4,28 +4,28 @@ import { ShieldCheck, Leaf, HeartHandshake, Sparkles } from 'lucide-react';
 export default function PurityPromise() {
   const pillars = [
     {
-      title: "100% Pure Vegetarian Certified",
+      title: "100% Pure Vegetarian",
       hindi: "शुद्ध शाकाहारी",
-      desc: "Our kitchens operate under strict Satvik protocols. Absolutely zero contact with animal gelatin, bone-char sugars, or non-vegetarian processing agents.",
-      badge: "Pure Green Dot Stamp"
+      desc: "Every sweet is prepared in a dedicated vegetarian kitchen with pure milk, whole nuts, and zero artificial processing agents.",
+      badge: "100% Veg"
     },
     {
-      title: "Certified 99.9% Silver Foil",
+      title: "Certified Pure Silver Vark",
       hindi: "प्रमाणित चांदी वर्क",
-      desc: "Historically, silver foil was beaten using archaic leather methods. Nanshi pioneered cruelty-free mechanical parchment beating, verified by ISO-accredited food safety laboratories.",
-      badge: "Laboratory Certified"
+      desc: "Nenshi uses 100% vegetarian, edible silver foil, laboratory tested and certified pure and safe for everyday enjoyment.",
+      badge: "Lab Tested"
     },
     {
-      title: "Zero Preservatives or Synthetic Dye",
+      title: "No Artificial Flavours or Colours",
       hindi: "प्राकृतिक रंग व सुगंध",
-      desc: "We never use tartrazine, artificial cardamom essence, or chemical shelf-life enhancers. Color comes exclusively from Kashmir saffron; fragrance comes from crushed green cardamoms.",
-      badge: "Pure Botanicals"
+      desc: "We never use synthetic dyes or chemical essences. Color comes from Kashmiri saffron; aroma comes from freshly ground green cardamoms.",
+      badge: "Natural"
     },
     {
-      title: "Small-Batch Handcrafted Integrity",
-      hindi: "सीमित उत्पादन",
-      desc: "Every batch is capped at 40 boxes per day per Halwai station to ensure temperature precision, uniform diamond geometry, and unhurried packaging.",
-      badge: "Artisan Signed"
+      title: "Small-Batch Daily Cooking",
+      hindi: "रोज़ाना ताज़ा",
+      desc: "Cooked fresh every day in small batches by our experienced halwais so you always receive sweets at their peak flavour and texture.",
+      badge: "Fresh Daily"
     }
   ];
 
@@ -38,15 +38,15 @@ export default function PurityPromise() {
             <div className="purity-title-col">
               <div className="veg-badge-large">
                 <span className="veg-stamp" aria-hidden="true" />
-                <span className="veg-text font-royal">THE HALLMARK OF SACRED PURITY</span>
+                <span className="veg-text font-royal">OUR PURITY PROMISE</span>
               </div>
               <h2 className="purity-title font-royal">
-                Food as an <span className="text-gold-foil">Auspicious Offering</span>
+                Real ingredients. <span className="text-gold-foil">No shortcuts.</span>
               </h2>
             </div>
             
             <p className="purity-lead font-serif">
-              In Indian culinary tradition, sweets are not mere desserts—they are <em>Prasad</em>, an offering to the divine and a token of unconditional goodwill. We hold ourselves to an uncompromising standard of sacred reverence.
+              In India, mithai is shared during moments that matter most—festivals, weddings, and family celebrations. That is why we use only wholesome ingredients, pure cow ghee, and traditional methods.
             </p>
           </div>
 
@@ -67,17 +67,17 @@ export default function PurityPromise() {
           <div className="purity-seal-strip">
             <div className="strip-item">
               <ShieldCheck size={18} className="strip-icon" />
-              <span>FSSAI Licensed & Rigorously Tested</span>
+              <span>FSSAI Licensed & Food Safety Tested</span>
             </div>
             <div className="strip-divider">✦</div>
             <div className="strip-item">
               <Sparkles size={18} className="strip-icon" />
-              <span>Chilled Inert Gas Nitrogen Freshness Pack</span>
+              <span>Carefully Packed for Fresh Delivery</span>
             </div>
             <div className="strip-divider">✦</div>
             <div className="strip-item">
               <Leaf size={18} className="strip-icon" />
-              <span>100% Recyclable Handmade Cotton Rag Paper</span>
+              <span>100% Recyclable Packaging</span>
             </div>
           </div>
 

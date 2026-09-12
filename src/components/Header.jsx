@@ -15,11 +15,11 @@ export default function Header({ cartCount, onOpenCart, currency, onToggleCurren
 
   return (
     <header className={`header-root ${scrolled ? 'header-scrolled' : ''}`}>
-      {/* Royal Announcement Ribbon */}
+      {/* Announcement Ribbon */}
       <div className="announcement-bar">
         <div className="container announcement-content">
           <span className="announcement-text">
-            ROYAL CONFECTIONERY · COMPLIMENTARY INSURED AIR DISPATCH
+            FRESH MITHAI DISPATCHED DAILY · CAREFULLY PACKED FOR SAFE DELIVERY
           </span>
           <div className="announcement-right">
             <button 
@@ -30,9 +30,9 @@ export default function Header({ cartCount, onOpenCart, currency, onToggleCurren
             >
               {currency}
             </button>
-            <div className="veg-badge-inline" title="100% Pure Vegetarian Confectionery">
+            <div className="veg-badge-inline" title="100% Pure Vegetarian">
               <span className="veg-stamp" aria-hidden="true" />
-              <span>100% SATVIK</span>
+              <span>100% VEG</span>
             </div>
           </div>
         </div>
@@ -53,8 +53,8 @@ export default function Header({ cartCount, onOpenCart, currency, onToggleCurren
 
           {/* Left Nav Links */}
           <div className="nav-links nav-left">
-            <a href="#unboxing" className="nav-item">The Jewel Box</a>
-            <a href="#collection" className="nav-item">Collection</a>
+            <a href="#sweet-showcase" className="nav-item">Our Sweets</a>
+            <a href="#collection" className="nav-item">All Mithai</a>
           </div>
 
           {/* Center Brand Crest */}
@@ -68,8 +68,8 @@ export default function Header({ cartCount, onOpenCart, currency, onToggleCurren
 
           {/* Right Nav Links */}
           <div className="nav-links nav-right">
-            <a href="#crafts" className="nav-item">Craftsmanship</a>
-            <a href="#gifting" className="nav-item">Bespoke Gifting</a>
+            <a href="#crafts" className="nav-item">How We Make It</a>
+            <a href="#gifting" className="nav-item">Gift Boxes</a>
             
             {/* Bag Button */}
             <button 
@@ -90,18 +90,18 @@ export default function Header({ cartCount, onOpenCart, currency, onToggleCurren
       {mobileMenuOpen && (
         <div className="mobile-drawer">
           <div className="mobile-drawer-links">
-            <a href="#unboxing" onClick={() => setMobileMenuOpen(false)}>The Jewel Box</a>
-            <a href="#collection" onClick={() => setMobileMenuOpen(false)}>Artisanal Repertoire</a>
-            <a href="#crafts" onClick={() => setMobileMenuOpen(false)}>The Five Crafts</a>
-            <a href="#gifting" onClick={() => setMobileMenuOpen(false)}>Royal Gifting Concierge</a>
-            <a href="#purity" onClick={() => setMobileMenuOpen(false)}>Our Purity Promise</a>
+            <a href="#sweet-showcase" onClick={() => setMobileMenuOpen(false)}>Our Sweets</a>
+            <a href="#collection" onClick={() => setMobileMenuOpen(false)}>All Mithai</a>
+            <a href="#crafts" onClick={() => setMobileMenuOpen(false)}>How We Make It</a>
+            <a href="#gifting" onClick={() => setMobileMenuOpen(false)}>Gift Boxes</a>
+            <a href="#unboxing" onClick={() => setMobileMenuOpen(false)}>Packaging</a>
             <div className="mobile-drawer-footer">
               <button className="btn-outline-gold" onClick={onToggleCurrency}>
                 Currency: {currency}
               </button>
               <div className="veg-badge-inline">
                 <span className="veg-stamp" />
-                <span>Certified 100% Pure Vegetarian</span>
+                <span>100% Pure Vegetarian</span>
               </div>
             </div>
           </div>

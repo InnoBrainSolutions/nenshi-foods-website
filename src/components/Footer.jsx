@@ -44,7 +44,7 @@ export default function Footer() {
             </g>
           </svg>
           <span className="footer-brand-title font-swash">Nenshi Foods</span>
-          <span className="footer-brand-tag font-serif">A Jewel Box of Indian Sweetness · Confectioners to Royal Palaces</span>
+          <span className="footer-brand-tag font-serif">Traditional Indian Mithai · Handcrafted Since 1968</span>
         </div>
         <div className="hallmark-divider-line" />
       </div>
@@ -55,78 +55,70 @@ export default function Footer() {
         <div className="footer-col brand-col">
           <div className="footer-hindi-mark font-serif">नेंशी मिठास</div>
           <p className="footer-bio font-serif">
-            Founded in 1968, Nenshi Foods preserves the vanishing arts of royal confectionery. We honour the slow simmer, the hand-beaten silver foil, and the purity of unbroken cashews and A2 whole milk.
+            Founded in 1968, Nenshi Foods crafts traditional Indian sweets with real milk, pure cow ghee, stone-ground nuts, and time-tested recipes. Freshly made in small batches daily.
           </p>
           <div className="footer-veg-inline">
             <span className="veg-stamp" aria-hidden="true" />
-            <span>Certified 100% Satvik Pure Vegetarian</span>
+            <span>100% Pure Vegetarian</span>
           </div>
         </div>
 
-        {/* Col 2: The Ateliers */}
+        {/* Col 2: Our Stores */}
         <div className="footer-col">
-          <h4 className="footer-heading font-royal">Heritage Ateliers</h4>
+          <h4 className="footer-heading font-royal">Our Stores</h4>
           <ul className="atelier-list font-serif">
             <li>
               <strong>Jaipur</strong>
-              <span>Johari Bazaar, Near City Palace</span>
-            </li>
-            <li>
-              <strong>Udaipur</strong>
-              <span>Surajpole Heritage Enclave</span>
+              <span>Johari Bazaar, Heritage Quarter</span>
             </li>
             <li>
               <strong>Mumbai</strong>
-              <span>Marine Drive Private Tasting Salon</span>
+              <span>Bandra West & Marine Drive</span>
             </li>
             <li>
               <strong>New Delhi</strong>
-              <span>Defence Colony Heritage Quarter</span>
-            </li>
-            <li>
-              <strong>London Concierge</strong>
-              <span>Mayfair Private Gifting Suite</span>
+              <span>Defence Colony</span>
             </li>
           </ul>
         </div>
 
-        {/* Col 3: Repertoire Links */}
+        {/* Col 3: Sweets Links */}
         <div className="footer-col">
-          <h4 className="footer-heading font-royal">Repertoire</h4>
+          <h4 className="footer-heading font-royal">Our Sweets</h4>
           <ul className="footer-links-list">
-            <li><a href="#unboxing">Swarna Kaju Katli</a></li>
-            <li><a href="#collection">The Maharaja Presentation Trunk</a></li>
-            <li><a href="#collection">The Darbar Grand Hamper</a></li>
-            <li><a href="#collection">The Mughal Jali Treasury</a></li>
-            <li><a href="#gifting">Destination Wedding Favours</a></li>
-            <li><a href="#crafts">The Five Ancestral Crafts</a></li>
-            <li><a href="#purity">Silver Vark Laboratory Certifications</a></li>
+            <li><a href="#sweet-showcase">Kaju Katli</a></li>
+            <li><a href="#sweet-showcase">Alwar Milk Cake</a></li>
+            <li><a href="#sweet-showcase">Mathura Peda</a></li>
+            <li><a href="#sweet-showcase">Besan Laddu</a></li>
+            <li><a href="#gifting">Gift Boxes</a></li>
+            <li><a href="#crafts">How We Make It</a></li>
+            <li><a href="#purity">Our Purity Promise</a></li>
           </ul>
         </div>
 
-        {/* Col 4: Private Gazette Subscription */}
+        {/* Col 4: Newsletter Subscription */}
         <div className="footer-col gazette-col">
-          <h4 className="footer-heading font-royal">The Royal Gazette</h4>
+          <h4 className="footer-heading font-royal">Stay in Touch</h4>
           <p className="gazette-desc font-serif">
-            Receive private correspondence regarding seasonal small batches: Kashmiri Saffron harvest confections, Ratnagiri Alphonso mango katli, and bespoke festive hampers.
+            Get updates on new sweets, festive collections, and seasonal specials delivered to your inbox.
           </p>
           <form className="gazette-form" onSubmit={handleSubscribe}>
             <div className="gazette-input-wrap">
               <input 
                 type="email" 
                 className="gazette-input font-serif" 
-                placeholder="Enter your email coordinates..."
+                placeholder="Enter your email address..."
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              <button type="submit" className="gazette-btn" aria-label="Subscribe to gazette">
+              <button type="submit" className="gazette-btn" aria-label="Subscribe to updates">
                 {subscribed ? <Check size={16} /> : <Send size={16} />}
               </button>
             </div>
             {subscribed && (
               <span className="gazette-confirmed font-serif">
-                Auspicious correspondence registered. Welcome to the Nanshi circle.
+                Thank you for subscribing to Nenshi Foods.
               </span>
             )}
           </form>
@@ -138,12 +130,12 @@ export default function Footer() {
       <div className="footer-bottom-bar">
         <div className="container bottom-content">
           <span className="copy-text">
-            © {new Date().getFullYear()} Nanshi Foods Private Limited. All rights reserved.
+            © {new Date().getFullYear()} Nenshi Foods Private Limited. All rights reserved.
           </span>
           <div className="bottom-links">
-            <a href="#purity">Food Safety & FSSAI Lic. 1001802100345</a>
+            <a href="#purity">Food Safety & FSSAI Certified</a>
             <span>·</span>
-            <a href="#gifting">Bespoke Concierge</a>
+            <a href="#gifting">Gifting Inquiries</a>
             <span>·</span>
             <a href="#">Privacy & Terms</a>
           </div>

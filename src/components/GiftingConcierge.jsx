@@ -12,37 +12,37 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
   const boxes = [
     {
       id: 'ivory-star',
-      name: 'The Ivory Star Casket',
+      name: 'The Ivory Gift Box',
       weight: '500g',
-      capacity: '24 Jewels',
+      capacity: '24 Pieces',
       priceINR: 1950,
       priceUSD: 28,
-      desc: 'Handmade Italian linen paper with 22k gold foil 8-pointed star'
+      desc: 'Handcrafted textured ivory box with gold foil star motif'
     },
     {
       id: 'ratnavali-chest',
-      name: 'The Ratnavali Slide Chest',
+      name: 'The Heritage Tier Box',
       weight: '1,000g',
-      capacity: '48 Jewels',
+      capacity: '48 Pieces',
       priceINR: 4200,
       priceUSD: 62,
-      desc: 'Dual slide-out tiered trays with velvet-cushioned individual golden cups'
+      desc: 'Dual slide-out tiered trays with individually nestled compartments'
     },
     {
       id: 'darbar-trunk',
-      name: 'The Darbar Heritage Trunk',
+      name: 'The Grand Celebration Box',
       weight: '1,500g',
-      capacity: 'Grand Assortment',
+      capacity: 'Assorted Mithai',
       priceINR: 5900,
       priceUSD: 88,
-      desc: 'Architectural rigid wood-frame trunk with antique brass latches'
+      desc: 'Rigid keepsake presentation box with antique brass clasp'
     }
   ];
 
   const ribbons = [
     { id: 'champagne', name: 'Champagne Ivory', hex: '#EBDDC3', border: '#C59A45' },
-    { id: 'crimson', name: 'Royal Crimson', hex: '#8B1E28', border: '#B91C1C' },
-    { id: 'emerald', name: 'Peacock Emerald', hex: '#115E59', border: '#0D9488' }
+    { id: 'crimson', name: 'Festive Crimson', hex: '#8B1E28', border: '#B91C1C' },
+    { id: 'emerald', name: 'Peacock Green', hex: '#115E59', border: '#0D9488' }
   ];
 
   const currentBox = boxes.find(b => b.id === selectedBox) || boxes[0];
@@ -52,9 +52,9 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
 
   const handleAddHamper = () => {
     onAddBespokeHamper({
-      id: `bespoke-${Date.now()}`,
-      name: `Bespoke ${currentBox.name}`,
-      category: "Bespoke Hamper",
+      id: `giftbox-${Date.now()}`,
+      name: currentBox.name,
+      category: "Gift Box",
       weight: currentBox.weight,
       priceINR: currentBox.priceINR,
       priceUSD: currentBox.priceUSD,
@@ -76,10 +76,10 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
         
         {/* Clean Section Header */}
         <div className="clean-section-header text-center">
-          <span className="clean-section-eyebrow">BESPOKE GIFTING CONCIERGE</span>
-          <h2 className="clean-section-title font-royal">Curate A Royal Presentation</h2>
+          <span className="clean-section-eyebrow">GIFTING & CELEBRATIONS</span>
+          <h2 className="clean-section-title font-royal">Create a Gift Box</h2>
           <p className="clean-section-lead font-serif">
-            A Nenshi gift casket is an emblem of reverence. Select your presentation format, fine silk ribbon, and personalized wax seal monogram.
+            Traditional sweets, beautifully packed for moments worth celebrating. Choose your gift box, ribbon, and personalized message card.
           </p>
         </div>
 
@@ -91,7 +91,7 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
             
             {/* Step 1: Box Format */}
             <div className="config-step">
-              <span className="step-num font-royal">01. SELECT PRESENTATION CASKET</span>
+              <span className="step-num font-royal">01. CHOOSE YOUR GIFT BOX</span>
               <div className="box-options-list">
                 {boxes.map(box => (
                   <div 
@@ -119,9 +119,9 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
 
             {/* Step 2: Ribbon & Seal */}
             <div className="config-step">
-              <span className="step-num font-royal">02. SILK GROSGRAIN & SEAL MONOGRAM</span>
+              <span className="step-num font-royal">02. RIBBON & SEAL MONOGRAM</span>
               <div className="ribbon-selection-row">
-                <span className="config-sub-label">Silk Ribbon:</span>
+                <span className="config-sub-label">Ribbon:</span>
                 <div className="ribbon-swatches">
                   {ribbons.map(r => (
                     <button
@@ -138,7 +138,7 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
               </div>
 
               <div className="seal-selection-row">
-                <span className="config-sub-label">Gold Wax Seal Initial:</span>
+                <span className="config-sub-label">Wax Seal Initial:</span>
                 <div className="seal-input-group">
                   {['N', 'S', 'A', 'R', 'K', 'V'].map(letter => (
                     <button
@@ -155,26 +155,26 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
 
             {/* Step 3: Parchment Letter Inscription */}
             <div className="config-step">
-              <span className="step-num font-royal">03. HANDMADE PARCHMENT INSCRIPTION</span>
+              <span className="step-num font-royal">03. PERSONAL MESSAGE CARD</span>
               <div className="input-field-group">
-                <label className="field-label">Honored Recipient Name</label>
+                <label className="field-label">Recipient Name</label>
                 <input 
                   type="text" 
                   className="royal-input" 
                   value={recipientName}
                   onChange={(e) => setRecipientName(e.target.value)}
-                  placeholder="e.g., The Singhania Family"
+                  placeholder="e.g., Sharma Family"
                 />
               </div>
 
               <div className="input-field-group">
-                <label className="field-label">Royal Salutation & Greeting Note</label>
+                <label className="field-label">Personal Message</label>
                 <textarea 
                   rows="3"
                   className="royal-textarea font-serif" 
                   value={personalMessage}
                   onChange={(e) => setPersonalMessage(e.target.value)}
-                  placeholder="Draft your auspicious greetings..."
+                  placeholder="Wishing you joy, good health, and sweet celebrations..."
                 />
               </div>
             </div>
@@ -187,7 +187,7 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
               
               <div className="preview-eyebrow">
                 <span className="preview-dot" />
-                <span>LIVE BESPOKE PREVIEW</span>
+                <span>GIFT BOX PREVIEW</span>
               </div>
 
               {/* Digital Parchment Envelope */}
@@ -210,19 +210,19 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
 
                 {/* Letter Content */}
                 <div className="parchment-body">
-                  <div className="parchment-crest font-royal">NANSHI FOODS · 1968</div>
+                  <div className="parchment-crest font-royal">NENSHI FOODS · EST. 1968</div>
                   <div className="parchment-divider-line" />
 
-                  <p className="parchment-salutation font-serif">To the esteemed,</p>
-                  <h4 className="parchment-recipient font-royal">{recipientName || "Distinguished Recipient"}</h4>
+                  <p className="parchment-salutation font-serif">Dear,</p>
+                  <h4 className="parchment-recipient font-royal">{recipientName || "Recipient Name"}</h4>
 
                   <p className="parchment-message font-serif">
-                    "{personalMessage || "May these handcrafted confections bring sweetness, prosperity, and light to your auspicious celebrations."}"
+                    "{personalMessage || "Wishing you joy, prosperity, and sweet celebrations ahead."}"
                   </p>
 
                   <div className="parchment-footer font-serif">
                     <span>Selected Box: <strong>{currentBox.name}</strong></span>
-                    <span>Dispatch: <strong>Air-Chilled Sealed Vault</strong></span>
+                    <span>Packing: <strong>Carefully packed for safe delivery</strong></span>
                   </div>
                 </div>
 
@@ -231,7 +231,7 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
               {/* Order Box Summary */}
               <div className="preview-order-bar">
                 <div className="preview-price-block">
-                  <span className="preview-price-sub font-serif">Bespoke Curated Hamper</span>
+                  <span className="preview-price-sub font-serif">Custom Gift Box</span>
                   <span className="preview-price-total font-royal">{price}</span>
                 </div>
 
@@ -242,12 +242,12 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
                   {added ? (
                     <>
                       <Check size={16} />
-                      <span>Hamper Added to Bag</span>
+                      <span>Gift Box Added to Bag</span>
                     </>
                   ) : (
                     <>
                       <Gift size={16} />
-                      <span>Acquire Bespoke Hamper</span>
+                      <span>Add Gift Box to Bag</span>
                     </>
                   )}
                 </button>
@@ -256,7 +256,7 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
               {/* Corporate and Wedding Notice */}
               <div className="concierge-hotline-note">
                 <p>
-                  Organizing a Royal Wedding or Corporate Gala? Connect directly with our Senior Gifting Master at <strong>concierge@nanshifoods.com</strong> or <strong>+91 (0) 141 289 1968</strong>.
+                  Planning sweets for a wedding, festival, or corporate gifting? Contact our team at <strong>gifts@nenshifoods.com</strong> or <strong>+91 98200 19680</strong>.
                 </p>
               </div>
 

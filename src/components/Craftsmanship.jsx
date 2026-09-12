@@ -5,20 +5,20 @@ export default function Craftsmanship() {
     {
       num: "01",
       hindi: "शिला पेषण",
-      title: "Stone-Ground Cashews",
-      desc: "Unbroken Goan W240 cashews ground dry without added water to 40-micron silken consistency, allowing natural cashew butter to release its fragrance."
+      title: "Stone-ground nuts",
+      desc: "We grind our nuts slowly to preserve their natural richness and pure flavour, without adding water."
     },
     {
       num: "02",
-      hindi: "ताम्र कड़ाही",
-      title: "18-Hour Slow Uruli Fire",
-      desc: "Full-cream A2 milk reduced slowly in heavy brass cauldrons over babool wood embers, achieving a naturally caramelized amber heart without synthetic color."
+      hindi: "धीमी आंच",
+      title: "Slow-cooked milk",
+      desc: "Our milk sweets are cooked patiently in heavy brass pans for hours for deeper, natural caramelisation."
     },
     {
       num: "03",
       hindi: "शुद्ध वर्क",
-      title: "99.9% Pure Silver Leaf",
-      desc: "Certified cruelty-free silver leaf beaten exclusively on mechanical vegetable parchment, finished with hand-plucked Pampore Mongra saffron stigmas."
+      title: "Pure silver vark",
+      desc: "Finished with delicate, 100% vegetarian edible silver leaf, certified pure and safe."
     }
   ];
 
@@ -28,10 +28,10 @@ export default function Craftsmanship() {
         
         {/* Clean Editorial Section Header */}
         <div className="clean-section-header text-center">
-          <span className="clean-section-eyebrow">THE CRAFTSMANSHIP OF THE HALWAI</span>
-          <h2 className="clean-section-title font-royal">Heritage Without Compromise</h2>
+          <span className="clean-section-eyebrow">OUR PROCESS</span>
+          <h2 className="clean-section-title font-royal">Made with patience.</h2>
           <p className="clean-section-lead font-serif">
-            Three ancestral disciplines that separate royal Indian confection from commercial compromise.
+            Some things shouldn't be rushed.
           </p>
         </div>
 

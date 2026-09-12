@@ -43,7 +43,7 @@ export default function ProductModal({ product, currency, onClose, onAddToCart }
             </div>
             <div className="modal-veg-row">
               <span className="veg-stamp" aria-hidden="true" />
-              <span className="modal-veg-text font-serif">100% Satvik Pure Vegetarian Confection</span>
+              <span className="modal-veg-text font-serif">100% Pure Vegetarian</span>
             </div>
           </div>
 
@@ -74,7 +74,7 @@ export default function ProductModal({ product, currency, onClose, onAddToCart }
                   <span className="tasting-val font-serif">{product.tastingNotes.sweetness}</span>
                 </div>
                 <div className="tasting-item">
-                  <span className="tasting-key">Sommelier Pairing</span>
+                  <span className="tasting-key">Best Enjoyed With</span>
                   <span className="tasting-val font-serif">{product.tastingNotes.pairing}</span>
                 </div>
               </div>
@@ -82,16 +82,16 @@ export default function ProductModal({ product, currency, onClose, onAddToCart }
 
             {/* Ingredients & Dietary */}
             <div className="modal-ingredients-block">
-              <h4 className="block-label font-royal">ESTATE INGREDIENTS</h4>
+              <h4 className="block-label font-royal">KEY INGREDIENTS</h4>
               <p className="ingredients-list font-serif">
-                {product.ingredients?.join(' · ') || "Goan Cashews, Organic Cane Sugar, Pure Vedic Ghee, Silver Leaf."}
+                {product.ingredients?.join(' · ') || "Goan Cashews, Cane Sugar, Pure Cow Ghee, Silver Leaf."}
               </p>
             </div>
 
             {/* Shelf Life Note */}
             {product.shelfLife && (
               <div className="modal-shelflife">
-                <span className="shelflife-label">Preservation Note:</span>
+                <span className="shelflife-label">Shelf Life:</span>
                 <span className="shelflife-text font-serif">{product.shelfLife}</span>
               </div>
             )}
@@ -123,11 +123,11 @@ export default function ProductModal({ product, currency, onClose, onAddToCart }
                 {added ? (
                   <>
                     <Check size={16} />
-                    <span>Included in Bag</span>
+                    <span>Added to Bag</span>
                   </>
                 ) : (
                   <>
-                    <span>Acquire · {formattedPrice}</span>
+                    <span>Add to Bag · {formattedPrice}</span>
                   </>
                 )}
               </button>

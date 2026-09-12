@@ -31,8 +31,8 @@ export default function CartDrawer({ isOpen, onClose, cartItems, currency, onUpd
         {/* Drawer Header */}
         <div className="drawer-header">
           <div className="drawer-title-block">
-            <span className="drawer-pre font-serif">Auspicious Selections</span>
-            <h3 className="drawer-title font-royal">The Gifting Bag</h3>
+            <span className="drawer-pre font-serif">Fresh Mithai</span>
+            <h3 className="drawer-title font-royal">Your Shopping Bag</h3>
           </div>
           <button className="drawer-close-btn" onClick={onClose} aria-label="Close Bag">
             <X size={20} />
@@ -42,13 +42,13 @@ export default function CartDrawer({ isOpen, onClose, cartItems, currency, onUpd
         {/* Modal Overlay for Completed Checkout */}
         {checkoutComplete ? (
           <div className="checkout-success-view">
-            <div className="success-crest font-royal">✦ NANSHI ✦</div>
+            <div className="success-crest font-royal">✦ NENSHI FOODS ✦</div>
             <div className="success-icon-wrap">
               <Check size={28} className="success-check" />
             </div>
-            <h4 className="success-heading font-royal">Order Dispatch Registered</h4>
+            <h4 className="success-heading font-royal">Order Placed Successfully</h4>
             <p className="success-message font-serif">
-              Your royal presentation box has been scheduled for temperature-controlled air packaging at our Jaipur Central Atelier. You will receive an SMS dispatch manifesto shortly.
+              Your order is being freshly prepared and packed with care. You will receive an SMS and email with order tracking details shortly.
             </p>
             <div className="success-manifesto">
               <div className="manifesto-row">
@@ -56,12 +56,12 @@ export default function CartDrawer({ isOpen, onClose, cartItems, currency, onUpd
                 <strong>{formattedTotal}</strong>
               </div>
               <div className="manifesto-row">
-                <span>Dispatch Mode:</span>
-                <span>Sealed Chilled Courier</span>
+                <span>Delivery Mode:</span>
+                <span>Carefully Packed Safe Delivery</span>
               </div>
             </div>
             <button className="btn-gold btn-full" onClick={handleFinishCheckout}>
-              <span>Return to Collections</span>
+              <span>Continue Shopping</span>
             </button>
           </div>
         ) : (
@@ -71,12 +71,12 @@ export default function CartDrawer({ isOpen, onClose, cartItems, currency, onUpd
               {cartItems.length === 0 ? (
                 <div className="drawer-empty-state">
                   <div className="empty-star font-royal">✦</div>
-                  <h4 className="empty-title font-royal">Your Hamper Is Currently Empty</h4>
+                  <h4 className="empty-title font-royal">Your Bag Is Empty</h4>
                   <p className="empty-desc font-serif">
-                    Select from our signature Swarna Kaju Katli or curate a personalized royal presentation chest.
+                    Explore our signature Kaju Katli, Alwar Milk Cake, Mathura Peda, and festive gift boxes.
                   </p>
                   <button className="btn-outline-gold" onClick={onClose}>
-                    <span>Explore Repertoire</span>
+                    <span>Explore Sweets</span>
                   </button>
                 </div>
               ) : (
@@ -137,7 +137,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, currency, onUpd
                     );
                   })}
 
-                  {/* Complimentary Gold Gift Note Card Option */}
+                  {/* Complimentary Gift Note Card Option */}
                   <div className="gift-card-toggle-block">
                     <label className="checkbox-container">
                       <input 
@@ -147,7 +147,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, currency, onUpd
                       />
                       <span className="checkbox-custom" />
                       <span className="checkbox-label font-serif">
-                        Include Complimentary Gold-Foil Embossed Gift Card & Ribbon
+                        Include complimentary gift note & ribbon
                       </span>
                     </label>
                   </div>
@@ -160,16 +160,16 @@ export default function CartDrawer({ isOpen, onClose, cartItems, currency, onUpd
               <div className="drawer-footer">
                 <div className="shipping-badge font-serif">
                   <ShieldCheck size={15} className="shipping-icon" />
-                  <span>Complimentary Insured Air Courier on All Orders</span>
+                  <span>Carefully packed for safe delivery · Free above ₹999</span>
                 </div>
 
                 <div className="drawer-subtotal-row">
-                  <span className="subtotal-label font-serif">Order Subtotal</span>
+                  <span className="subtotal-label font-serif">Subtotal</span>
                   <span className="subtotal-amount font-royal">{formattedTotal}</span>
                 </div>
 
                 <button className="btn-gold btn-full" onClick={handleCheckout}>
-                  <span>Proceed to Royal Dispatch</span>
+                  <span>Proceed to Checkout</span>
                   <ArrowRight size={16} />
                 </button>
               </div>

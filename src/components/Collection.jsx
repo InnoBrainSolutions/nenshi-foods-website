@@ -22,10 +22,10 @@ export default function Collection({ currency, onSelectProduct, onAddToCart }) {
         
         {/* Clean Editorial Section Header */}
         <div className="clean-section-header text-center">
-          <span className="clean-section-eyebrow">HAUTE CONFISERIE REPERTOIRE</span>
-          <h2 className="clean-section-title font-royal">The Signature Confections</h2>
+          <span className="clean-section-eyebrow">OUR SIGNATURE MITHAI</span>
+          <h2 className="clean-section-title font-royal">Traditional Indian Sweets</h2>
           <p className="clean-section-lead font-serif">
-            Each creation is prepared in limited daily batches using royal court formulas, stone-ground nuts, and Vedic A2 ghee.
+            Made the slow way with pure cow ghee, stone-ground nuts, and time-tested recipes. Freshly prepared in small daily batches.
           </p>
         </div>
 
@@ -79,7 +79,7 @@ export default function Collection({ currency, onSelectProduct, onAddToCart }) {
                       }}
                     >
                       <Eye size={15} />
-                      <span>Inspect Tasting Notes</span>
+                      <span>Quick View</span>
                     </button>
                   </div>
                 </div>
@@ -96,7 +96,7 @@ export default function Collection({ currency, onSelectProduct, onAddToCart }) {
 
                   <div className="product-footer-row">
                     <div className="product-pricing">
-                      <span className="price-label">Price per casket</span>
+                      <span className="price-label">Per box</span>
                       <span className="price-value font-royal">{price}</span>
                     </div>
 
@@ -108,12 +108,12 @@ export default function Collection({ currency, onSelectProduct, onAddToCart }) {
                       {addedId === product.id ? (
                         <>
                           <Check size={16} />
-                          <span>Acquired</span>
+                          <span>Added to Bag</span>
                         </>
                       ) : (
                         <>
                           <Plus size={16} />
-                          <span>Acquire Box</span>
+                          <span>Add to Bag</span>
                         </>
                       )}
                     </button>
