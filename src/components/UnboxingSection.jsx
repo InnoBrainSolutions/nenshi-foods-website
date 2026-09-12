@@ -27,10 +27,10 @@ export default function UnboxingSection({ onQuickAdd }) {
         
         {/* Clean Editorial Section Header with Scroll Reveal */}
         <div className="clean-section-header text-center reveal-on-scroll">
-          <span className="clean-section-eyebrow">THOUGHTFUL PACKAGING</span>
-          <h2 className="clean-section-title font-royal">Freshly made. Beautifully packed.</h2>
+          <span className="clean-section-eyebrow">PACKAGING</span>
+          <h2 className="clean-section-title font-royal">Freshly made. Carefully packed.</h2>
           <p className="clean-section-lead font-serif">
-            Every box is packed with care so your sweets arrive just as fresh, fragrant, and delicate as they leave our kitchen.
+            Every box is packed so your sweets reach you just as fresh and fragrant as they left our kitchen.
           </p>
         </div>
 

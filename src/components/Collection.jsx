@@ -42,10 +42,10 @@ export default function Collection({ currency, onSelectProduct, onAddToCart }) {
         
         {/* Clean Editorial Section Header with Scroll Reveal */}
         <div className="clean-section-header text-center reveal-on-scroll">
-          <span className="clean-section-eyebrow">OUR SIGNATURE MITHAI</span>
-          <h2 className="clean-section-title font-royal">Traditional Indian Sweets</h2>
+          <span className="clean-section-eyebrow">OUR SWEETS</span>
+          <h2 className="clean-section-title font-royal">Signature Mithai</h2>
           <p className="clean-section-lead font-serif">
-            Made the slow way with pure cow ghee, stone-ground nuts, and time-tested recipes. Freshly prepared in small daily batches.
+            Made with pure desi ghee, whole nuts, and time-tested recipes. Freshly prepared in small batches every day.
           </p>
         </div>
 

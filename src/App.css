@@ -3429,24 +3429,57 @@
   .desserto-eyebrow { font-size: 0.57rem; letter-spacing: 0.14em; margin-bottom: 0.4rem; }
   .desserto-headline { font-size: clamp(1.8rem, 8.4vw, 2.35rem); line-height: 1.05; margin-bottom: 0.45rem; }
   .desserto-subhead { font-size: 0.8rem; line-height: 1.45; }
-  .desserto-sweet-stage { margin-bottom: 0.7rem; }
+  .desserto-sweet-stage {
+    width: 100%;
+    margin-bottom: 0.7rem;
+  }
   .desserto-view-capsule { margin-bottom: 0.55rem; }
   .desserto-view-btn { min-height: 36px; padding: 0.28rem 0.7rem; font-size: 0.65rem; }
-  .desserto-sweet-visual { width: min(49vw, 190px); height: min(49vw, 190px); }
+  .desserto-sweet-visual {
+    width: min(49vw, 190px);
+    height: min(49vw, 190px);
+  }
+
+  /* A quiet pedestal makes the mithai read as a crafted object, not a card image. */
+  .desserto-sweet-visual::before {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    z-index: 0;
+    border: 1px solid rgba(197, 154, 69, 0.24);
+    border-radius: 50%;
+    box-shadow: 0 0 0 8px rgba(255, 253, 249, 0.24);
+    pointer-events: none;
+  }
+
+  .desserto-sweet-visual.visual-is-box::before {
+    border-radius: 14px;
+  }
   .desserto-sweet-visual.visual-is-box { width: min(74vw, 285px); height: min(47vw, 170px); }
   .desserto-sweet-descriptor { margin-top: 0.7rem; max-width: 360px; }
   .descriptor-header { gap: 0.55rem; margin-bottom: 0.4rem; }
   .descriptor-hindi { font-size: 0.8rem; }
   .descriptor-price { font-size: 0.72rem; padding: 0.13rem 0.45rem; }
-  .descriptor-desc { font-size: 0.73rem; line-height: 1.4; margin-bottom: 0.5rem; }
-  .descriptor-note-badge { font-size: 0.6rem; padding: 0.2rem 0.42rem; }
+  .descriptor-desc {
+    max-width: 335px;
+    font-size: 0.75rem;
+    line-height: 1.42;
+    margin: 0 auto 0.55rem;
+    text-wrap: pretty;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+  .descriptor-notes { max-width: 348px; margin-inline: auto; gap: 0.38rem; }
+  .descriptor-note-badge { font-size: 0.61rem; padding: 0.21rem 0.45rem; }
   .desserto-actions { gap: 0.5rem; }
   .btn-desserto-primary, .btn-desserto-secondary { min-height: 42px; padding: 0.65rem 0.85rem; font-size: 0.69rem; }
 
   .desserto-bottom-tabs {
     width: calc(100vw - 2rem);
     max-width: 430px;
-    margin-top: 0.65rem;
+    margin-top: 0.75rem;
     justify-content: space-between;
     gap: 0.15rem;
     padding: 0.2rem;
@@ -3456,6 +3489,7 @@
     min-width: 0;
     flex: 1;
     justify-content: center;
+    min-height: 40px;
     padding: 0.48rem 0.18rem;
     font-size: 0;
   }

@@ -30,36 +30,36 @@ export default function Hero({ onExploreClick, onGiftingClick }) {
           </div>
 
           <div className="clean-eyebrow">
-            <span>NENSHI FOODS · ROYAL ATELIER · EST. 1968</span>
+            <span>NENSHI FOODS · SINCE 1968</span>
           </div>
 
           <h1 className="clean-hero-headline font-royal">
             {isKaju ? (
               <>
-                The 8-Pointed Star, <br />
-                <em>Pure Cashew</em> Jewel.
+                Pure Cashew <br />
+                <em>Katli</em>, Done Right.
               </>
             ) : (
               <>
-                Caramelized Amber, <br />
-                <em>Antique Uruli</em> Craft.
+                Alwar's Famous <br />
+                <em>Milk Cake</em>, Made Fresh.
               </>
             )}
           </h1>
 
           <p className="clean-hero-subhead font-serif">
             {isKaju
-              ? "Stone-ground Goan cashews simmered in seasoned brass cauldrons, adorned with certified 99.9% pure silver leaf and Kashmiri saffron threads."
-              : "Eighteen hours of unhurried wood-fire reduction in hand-hammered brass urulis. Full-cream A2 milk slow-caramelized to a fragrant golden heart."}
+              ? "Whole Goan cashews, slow-ground and cooked in desi ghee. Topped with real silver vark and Kashmiri saffron."
+              : "Full-cream milk simmered for hours on a slow flame until it turns into golden mawa. Finished with cardamom and pistachios."}
           </p>
 
           <div className="clean-hero-ctas">
             <a href="#collection" className="btn-clean-primary" onClick={onExploreClick}>
-              <span>Explore Collection</span>
+              <span>Explore Sweets</span>
               <ArrowRight size={15} />
             </a>
             <a href="#gifting" className="btn-clean-secondary" onClick={onGiftingClick}>
-              <span>Bespoke Gifting</span>
+              <span>Gift Boxes</span>
             </a>
           </div>
 

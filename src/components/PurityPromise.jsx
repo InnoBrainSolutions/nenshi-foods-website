@@ -6,25 +6,25 @@ export default function PurityPromise() {
     {
       title: "100% Pure Vegetarian",
       hindi: "शुद्ध शाकाहारी",
-      desc: "Every sweet is prepared in a dedicated vegetarian kitchen with pure milk, whole nuts, and zero artificial processing agents.",
+      desc: "All our sweets are made in a dedicated vegetarian kitchen with real milk, whole nuts, and no chemicals.",
       badge: "100% Veg"
     },
     {
-      title: "Certified Pure Silver Vark",
-      hindi: "प्रमाणित चांदी वर्क",
-      desc: "Nenshi uses 100% vegetarian, edible silver foil, laboratory tested and certified pure and safe for everyday enjoyment.",
+      title: "Real Silver Vark",
+      hindi: "चांदी वर्क",
+      desc: "Our silver vark is 100% vegetarian, lab tested, and certified safe.",
       badge: "Lab Tested"
     },
     {
-      title: "No Artificial Flavours or Colours",
-      hindi: "प्राकृतिक रंग व सुगंध",
-      desc: "We never use synthetic dyes or chemical essences. Color comes from Kashmiri saffron; aroma comes from freshly ground green cardamoms.",
+      title: "No Artificial Colours or Flavours",
+      hindi: "प्राकृतिक रंग",
+      desc: "We never use synthetic dyes or chemical essences. Colour comes from Kashmiri saffron, aroma from green cardamom.",
       badge: "Natural"
     },
     {
-      title: "Small-Batch Daily Cooking",
-      hindi: "रोज़ाना ताज़ा",
-      desc: "Cooked fresh every day in small batches by our experienced halwais so you always receive sweets at their peak flavour and texture.",
+      title: "Freshly Made Every Day",
+      hindi: "रोज़ ताज़ा",
+      desc: "Our halwais cook fresh sweets every morning in small batches — so you always get them at their best.",
       badge: "Fresh Daily"
     }
   ];
@@ -46,7 +46,7 @@ export default function PurityPromise() {
             </div>
             
             <p className="purity-lead font-serif">
-              In India, mithai is shared during moments that matter most—festivals, weddings, and family celebrations. That is why we use only wholesome ingredients, pure cow ghee, and traditional methods.
+              In India, mithai is part of every celebration — festivals, weddings, family gatherings. That's why we use only real ingredients, pure desi ghee, and traditional recipes.
             </p>
           </div>
 

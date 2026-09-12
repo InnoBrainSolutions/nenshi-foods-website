@@ -4,21 +4,21 @@ export default function Craftsmanship() {
   const pillars = [
     {
       num: "01",
-      hindi: "शिला पेषण",
-      title: "Stone-ground nuts",
-      desc: "We grind our nuts slowly to preserve their natural richness and pure flavour, without adding water."
+      hindi: "पिसाई",
+      title: "Slow-ground nuts",
+      desc: "We grind our cashews and almonds slowly to keep their natural oils and flavour intact. No water added."
     },
     {
       num: "02",
       hindi: "धीमी आंच",
       title: "Slow-cooked milk",
-      desc: "Our milk sweets are cooked patiently in heavy brass pans for hours for deeper, natural caramelisation."
+      desc: "Our milk sweets are cooked for hours in heavy brass pans on a low flame — no shortcuts."
     },
     {
       num: "03",
-      hindi: "शुद्ध वर्क",
+      hindi: "चांदी वर्क",
       title: "Pure silver vark",
-      desc: "Finished with delicate, 100% vegetarian edible silver leaf, certified pure and safe."
+      desc: "Topped with 100% vegetarian silver leaf — lab tested and certified safe."
     }
   ];
 

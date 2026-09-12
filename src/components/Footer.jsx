@@ -44,7 +44,7 @@ export default function Footer() {
             </g>
           </svg>
           <span className="footer-brand-title font-swash">Nenshi Foods</span>
-          <span className="footer-brand-tag font-serif">Traditional Indian Mithai · Handcrafted Since 1968</span>
+          <span className="footer-brand-tag font-serif">Traditional Indian Sweets · Since 1968</span>
         </div>
         <div className="hallmark-divider-line" />
       </div>
@@ -55,7 +55,7 @@ export default function Footer() {
         <div className="footer-col brand-col">
           <div className="footer-hindi-mark font-serif">नेंशी मिठास</div>
           <p className="footer-bio font-serif">
-            Founded in 1968, Nenshi Foods crafts traditional Indian sweets with real milk, pure cow ghee, stone-ground nuts, and time-tested recipes. Freshly made in small batches daily.
+            Since 1968, Nenshi Foods has been making traditional Indian sweets with real milk, pure desi ghee, whole nuts, and time-tested recipes. Freshly made in small batches every day.
           </p>
           <div className="footer-veg-inline">
             <span className="veg-stamp" aria-hidden="true" />
@@ -100,7 +100,7 @@ export default function Footer() {
         <div className="footer-col gazette-col">
           <h4 className="footer-heading font-royal">Stay in Touch</h4>
           <p className="gazette-desc font-serif">
-            Get updates on new sweets, festive collections, and seasonal specials delivered to your inbox.
+            Get updates on new sweets, festive collections, and seasonal specials.
           </p>
           <form className="gazette-form" onSubmit={handleSubscribe}>
             <div className="gazette-input-wrap">

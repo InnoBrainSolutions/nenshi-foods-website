@@ -18,6 +18,7 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
   const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
   const [viewMode, setViewMode] = useState('sweet'); // 'sweet' | 'box'
   const isTransitioningRef = useRef(false);
+  const wheelDrivenRef = useRef(false);
   const activeIndexRef = useRef(activeIndex);
 
   useEffect(() => {
@@ -37,7 +38,7 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
     setMouseOffset({ x: 0, y: 0 });
   };
 
-  // Monitor scroll position through the 340vh track
+  // Monitor scroll position through the 160vh track
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const sParam = params.get('sweet');
@@ -52,6 +53,9 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
 
     const handleScroll = () => {
       if (!trackRef.current) return;
+      // Skip scroll-based index updates while the wheel handler is driving
+      if (wheelDrivenRef.current) return;
+
       const rect = trackRef.current.getBoundingClientRect();
       const windowH = window.innerHeight;
       const totalDist = trackRef.current.offsetHeight - windowH;
@@ -60,11 +64,10 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
 
       const scrolled = -rect.top;
       if (scrolled <= 0 && sParam !== null) {
-        return; // Preserve tested initial sweet when at top of page
+        return;
       }
 
       const progress = Math.max(0, Math.min(1, scrolled / totalDist));
-      // Map progress to sweet index 0..3
       const numSweets = SCROLL_SHOWCASE_SWEETS.length;
       const rawIdx = Math.min(numSweets - 1, Math.floor(progress * numSweets));
       setScrollProgress(progress);
@@ -78,9 +81,9 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // On desktop, the hero is a deliberate four-part story rather than a section
-  // users can accidentally scroll past. A wheel gesture advances one sweet;
-  // page scrolling resumes only after the final transition has settled.
+  // On desktop, wheel gestures step through sweets one at a time.
+  // When the user reaches the last sweet and scrolls down (or first and scrolls up),
+  // we programmatically scroll past the track so the rest of the page continues.
   useEffect(() => {
     const handleWheel = (event) => {
       if (!trackRef.current || !window.matchMedia('(pointer: fine)').matches) return;
@@ -92,14 +95,27 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
       const direction = event.deltaY > 0 ? 1 : -1;
       const currentIndex = activeIndexRef.current;
       const nextIndex = currentIndex + direction;
-      const isAtExit = (direction > 0 && currentIndex === SCROLL_SHOWCASE_SWEETS.length - 1)
-        || (direction < 0 && currentIndex === 0);
+      const isAtEnd = direction > 0 && currentIndex === SCROLL_SHOWCASE_SWEETS.length - 1;
+      const isAtStart = direction < 0 && currentIndex === 0;
 
-      if (isAtExit) return;
+      if (isAtEnd) {
+        // Scroll past the track so the rest of the page takes over
+        const trackBottom = trackRef.current.offsetTop + trackRef.current.offsetHeight - window.innerHeight;
+        window.scrollTo({ top: trackBottom + 2, behavior: 'smooth' });
+        return;
+      }
+
+      if (isAtStart) {
+        // Scroll above the track so the user can go back up
+        window.scrollTo({ top: Math.max(0, trackRef.current.offsetTop - 2), behavior: 'smooth' });
+        return;
+      }
 
       event.preventDefault();
       if (isTransitioningRef.current) return;
 
+      // Mark that the wheel handler is driving so the scroll handler doesn't interfere
+      wheelDrivenRef.current = true;
       isTransitioningRef.current = true;
       activeIndexRef.current = nextIndex;
       setActiveIndex(nextIndex);
@@ -107,6 +123,7 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
 
       window.setTimeout(() => {
         isTransitioningRef.current = false;
+        wheelDrivenRef.current = false;
       }, 620);
     };
 
@@ -251,12 +268,12 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
           
           {/* Poetic Central Headline */}
           <div className="desserto-headline-wrap">
-            <span className="desserto-eyebrow">TRADITIONAL RECIPES · EST. 1968</span>
+            <span className="desserto-eyebrow">NENSHI FOODS · EST. 1968</span>
             <h1 className="desserto-headline">
-              Made the slow, <em>traditional way.</em>
+              Made slow, <em>made right.</em>
             </h1>
             <p className="desserto-subhead">
-              Rich milk. Real ingredients. Time-tested recipes.
+              Real milk. Pure ghee. Traditional recipes.
             </p>
           </div>
 
@@ -346,7 +363,7 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
             </button>
 
             <a href="#collection" className="btn-desserto-secondary" data-magnetic onClick={onExploreClick}>
-              <span>Explore Mithai</span>
+              <span>View All Sweets</span>
               <ArrowRight size={14} />
             </a>
           </div>

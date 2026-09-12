@@ -89,10 +89,10 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
         
         {/* Clean Section Header with Scroll Reveal */}
         <div className="clean-section-header text-center reveal-on-scroll">
-          <span className="clean-section-eyebrow">GIFTING & CELEBRATIONS</span>
-          <h2 className="clean-section-title font-royal">Create a Gift Box</h2>
+          <span className="clean-section-eyebrow">GIFT BOXES</span>
+          <h2 className="clean-section-title font-royal">Send a Sweet Gift</h2>
           <p className="clean-section-lead font-serif">
-            Traditional sweets, beautifully packed for moments worth celebrating. Choose your gift box, ribbon, and personalized message card.
+            Perfect for festivals, weddings, and celebrations. Pick your box, choose a ribbon, and add a personal message.
           </p>
         </div>
 
@@ -282,7 +282,7 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
               {/* Corporate and Wedding Notice */}
               <div className="concierge-hotline-note">
                 <p>
-                  Planning sweets for a wedding, festival, or corporate gifting? Contact our team at <strong>gifts@nenshifoods.com</strong> or <strong>+91 98200 19680</strong>.
+                  Need sweets for a wedding, festival, or corporate gifting? Reach us at <strong>gifts@nenshifoods.com</strong> or <strong>+91 98200 19680</strong>.
                 </p>
               </div>
 
