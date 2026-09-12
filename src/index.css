@@ -288,6 +288,13 @@ body {
 }
 
 /* Custom Cursor Styles (Desktop & Fine Pointers Only) */
+/* The native cursor is intentionally retained: it is more reliable and less
+   visually noisy than an overlay cursor, especially around fixed UI. */
+.custom-cursor-dot,
+.custom-cursor-ring {
+  display: none !important;
+}
+
 .custom-cursor-dot {
   position: fixed;
   top: 0;

@@ -84,6 +84,16 @@ export default function Header({ cartCount, onOpenCart, currency, onToggleCurren
             </button>
           </div>
 
+          {/* The bag remains a first-class action on small screens. */}
+          <button
+            className="mobile-bag-btn"
+            onClick={onOpenCart}
+            aria-label={`View Shopping Bag, ${cartCount} items`}
+          >
+            <ShoppingBag size={20} strokeWidth={1.8} />
+            <span className="mobile-bag-count">{cartCount}</span>
+          </button>
+
         </div>
       </nav>
 

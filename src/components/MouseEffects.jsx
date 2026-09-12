@@ -60,7 +60,7 @@ export default function MouseEffects() {
 
       // Magnetic detection
       const magneticTarget = target.closest(
-        '[data-magnetic], .btn-desserto-primary, .btn-desserto-secondary, .btn-clean-primary, .btn-gold, .btn-acquire, .bag-btn, .brand-crest, .orbit-sweet-item'
+        '[data-magnetic], .btn-desserto-primary, .btn-desserto-secondary, .btn-clean-primary, .btn-gold, .btn-acquire, .bag-btn, .brand-crest'
       );
       if (magneticTarget) {
         activeMagneticEl = magneticTarget;
@@ -88,7 +88,7 @@ export default function MouseEffects() {
     const onMouseOut = (e) => {
       const fromEl = e.target;
       const magneticTarget = fromEl?.closest?.(
-        '[data-magnetic], .btn-desserto-primary, .btn-desserto-secondary, .btn-clean-primary, .btn-gold, .btn-acquire, .bag-btn, .brand-crest, .orbit-sweet-item'
+        '[data-magnetic], .btn-desserto-primary, .btn-desserto-secondary, .btn-clean-primary, .btn-gold, .btn-acquire, .bag-btn, .brand-crest'
       );
       if (magneticTarget && magneticTarget === activeMagneticEl) {
         magneticTarget.style.transform = 'translate3d(0, 0, 0)';

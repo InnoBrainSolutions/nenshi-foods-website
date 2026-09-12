@@ -18,6 +18,11 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
   const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
   const [viewMode, setViewMode] = useState('sweet'); // 'sweet' | 'box'
   const isTransitioningRef = useRef(false);
+  const activeIndexRef = useRef(activeIndex);
+
+  useEffect(() => {
+    activeIndexRef.current = activeIndex;
+  }, [activeIndex]);
 
   // Smooth mouse-driven physical tilt
   const handleStageMouseMove = (e) => {
@@ -71,12 +76,49 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // On desktop, the hero is a deliberate four-part story rather than a section
+  // users can accidentally scroll past. A wheel gesture advances one sweet;
+  // page scrolling resumes only after the final transition has settled.
+  useEffect(() => {
+    const handleWheel = (event) => {
+      if (!trackRef.current || !window.matchMedia('(pointer: fine)').matches) return;
+
+      const rect = trackRef.current.getBoundingClientRect();
+      const isPinnedStory = rect.top <= 1 && rect.bottom > window.innerHeight + 1;
+      if (!isPinnedStory || Math.abs(event.deltaY) < 4) return;
+
+      const direction = event.deltaY > 0 ? 1 : -1;
+      const currentIndex = activeIndexRef.current;
+      const nextIndex = currentIndex + direction;
+      const isAtExit = (direction > 0 && currentIndex === SCROLL_SHOWCASE_SWEETS.length - 1)
+        || (direction < 0 && currentIndex === 0);
+
+      if (isAtExit) return;
+
+      event.preventDefault();
+      if (isTransitioningRef.current) return;
+
+      isTransitioningRef.current = true;
+      activeIndexRef.current = nextIndex;
+      setActiveIndex(nextIndex);
+      setScrollProgress(nextIndex / (SCROLL_SHOWCASE_SWEETS.length - 1));
+
+      window.setTimeout(() => {
+        isTransitioningRef.current = false;
+      }, 620);
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    return () => window.removeEventListener('wheel', handleWheel);
+  }, []);
+
   // Programmatic jump to sweet on tab click
   const handleSelectSweet = (index) => {
     if (!trackRef.current) return;
     const totalDist = trackRef.current.offsetHeight - window.innerHeight;
     const targetScroll = trackRef.current.offsetTop + (index / (SCROLL_SHOWCASE_SWEETS.length - 1)) * totalDist;
     window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+    activeIndexRef.current = index;
     setActiveIndex(index);
   };
 
@@ -217,7 +259,7 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
           </div>
 
           {/* Centerpiece Active Sweet Showcase Card */}
-          <div className="desserto-sweet-stage">
+          <div className="desserto-sweet-stage" key={`${currentSweet.id}-${viewMode}`}>
             
             {/* View Mode Toggle: Fresh Mithai vs Official Gift Box */}
             {currentSweet.boxImage && (
