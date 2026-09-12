@@ -15,15 +15,34 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
     return 0;
   });
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
+  const [viewMode, setViewMode] = useState('sweet'); // 'sweet' | 'box'
   const isTransitioningRef = useRef(false);
+
+  // Smooth mouse-driven physical tilt
+  const handleStageMouseMove = (e) => {
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const normX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+    const normY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+    setMouseOffset({ x: normX, y: normY });
+  };
+
+  const handleStageMouseLeave = () => {
+    setMouseOffset({ x: 0, y: 0 });
+  };
 
   // Monitor scroll position through the 340vh track
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const sParam = params.get('sweet');
+    const vParam = params.get('view');
     if (sParam !== null && !isNaN(parseInt(sParam))) {
       const idx = Math.max(0, Math.min(SCROLL_SHOWCASE_SWEETS.length - 1, parseInt(sParam)));
       setActiveIndex(idx);
+    }
+    if (vParam === 'box') {
+      setViewMode('box');
     }
 
     const handleScroll = () => {
@@ -70,11 +89,22 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
 
   return (
     <section ref={trackRef} className="desserto-track" id="sweet-showcase">
-      {/* Pinned 100vh Sticky Viewport */}
-      <div className="desserto-sticky-stage">
+      {/* Pinned 100vh Sticky Viewport with mousemove physical interaction */}
+      <div 
+        className="desserto-sticky-stage"
+        onMouseMove={handleStageMouseMove}
+        onMouseLeave={handleStageMouseLeave}
+      >
         
-        {/* Architectural Background Line Arches (Desserto Style) */}
-        <div className="desserto-arch-canvas" aria-hidden="true">
+        {/* Architectural Background Line Arches with subtle counter-depth */}
+        <div 
+          className="desserto-arch-canvas" 
+          aria-hidden="true"
+          style={{
+            transform: `translate3d(${-mouseOffset.x * 12}px, ${-mouseOffset.y * 8}px, 0)`,
+            transition: 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)'
+          }}
+        >
           <svg className="desserto-arch-svg" viewBox="0 0 1200 900" fill="none" preserveAspectRatio="xMidYMid slice">
             {/* Concentric Golden Arches */}
             <path
@@ -106,8 +136,15 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
           </div>
         </div>
 
-        {/* Master Halwai Artisan Badge (Upper Right Profile, as in Reference) */}
-        <div className="desserto-chef-badge">
+        {/* Master Halwai Artisan Badge with subtle parallax */}
+        <div 
+          className="desserto-chef-badge"
+          data-magnetic
+          style={{
+            transform: `translate3d(${mouseOffset.x * 6}px, ${mouseOffset.y * 5}px, 0)`,
+            transition: 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)'
+          }}
+        >
           <div className="chef-avatar-frame">
             <img src="/images/master_halwai.jpg" alt="Ramkishan Nenshi" className="chef-avatar-img" />
             <div className="chef-badge-sparkle">
@@ -141,14 +178,15 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
             const station = baseStations[idx];
             const isActive = idx === activeIndex;
 
-            // Subtle orbital float driven by scroll progress
-            const offsetX = Math.cos(orbitAngle + idx * (Math.PI / 2)) * 3;
-            const offsetY = Math.sin(orbitAngle + idx * (Math.PI / 2)) * 4;
+            // Subtle orbital float driven by scroll progress + mouse inertia
+            const offsetX = Math.cos(orbitAngle + idx * (Math.PI / 2)) * 3 + mouseOffset.x * 1.5;
+            const offsetY = Math.sin(orbitAngle + idx * (Math.PI / 2)) * 4 + mouseOffset.y * 1.5;
 
             return (
               <button
                 key={sweet.id}
                 type="button"
+                data-magnetic
                 className={`orbit-sweet-item ${isActive ? 'orbit-sweet-active' : ''}`}
                 style={{
                   transform: `translate(${station.baseX + offsetX}vw, ${station.baseY + offsetY}vh) rotate(${station.rot + (scrollProgress * 25)}deg)`,
@@ -180,19 +218,50 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
 
           {/* Centerpiece Active Sweet Showcase Card */}
           <div className="desserto-sweet-stage">
+            
+            {/* View Mode Toggle: Fresh Mithai vs Official Gift Box */}
+            {currentSweet.boxImage && (
+              <div className="desserto-view-capsule" data-cursor="hover">
+                <button
+                  type="button"
+                  className={`desserto-view-btn ${viewMode === 'sweet' ? 'view-btn-active' : ''}`}
+                  onClick={() => setViewMode('sweet')}
+                  data-magnetic
+                >
+                  Fresh Mithai
+                </button>
+                <button
+                  type="button"
+                  className={`desserto-view-btn ${viewMode === 'box' ? 'view-btn-active' : ''}`}
+                  onClick={() => setViewMode('box')}
+                  data-magnetic
+                >
+                  Gift Box
+                </button>
+              </div>
+            )}
+
             <div 
-              className="desserto-sweet-visual"
+              className={`desserto-sweet-visual ${viewMode === 'box' && currentSweet.boxImage ? 'visual-is-box' : ''}`}
+              data-cursor="view"
               style={{
-                transform: `scale(${1 + Math.sin(localProgress * Math.PI) * 0.04}) rotate(${Math.sin(scrollProgress * Math.PI * 2) * 3}deg)`
+                transform: `perspective(1000px) rotateY(${mouseOffset.x * 5.5}deg) rotateX(${-mouseOffset.y * 5.5}deg) scale(${1 + Math.sin(localProgress * Math.PI) * 0.04}) rotate(${Math.sin(scrollProgress * Math.PI * 2) * 2}deg)`,
+                transition: 'transform 0.22s cubic-bezier(0.16, 1, 0.3, 1)'
               }}
             >
               <div className="sweet-halo-glow" />
               <img 
-                src={currentSweet.image} 
+                src={viewMode === 'box' && currentSweet.boxImage ? currentSweet.boxImage : currentSweet.image} 
                 alt={currentSweet.name} 
-                className="desserto-hero-img"
+                className={`desserto-hero-img ${viewMode === 'box' && currentSweet.boxImage ? 'desserto-box-img' : ''}`}
               />
-              <div className="sweet-shadow-soft" />
+              <div 
+                className="sweet-shadow-soft" 
+                style={{
+                  transform: `translate3d(${-mouseOffset.x * 12}px, ${-mouseOffset.y * 8}px, 0)`,
+                  transition: 'transform 0.22s cubic-bezier(0.16, 1, 0.3, 1)'
+                }}
+              />
             </div>
 
             {/* Active Sweet Descriptor */}
@@ -218,6 +287,7 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
           <div className="desserto-actions">
             <button 
               className="btn-desserto-primary"
+              data-magnetic
               onClick={() => onQuickAdd({
                 id: currentSweet.id,
                 name: currentSweet.name,
@@ -231,18 +301,19 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
               <span>Order {currentSweet.name} · ₹{currentSweet.priceINR}</span>
             </button>
 
-            <a href="#collection" className="btn-desserto-secondary" onClick={onExploreClick}>
+            <a href="#collection" className="btn-desserto-secondary" data-magnetic onClick={onExploreClick}>
               <span>Explore Mithai</span>
               <ArrowRight size={14} />
             </a>
           </div>
 
           {/* 4 Sweets Tab Selector Capsule */}
-          <div className="desserto-bottom-tabs" role="tablist">
+          <div className="desserto-bottom-tabs" role="tablist" data-cursor="drag">
             {SCROLL_SHOWCASE_SWEETS.map((sweet, idx) => (
               <button
                 key={sweet.id}
                 role="tab"
+                data-magnetic
                 aria-selected={activeIndex === idx}
                 className={`desserto-tab-btn ${activeIndex === idx ? 'desserto-tab-active' : ''}`}
                 onClick={() => handleSelectSweet(idx)}

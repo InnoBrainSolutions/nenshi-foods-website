@@ -8,10 +8,24 @@ import GiftingConcierge from './components/GiftingConcierge';
 import Footer from './components/Footer';
 import ProductModal from './components/ProductModal';
 import CartDrawer from './components/CartDrawer';
+import MouseEffects from './components/MouseEffects';
+import { useScrollReveal } from './hooks/useScrollReveal';
 import './App.css';
 
 export default function App() {
+  useScrollReveal();
   const [currency, setCurrency] = useState("INR");
+
+  React.useEffect(() => {
+    if (window.location.hash) {
+      const el = document.querySelector(window.location.hash);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }, 150);
+      }
+    }
+  }, []);
   const [cartItems, setCartItems] = useState([
     {
       id: "nenshi-kaju-katli",
@@ -78,6 +92,9 @@ export default function App() {
 
   return (
     <div className="app-shell">
+      {/* Subtle Custom Interaction Cursor & Magnetic Field */}
+      <MouseEffects />
+
       {/* Royal Navigation */}
       <Header 
         cartCount={totalCartCount}

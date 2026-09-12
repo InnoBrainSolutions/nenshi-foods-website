@@ -33,10 +33,10 @@ export default function PurityPromise() {
     <section id="purity" className="purity-section">
       <div className="container">
         
-        <div className="purity-inner-card">
+        <div className="purity-inner-card reveal-on-scroll">
           <div className="purity-header-row">
             <div className="purity-title-col">
-              <div className="veg-badge-large">
+              <div className="veg-badge-large" data-cursor="hover">
                 <span className="veg-stamp" aria-hidden="true" />
                 <span className="veg-text font-royal">OUR PURITY PROMISE</span>
               </div>
@@ -50,9 +50,9 @@ export default function PurityPromise() {
             </p>
           </div>
 
-          <div className="purity-pillars-grid">
+          <div className="purity-pillars-grid reveal-stagger">
             {pillars.map((pillar, idx) => (
-              <div key={idx} className="purity-pillar-item">
+              <div key={idx} className="purity-pillar-item" data-cursor="hover">
                 <div className="pillar-top">
                   <span className="pillar-hindi font-serif">{pillar.hindi}</span>
                   <span className="pillar-badge">{pillar.badge}</span>

@@ -5,9 +5,22 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
   const [selectedBox, setSelectedBox] = useState('ivory-star');
   const [ribbonColor, setRibbonColor] = useState('champagne');
   const [sealInitial, setSealInitial] = useState('N');
-  const [recipientName, setRecipientName] = useState('Maharani Gayatri Devi');
-  const [personalMessage, setPersonalMessage] = useState('With deepest reverence and auspicious wishes for the auspicious celebrations ahead.');
+  const [recipientName, setRecipientName] = useState('Sharma Family');
+  const [personalMessage, setPersonalMessage] = useState('Wishing you joy, good health, and sweet celebrations ahead.');
   const [added, setAdded] = useState(false);
+  const [letterTilt, setLetterTilt] = useState({ x: 0, y: 0 });
+
+  const handleLetterMouseMove = (e) => {
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+    setLetterTilt({ x, y });
+  };
+
+  const handleLetterMouseLeave = () => {
+    setLetterTilt({ x: 0, y: 0 });
+  };
 
   const boxes = [
     {
@@ -74,8 +87,8 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
     <section id="gifting" className="gifting-section">
       <div className="container">
         
-        {/* Clean Section Header */}
-        <div className="clean-section-header text-center">
+        {/* Clean Section Header with Scroll Reveal */}
+        <div className="clean-section-header text-center reveal-on-scroll">
           <span className="clean-section-eyebrow">GIFTING & CELEBRATIONS</span>
           <h2 className="clean-section-title font-royal">Create a Gift Box</h2>
           <p className="clean-section-lead font-serif">
@@ -83,8 +96,8 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
           </p>
         </div>
 
-        {/* Interactive Customizer Workspace */}
-        <div className="concierge-workspace-grid">
+        {/* Interactive Customizer Workspace with Scroll Reveal */}
+        <div className="concierge-workspace-grid reveal-on-scroll">
           
           {/* Controls Column */}
           <div className="concierge-controls">
@@ -96,6 +109,7 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
                 {boxes.map(box => (
                   <div 
                     key={box.id}
+                    data-magnetic
                     className={`box-select-card ${selectedBox === box.id ? 'box-selected' : ''}`}
                     onClick={() => setSelectedBox(box.id)}
                   >
@@ -126,6 +140,7 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
                   {ribbons.map(r => (
                     <button
                       key={r.id}
+                      data-magnetic
                       className={`ribbon-swatch-btn ${ribbonColor === r.id ? 'swatch-active' : ''}`}
                       style={{ backgroundColor: r.hex, borderColor: r.border }}
                       onClick={() => setRibbonColor(r.id)}
@@ -143,6 +158,7 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
                   {['N', 'S', 'A', 'R', 'K', 'V'].map(letter => (
                     <button
                       key={letter}
+                      data-magnetic
                       className={`seal-letter-btn ${sealInitial === letter ? 'seal-active' : ''}`}
                       onClick={() => setSealInitial(letter)}
                     >
@@ -190,8 +206,17 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
                 <span>GIFT BOX PREVIEW</span>
               </div>
 
-              {/* Digital Parchment Envelope */}
-              <div className="parchment-letter-wrapper">
+              {/* Digital Parchment Envelope with 3D physical tilt */}
+              <div 
+                className="parchment-letter-wrapper"
+                data-cursor="view"
+                onMouseMove={handleLetterMouseMove}
+                onMouseLeave={handleLetterMouseLeave}
+                style={{
+                  transform: `perspective(900px) rotateY(${letterTilt.x * 5}deg) rotateX(${-letterTilt.y * 5}deg)`,
+                  transition: 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)'
+                }}
+              >
                 
                 {/* Decorative Ribbon Accent */}
                 <div 
@@ -202,7 +227,7 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
                 />
 
                 {/* Hot Wax Gold Seal */}
-                <div className="preview-wax-seal">
+                <div className="preview-wax-seal" data-magnetic>
                   <div className="wax-seal-inner">
                     <span className="wax-letter font-royal">{sealInitial}</span>
                   </div>
@@ -237,6 +262,7 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
 
                 <button 
                   className={`btn-gold ${added ? 'btn-acquired' : ''}`}
+                  data-magnetic
                   onClick={handleAddHamper}
                 >
                   {added ? (

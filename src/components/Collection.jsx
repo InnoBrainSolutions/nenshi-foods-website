@@ -16,12 +16,32 @@ export default function Collection({ currency, onSelectProduct, onAddToCart }) {
     setTimeout(() => setAddedId(null), 1600);
   };
 
+  const handleCardMouseMove = (e, id) => {
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    card.style.setProperty('--card-rot-x', `${-y * 6}deg`);
+    card.style.setProperty('--card-rot-y', `${x * 6}deg`);
+    card.style.setProperty('--card-img-x', `${x * 8}px`);
+    card.style.setProperty('--card-img-y', `${y * 8}px`);
+  };
+
+  const handleCardMouseLeave = (e) => {
+    const card = e.currentTarget;
+    card.style.removeProperty('--card-rot-x');
+    card.style.removeProperty('--card-rot-y');
+    card.style.removeProperty('--card-img-x');
+    card.style.removeProperty('--card-img-y');
+  };
+
   return (
     <section id="collection" className="collection-section">
       <div className="container">
         
-        {/* Clean Editorial Section Header */}
-        <div className="clean-section-header text-center">
+        {/* Clean Editorial Section Header with Scroll Reveal */}
+        <div className="clean-section-header text-center reveal-on-scroll">
           <span className="clean-section-eyebrow">OUR SIGNATURE MITHAI</span>
           <h2 className="clean-section-title font-royal">Traditional Indian Sweets</h2>
           <p className="clean-section-lead font-serif">
@@ -29,8 +49,8 @@ export default function Collection({ currency, onSelectProduct, onAddToCart }) {
           </p>
         </div>
 
-        {/* Spacious Product Grid */}
-        <div className="collection-grid">
+        {/* Spacious Product Grid with Staggered Scroll Reveal */}
+        <div className="collection-grid reveal-stagger">
           {premierItems.map((product, idx) => {
             const price = currency === "INR" 
               ? `₹${product.priceINR.toLocaleString('en-IN')}` 
@@ -44,8 +64,13 @@ export default function Collection({ currency, onSelectProduct, onAddToCart }) {
             return (
               <article 
                 key={product.id}
+                data-cursor="view"
                 className={`product-card ${idx === 0 ? 'product-card-spotlight' : ''}`}
-                style={{ transform: `translateY(${cardParallaxY}px)` }}
+                style={{ 
+                  transform: `translateY(${cardParallaxY}px) perspective(800px) rotateX(var(--card-rot-x, 0deg)) rotateY(var(--card-rot-y, 0deg))`
+                }}
+                onMouseMove={(e) => handleCardMouseMove(e, product.id)}
+                onMouseLeave={handleCardMouseLeave}
                 onClick={() => onSelectProduct(product)}
               >
                 {/* Product Image Frame */}
@@ -54,6 +79,9 @@ export default function Collection({ currency, onSelectProduct, onAddToCart }) {
                     src={product.image} 
                     alt={product.name}
                     className="product-image"
+                    style={{
+                      transform: `translate3d(var(--card-img-x, 0px), var(--card-img-y, 0px), 0) scale(var(--card-img-scale, 1))`
+                    }}
                     loading="lazy"
                   />
                   
@@ -73,6 +101,7 @@ export default function Collection({ currency, onSelectProduct, onAddToCart }) {
                   <div className="image-hover-action">
                     <button 
                       className="inspect-btn font-sans"
+                      data-magnetic
                       onClick={(e) => {
                         e.stopPropagation();
                         onSelectProduct(product);
@@ -102,6 +131,7 @@ export default function Collection({ currency, onSelectProduct, onAddToCart }) {
 
                     <button
                       className={`btn-acquire ${addedId === product.id ? 'btn-acquired' : ''}`}
+                      data-magnetic
                       onClick={(e) => handleAdd(product, e)}
                       aria-label={`Add ${product.name} to bag`}
                     >

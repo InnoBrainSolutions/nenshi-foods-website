@@ -4,6 +4,7 @@ import { X, Plus, Minus, Check, Sparkles, ShieldCheck } from 'lucide-react';
 export default function ProductModal({ product, currency, onClose, onAddToCart }) {
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
+  const [activeView, setActiveView] = useState('sweet'); // 'sweet' | 'box'
 
   if (!product) return null;
 
@@ -20,6 +21,8 @@ export default function ProductModal({ product, currency, onClose, onAddToCart }
     }, 1200);
   };
 
+  const currentDisplayImage = activeView === 'box' && product.packagingImage ? product.packagingImage : product.image;
+
   return (
     <div className="modal-backdrop" onClick={onClose} role="dialog" aria-modal="true">
       <div className="modal-container" onClick={(e) => e.stopPropagation()}>
@@ -34,13 +37,36 @@ export default function ProductModal({ product, currency, onClose, onAddToCart }
           {/* Left Column: Product Visual */}
           <div className="modal-visual-pane">
             <div className="modal-image-wrapper">
-              <img src={product.image} alt={product.name} className="modal-image" />
+              <img src={currentDisplayImage} alt={product.name} className="modal-image" />
               {product.badge && (
                 <div className="modal-badge font-royal">
-                  <span>{product.badge}</span>
+                  <span>{activeView === 'box' ? 'Official Gift Box' : product.badge}</span>
                 </div>
               )}
             </div>
+
+            {/* Packaging / Sweet View Switcher if Box Image exists */}
+            {product.packagingImage && (
+              <div className="modal-view-switcher">
+                <button 
+                  type="button"
+                  className={`modal-switch-btn ${activeView === 'sweet' ? 'active' : ''}`}
+                  onClick={() => setActiveView('sweet')}
+                  data-magnetic
+                >
+                  Fresh Mithai
+                </button>
+                <button 
+                  type="button"
+                  className={`modal-switch-btn ${activeView === 'box' ? 'active' : ''}`}
+                  onClick={() => setActiveView('box')}
+                  data-magnetic
+                >
+                  Gift Box Packaging
+                </button>
+              </div>
+            )}
+
             <div className="modal-veg-row">
               <span className="veg-stamp" aria-hidden="true" />
               <span className="modal-veg-text font-serif">100% Pure Vegetarian</span>

@@ -26,8 +26,8 @@ export default function Craftsmanship() {
     <section id="crafts" className="crafts-clean-section">
       <div className="container">
         
-        {/* Clean Editorial Section Header */}
-        <div className="clean-section-header text-center">
+        {/* Clean Editorial Section Header with Scroll Reveal */}
+        <div className="clean-section-header text-center reveal-on-scroll">
           <span className="clean-section-eyebrow">OUR PROCESS</span>
           <h2 className="clean-section-title font-royal">Made with patience.</h2>
           <p className="clean-section-lead font-serif">
@@ -35,10 +35,10 @@ export default function Craftsmanship() {
           </p>
         </div>
 
-        {/* 3 Spacious Pillars Grid */}
-        <div className="crafts-clean-grid">
+        {/* 3 Spacious Pillars Grid with Staggered Scroll Reveal */}
+        <div className="crafts-clean-grid reveal-stagger">
           {pillars.map((pillar) => (
-            <div key={pillar.num} className="craft-clean-col">
+            <div key={pillar.num} className="craft-clean-col" data-cursor="hover">
               <div className="craft-clean-num font-royal">{pillar.num}</div>
               <span className="craft-clean-hindi font-serif">{pillar.hindi}</span>
               <h3 className="craft-clean-title font-royal">{pillar.title}</h3>

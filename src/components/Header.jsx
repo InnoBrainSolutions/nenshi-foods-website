@@ -57,8 +57,8 @@ export default function Header({ cartCount, onOpenCart, currency, onToggleCurren
             <a href="#collection" className="nav-item">All Mithai</a>
           </div>
 
-          {/* Center Brand Crest */}
-          <a href="#" className="brand-crest" aria-label="Nenshi Foods Home">
+          {/* Center Brand Crest with magnetic pull */}
+          <a href="#" className="brand-crest" data-magnetic aria-label="Nenshi Foods Home">
             <div className="crest-emblem">
               <span className="crest-title font-swash">Nenshi</span>
               <span className="crest-tag font-sans">FOODS</span>
@@ -71,9 +71,10 @@ export default function Header({ cartCount, onOpenCart, currency, onToggleCurren
             <a href="#crafts" className="nav-item">How We Make It</a>
             <a href="#gifting" className="nav-item">Gift Boxes</a>
             
-            {/* Bag Button */}
+            {/* Bag Button with magnetic pull */}
             <button 
               className="bag-btn"
+              data-magnetic
               onClick={onOpenCart}
               aria-label={`View Shopping Bag, ${cartCount} items`}
             >
