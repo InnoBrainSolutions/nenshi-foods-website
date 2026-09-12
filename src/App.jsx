@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Header from './components/Header';
-import Hero from './components/Hero';
+import ScrollSweetShowcase from './components/ScrollSweetShowcase';
 import UnboxingSection from './components/UnboxingSection';
 import Collection from './components/Collection';
 import Craftsmanship from './components/Craftsmanship';
@@ -87,14 +87,11 @@ export default function App() {
       />
 
       <main id="main-content">
-        {/* Cinematic Hero */}
-        <Hero 
+        {/* Pinned Scrollytelling Sweet Showcase (Desserto Inspired) */}
+        <ScrollSweetShowcase 
+          onQuickAdd={handleAddToCart}
           onExploreClick={() => {
             const el = document.getElementById('collection');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
-          }}
-          onGiftingClick={() => {
-            const el = document.getElementById('gifting');
             if (el) el.scrollIntoView({ behavior: 'smooth' });
           }}
         />

@@ -262,6 +262,558 @@
 }
 
 
+/* ==========================================================================
+   DESSERTO-INSPIRED PINNED SCROLL SWEET SHOWCASE (WARM WHITE & GOLD THEME)
+   ========================================================================== */
+
+/* Outer scroll track: 320vh height allows buttery smooth scrolling across 4 sweets */
+.desserto-track {
+  position: relative;
+  width: 100%;
+  height: 320vh;
+  background-color: var(--bg-ivory);
+}
+
+/* Pinned 100vh Sticky Viewport */
+.desserto-sticky-stage {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 45%, #FFFDF9 0%, #F8F1E5 60%, #EFE4D0 100%);
+  border-bottom: 1px solid var(--gold-hairline);
+  user-select: none;
+}
+
+/* Architectural Concentric Golden Line Arches */
+.desserto-arch-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.desserto-arch-svg {
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+}
+
+/* Golden Celestial Moon at Arch Apex */
+.desserto-arch-moon {
+  position: absolute;
+  top: 14%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid var(--gold-burnished);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 0 16px rgba(197, 154, 69, 0.35);
+  backdrop-filter: blur(4px);
+}
+
+.moon-crescent-icon {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--gold-burnished);
+  clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
+}
+
+/* Master Halwai Artisan Badge (Top-Right Profile, Reference Style) */
+.desserto-chef-badge {
+  position: absolute;
+  top: 2rem;
+  right: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.5rem 1rem 0.5rem 0.5rem;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(197, 154, 69, 0.35);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-warm-sm);
+  backdrop-filter: blur(8px);
+  z-index: 20;
+}
+
+.chef-avatar-frame {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1.5px solid var(--gold-foil);
+  box-shadow: 0 2px 8px rgba(36, 23, 14, 0.12);
+}
+
+.chef-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.chef-badge-sparkle {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #FFFDF9;
+  border: 1px solid var(--gold-burnished);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chef-info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.chef-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  line-height: 1.2;
+}
+
+.chef-role {
+  font-size: 0.7rem;
+  color: var(--gold-burnished);
+  letter-spacing: 0.04em;
+}
+
+/* Step Counter (01 / 04) in Upper Left */
+.desserto-step-counter {
+  position: absolute;
+  top: 2.2rem;
+  left: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(197, 154, 69, 0.3);
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(8px);
+  z-index: 20;
+}
+
+.step-current {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.step-sep {
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+}
+
+.step-total {
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+}
+
+.step-title {
+  margin-left: 0.4rem;
+  padding-left: 0.6rem;
+  border-left: 1px solid var(--gold-hairline);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--gold-burnished);
+}
+
+/* Orbital Floating Sweets (Matching Reference Composition) */
+.desserto-floating-orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.orbit-sweet-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: -44px;
+  margin-left: -44px;
+  border-radius: 50%;
+  background: #FFFDF9;
+  border: 1.5px solid rgba(197, 154, 69, 0.3);
+  box-shadow: 0 12px 32px rgba(65, 42, 20, 0.16);
+  padding: 3px;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: transform 0.4s var(--ease-luxury), box-shadow 0.3s ease, border-color 0.3s ease;
+  overflow: hidden;
+}
+
+.orbit-sweet-item:hover {
+  transform: scale(1.12) !important;
+  border-color: var(--gold-foil);
+  box-shadow: 0 16px 40px rgba(197, 154, 69, 0.28);
+}
+
+.orbit-sweet-active {
+  border-color: var(--gold-burnished);
+  box-shadow: 0 0 0 3px rgba(197, 154, 69, 0.25), 0 14px 36px rgba(65, 42, 20, 0.2);
+}
+
+.orbit-sweet-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.orbit-sweet-tag {
+  display: none;
+}
+
+/* Centerpiece Container */
+.desserto-center-container {
+  position: relative;
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 840px;
+  padding: 0 1.5rem;
+  margin-top: 0.2rem;
+}
+
+/* Poetic Central Headline */
+.desserto-headline-wrap {
+  margin-bottom: 0.6rem;
+}
+
+.desserto-eyebrow {
+  font-size: 0.70rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--gold-burnished);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.desserto-headline {
+  font-size: 2.4rem;
+  line-height: 1.1;
+  font-weight: 700;
+  color: var(--ink-primary);
+  letter-spacing: -0.025em;
+  margin-bottom: 0.35rem;
+}
+
+.desserto-headline em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--gold-burnished);
+  text-shadow: 0 2px 14px rgba(197, 154, 69, 0.16);
+}
+
+@media (min-width: 768px) {
+  .desserto-headline {
+    font-size: 3.2rem;
+  }
+}
+
+.desserto-subhead {
+  font-size: 0.95rem;
+  color: var(--ink-secondary);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Centerpiece Active Sweet Visual Stage */
+.desserto-sweet-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.1rem;
+}
+
+.desserto-sweet-visual {
+  position: relative;
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease-out;
+}
+
+@media (min-width: 768px) {
+  .desserto-sweet-visual {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+.sweet-halo-glow {
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(235, 205, 140, 0.35) 0%, rgba(245, 237, 224, 0.05) 70%, transparent 100%);
+  filter: blur(14px);
+  z-index: 1;
+}
+
+.desserto-hero-img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 16px 44px rgba(50, 30, 15, 0.22);
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+
+.sweet-shadow-soft {
+  position: absolute;
+  bottom: -16px;
+  width: 80%;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(70, 42, 18, 0.28) 0%, transparent 75%);
+  filter: blur(6px);
+  z-index: 0;
+}
+
+/* Active Sweet Descriptor Card */
+.desserto-sweet-descriptor {
+  margin-top: 0.4rem;
+  max-width: 580px;
+}
+
+.descriptor-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.descriptor-hindi {
+  font-family: var(--font-swash);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--gold-burnished);
+  letter-spacing: 0.05em;
+}
+
+.descriptor-price {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  background: rgba(197, 154, 69, 0.14);
+  padding: 0.15rem 0.65rem;
+  border-radius: var(--radius-pill);
+}
+
+.descriptor-desc {
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--ink-secondary);
+  margin-bottom: 0.55rem;
+}
+
+.descriptor-notes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.descriptor-note-badge {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--ink-secondary);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(197, 154, 69, 0.25);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+}
+
+/* Desserto Action Buttons */
+.desserto-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-desserto-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: var(--ink-primary);
+  color: #FFFDF9;
+  border: none;
+  padding: 0.78rem 1.7rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(36, 23, 14, 0.16);
+  transition: all var(--transition-fast);
+}
+
+.btn-desserto-primary:hover {
+  background: var(--gold-burnished);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(158, 116, 42, 0.25);
+}
+
+.btn-desserto-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--ink-secondary);
+  border: 1px solid rgba(197, 154, 69, 0.4);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-desserto-secondary:hover {
+  border-color: var(--ink-primary);
+  color: var(--ink-primary);
+  background: #FFF;
+}
+
+/* Minimalist 4 Sweets Tab Capsule */
+.desserto-bottom-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(197, 154, 69, 0.32);
+  padding: 0.25rem 0.35rem;
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-warm-sm);
+  margin-top: 0.75rem;
+  z-index: 20;
+}
+
+.desserto-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: none;
+  border: none;
+  padding: 0.4rem 0.95rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  color: var(--ink-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.desserto-tab-btn:hover {
+  color: var(--ink-primary);
+}
+
+.desserto-tab-active {
+  background: var(--ink-primary);
+  color: #FFFDF9 !important;
+  box-shadow: 0 2px 8px rgba(36, 23, 14, 0.16);
+}
+
+.tab-num {
+  font-size: 0.68rem;
+  opacity: 0.75;
+}
+
+/* Scroll Interaction Indicator Hint */
+.desserto-scroll-hint {
+  position: absolute;
+  bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.scroll-hint-arrow {
+  animation: bounceHint 1.8s infinite ease-in-out;
+}
+
+@keyframes bounceHint {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+}
+
+/* Responsive Adaptations */
+@media (max-width: 900px) {
+  .desserto-chef-badge {
+    top: 1rem;
+    right: 1rem;
+    padding: 0.35rem 0.75rem 0.35rem 0.35rem;
+  }
+  .desserto-step-counter {
+    top: 1rem;
+    left: 1rem;
+  }
+  .desserto-headline {
+    font-size: 2.2rem;
+  }
+  .orbit-sweet-item {
+    display: none; /* Keep clean on small mobile viewports */
+  }
+  .desserto-bottom-tabs {
+    bottom: 1.2rem;
+  }
+  .desserto-tab-btn {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.72rem;
+  }
+}
+
 /* --- CLEAN LUXURY HERO SECTION --- */
 .hero-clean-section {
   position: relative;

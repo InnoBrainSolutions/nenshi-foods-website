@@ -290,3 +290,95 @@ export const FIVE_CRAFTS = [
     highlight: "Slow-tempered by master artisans"
   }
 ];
+
+export const SCROLL_SHOWCASE_SWEETS = [
+  {
+    id: "kaju-katli",
+    number: "01",
+    total: "04",
+    name: "Shahi Kaju Katli",
+    hindi: "शाही काजू कतली",
+    tagline: "The 8-Pointed Star · Pure Cashew Jewel",
+    sub: "Goan Cashews · Certified 99.9% Pure Silver Vark",
+    priceINR: 1450,
+    priceUSD: 24,
+    weight: "500g · 24 Cut Diamonds",
+    image: "/images/kaju_katli_luxury.jpg",
+    accent: "#C59A45",
+    desc: "Stone-ground Goan cashews simmered in seasoned brass cauldrons without water, crowned with certified 99.9% pure silver leaf and delicate Kashmiri saffron threads.",
+    tastingNotes: ["Goan W240 Cashews", "Kashmiri Mongra Saffron", "Cruelty-free Silver Leaf", "Silken Melt"],
+    floatingSweets: [
+      { id: "f1", name: "Kaju Diamond", img: "/images/kaju_katli_luxury.jpg", x: -280, y: -160, size: 90, rot: -15 },
+      { id: "f2", name: "Silver Leaf", img: "/images/kaju_katli_luxury.jpg", x: -320, y: 110, size: 75, rot: 25 },
+      { id: "f3", name: "Saffron Katli", img: "/images/kaju_katli_luxury.jpg", x: 290, y: -120, size: 85, rot: 18 },
+      { id: "f4", name: "Cashew Gem", img: "/images/kaju_katli_luxury.jpg", x: 310, y: 130, size: 80, rot: -20 }
+    ]
+  },
+  {
+    id: "milk-cake",
+    number: "02",
+    total: "04",
+    name: "Alwar Shahi Milk Cake",
+    hindi: "अलवर शाही मिल्क केक",
+    tagline: "Caramelized Amber · Antique Uruli Craft",
+    sub: "18-Hour Wood-Fire Reduction · Danedaar Mawa",
+    priceINR: 1350,
+    priceUSD: 22,
+    weight: "500g · Caramelized Cuts",
+    image: "/images/milk_cake_luxury.jpg",
+    accent: "#9E742A",
+    desc: "Eighteen hours of continuous wood-fire simmering in hand-hammered brass urulis. A2 whole milk slow-caramelized into a succulent, grainy two-tone golden heart with green cardamom.",
+    tastingNotes: ["10L A2 Milk Reduction", "Browned Butter Mawa", "Green Cardamom", "Succulent Crumb"],
+    floatingSweets: [
+      { id: "f1", name: "Caramel Core", img: "/images/milk_cake_luxury.jpg", x: -290, y: -140, size: 95, rot: -10 },
+      { id: "f2", name: "Mawa Bite", img: "/images/milk_cake_luxury.jpg", x: -310, y: 120, size: 80, rot: 20 },
+      { id: "f3", name: "Pistachio Cake", img: "/images/milk_cake_luxury.jpg", x: 300, y: -130, size: 88, rot: 15 },
+      { id: "f4", name: "Amber Cut", img: "/images/milk_cake_luxury.jpg", x: 280, y: 140, size: 76, rot: -18 }
+    ]
+  },
+  {
+    id: "mathura-peda",
+    number: "03",
+    total: "04",
+    name: "Mathura Shahi Peda",
+    hindi: "मथुरा शाही पेड़ा",
+    tagline: "Heirloom Seal · Caramelized Golden Khoya",
+    sub: "Slow-Roasted Milk Fudge · Cardamom Sugar Dust",
+    priceINR: 1250,
+    priceUSD: 20,
+    weight: "500g · Traditional Medallions",
+    image: "/images/mathura_peda_luxury.jpg",
+    accent: "#B45309",
+    desc: "The sacred confectionery of Braj. Hand-churned cow khoya roasted over slow embers until it reaches a deep nutty amber, stamped with the heirloom royal seal and dusted with fragrant cardamom sugar.",
+    tastingNotes: ["Slow-Roasted Khoya", "Artisanal Royal Seal", "Crushed Cardamom", "Velvet Density"],
+    floatingSweets: [
+      { id: "f1", name: "Seal Medallion", img: "/images/mathura_peda_luxury.jpg", x: -280, y: -150, size: 90, rot: -12 },
+      { id: "f2", name: "Peda Round", img: "/images/mathura_peda_luxury.jpg", x: -300, y: 130, size: 82, rot: 22 },
+      { id: "f3", name: "Cardamom Peda", img: "/images/mathura_peda_luxury.jpg", x: 310, y: -110, size: 85, rot: 12 },
+      { id: "f4", name: "Golden Khoya", img: "/images/mathura_peda_luxury.jpg", x: 290, y: 135, size: 78, rot: -25 }
+    ]
+  },
+  {
+    id: "besan-laddu",
+    number: "04",
+    total: "04",
+    name: "Royal Besan Laddu",
+    hindi: "शाही बेसन लड्डू",
+    tagline: "Bilona Ghee · Golden Melt-in-Mouth Spheres",
+    sub: "Slow-Roasted Gram Flour · Magaz & Toasted Almonds",
+    priceINR: 1200,
+    priceUSD: 19,
+    weight: "500g · Golden Spheres",
+    image: "/images/besan_laddu_luxury.jpg",
+    accent: "#D97706",
+    desc: "Coarsely milled gram flour patiently roasted in fragrant Vedic A2 Gir cow bilona ghee until aromatic and nutty, hand-rolled with crushed sugar crystals, crunchy melon seeds, and toasted almond slivers.",
+    tastingNotes: ["Vedic A2 Bilona Ghee", "Coarse Gram Flour", "Toasted Almonds & Magaz", "Warm Grainy Melt"],
+    floatingSweets: [
+      { id: "f1", name: "Golden Sphere", img: "/images/besan_laddu_luxury.jpg", x: -285, y: -155, size: 92, rot: -14 },
+      { id: "f2", name: "Ghee Laddu", img: "/images/besan_laddu_luxury.jpg", x: -305, y: 125, size: 78, rot: 28 },
+      { id: "f3", name: "Almond Laddu", img: "/images/besan_laddu_luxury.jpg", x: 295, y: -125, size: 86, rot: 14 },
+      { id: "f4", name: "Saffron Pearl", img: "/images/besan_laddu_luxury.jpg", x: 300, y: 130, size: 80, rot: -22 }
+    ]
+  }
+];
+
