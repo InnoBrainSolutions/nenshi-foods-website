@@ -64,12 +64,14 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
       }
 
       const progress = Math.max(0, Math.min(1, scrolled / totalDist));
-      setScrollProgress(progress);
-
       // Map progress to sweet index 0..3
       const numSweets = SCROLL_SHOWCASE_SWEETS.length;
       const rawIdx = Math.min(numSweets - 1, Math.floor(progress * numSweets));
-      setActiveIndex(rawIdx);
+      setScrollProgress(progress);
+      if (rawIdx !== activeIndexRef.current) {
+        activeIndexRef.current = rawIdx;
+        setActiveIndex(rawIdx);
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -143,7 +145,7 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
           className="desserto-arch-canvas" 
           aria-hidden="true"
           style={{
-            transform: `translate3d(${-mouseOffset.x * 12}px, ${-mouseOffset.y * 8}px, 0)`,
+            transform: `translate3d(${-mouseOffset.x * 12}px, ${-mouseOffset.y * 8}px, 0) rotate(${scrollProgress * 2.5 - 1.25}deg)`,
             transition: 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)'
           }}
         >
