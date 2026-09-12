@@ -1,0 +1,278 @@
+/* ==========================================================================
+   NANSHI FOODS — DESIGN SYSTEM & TOKENS
+   A Jewel Box of Indian Sweetness
+   ========================================================================== */
+
+:root {
+  /* Paper & Substrates */
+  --bg-ivory: #FBF8F2;
+  --bg-cream: #F5EDE0;
+  --bg-sand: #EDE1CD;
+  --bg-card: #FFFEFC;
+  --bg-card-hover: #FAF5EB;
+  --bg-overlay: rgba(36, 23, 14, 0.48);
+
+  /* Gold Foil & Metallics (Used strictly as accents, borders, and stampings) */
+  --gold-foil: #C59A45;
+  --gold-burnished: #9E742A;
+  --gold-deep: #704313;
+  --gold-light: #DFC07A;
+  --gold-subtle: #EBDDC3;
+  --gold-hairline: rgba(197, 154, 69, 0.3);
+  --gold-border: rgba(197, 154, 69, 0.48);
+  --gold-glow: rgba(197, 154, 69, 0.12);
+
+  /* Deep Royal Inks (Never pure black) */
+  --ink-primary: #24170E;
+  --ink-secondary: #4E3C2F;
+  --ink-muted: #826E5F;
+  --ink-faint: #B8A89A;
+
+  /* Natural Botanical & Cultural Highlights */
+  --saffron: #D97706;
+  --saffron-light: #FEF3C7;
+  --pistachio: #5F7444;
+  --veg-green: #15803D;
+  --crimson-thread: #991B1B;
+  --silver-vark: #E2E8F0;
+
+  /* Clean, Simple, Highly Readable Typography System */
+  --font-royal: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-swash: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Layout Spacing */
+  --container-max: 1280px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-pill: 9999px;
+
+  /* Shadows (Soft, warm, ambient) */
+  --shadow-warm-sm: 0 2px 8px rgba(78, 60, 47, 0.05);
+  --shadow-warm-md: 0 10px 30px rgba(78, 60, 47, 0.08);
+  --shadow-warm-lg: 0 24px 60px rgba(78, 60, 47, 0.12);
+  --shadow-gold: 0 8px 28px rgba(197, 154, 69, 0.22);
+
+  /* Transitions */
+  --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.2s var(--ease-luxury);
+  --transition-smooth: 0.45s var(--ease-luxury);
+  --transition-slow: 0.8s var(--ease-luxury);
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-color: var(--bg-ivory);
+  color: var(--ink-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--bg-ivory);
+  /* Subtle tactile handmade paper micro-texture using SVG data URI */
+  background-image: radial-gradient(rgba(197, 154, 69, 0.04) 1px, transparent 0);
+  background-size: 32px 32px;
+}
+
+/* Selection */
+::selection {
+  background: var(--gold-subtle);
+  color: var(--ink-primary);
+}
+
+/* Typography Utility Classes */
+.font-royal {
+  font-family: var(--font-royal);
+}
+
+.font-swash {
+  font-family: var(--font-swash);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Gold Foil Text Gradient */
+.text-gold-foil {
+  background: linear-gradient(135deg, #B07A2A 0%, #E3C583 45%, #9E742A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.text-gold-burnished {
+  color: var(--gold-burnished);
+}
+
+/* Buttons */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, #B07A2A 0%, #D4A853 100%);
+  color: #FFFDF9;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.95rem 2rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow-gold);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(197, 154, 69, 0.35);
+  background: linear-gradient(135deg, #9E6B1D 0%, #C49841 100%);
+}
+
+.btn-gold:active {
+  transform: translateY(0);
+}
+
+.btn-outline-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: transparent;
+  color: var(--ink-primary);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.95rem 1.8rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--gold-border);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn-outline-gold:hover {
+  background: var(--bg-card);
+  border-color: var(--gold-foil);
+  color: var(--gold-burnished);
+  box-shadow: var(--shadow-warm-sm);
+  transform: translateY(-1px);
+}
+
+/* Ornamental Hairline Dividers */
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  width: 100%;
+  margin: 3rem 0;
+}
+
+.ornament-divider::before,
+.ornament-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-hairline), transparent);
+}
+
+.ornament-star {
+  color: var(--gold-foil);
+  font-size: 0.9rem;
+  line-height: 1;
+  opacity: 0.85;
+}
+
+/* Pure Vegetarian Indian Stamp */
+.veg-stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--veg-green);
+  border-radius: 2px;
+  background: #FFF;
+  padding: 2px;
+}
+
+.veg-stamp::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--veg-green);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-ivory);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold-subtle);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-burnished);
+}
+
+/* Animations */
+@keyframes foilShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulseSubtle {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* Responsive container */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 2.5rem;
+  }
+}
