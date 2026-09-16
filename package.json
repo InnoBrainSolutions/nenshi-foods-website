@@ -1,7 +1,8 @@
 {
-  "name": "temp-app",
+  "name": "nenshi-foods-sweettooth",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Nenshi Foods — Traditional Indian Mithai & Luxury Gift Boxes Website",
   "type": "module",
   "scripts": {
     "dev": "vite",

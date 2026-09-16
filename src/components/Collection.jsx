@@ -1,22 +1,37 @@
 import React, { useState } from 'react';
 import { CONFECTIONS } from '../data/products';
-import { Sparkles, Eye, Plus, Check } from 'lucide-react';
-import { useParallax } from '../hooks/useParallax';
+import { Eye, Plus, Check } from 'lucide-react';
 
 export default function Collection({ currency, onSelectProduct, onAddToCart }) {
   const [addedId, setAddedId] = useState(null);
+  const [cardViews, setCardViews] = useState({});
+  const [cardSizes, setCardSizes] = useState({});
 
   // Focus strictly on the 4 Crown Jewel masterworks for an uncluttered gallery experience
   const premierItems = CONFECTIONS.slice(0, 4);
 
   const handleAdd = (product, e) => {
     e.stopPropagation();
-    onAddToCart(product);
+    const activeSizeKey = cardSizes[product.id] || '250g';
+    const sizeObj = product.sizes?.find(s => s.size === activeSizeKey);
+    const pINR = sizeObj ? sizeObj.priceINR : (activeSizeKey === '500g' && product.price500INR ? product.price500INR : product.priceINR);
+    const pUSD = sizeObj ? sizeObj.priceUSD : (activeSizeKey === '500g' && product.price500USD ? product.price500USD : product.priceUSD);
+    const isBox = cardViews[product.id] === 'box';
+
+    onAddToCart({
+      ...product,
+      id: `${product.id}-${activeSizeKey}`,
+      name: `${product.name} (${activeSizeKey} Box)`,
+      weight: sizeObj?.weight || `${activeSizeKey} Box`,
+      priceINR: pINR,
+      priceUSD: pUSD,
+      image: isBox && product.packagingImage ? product.packagingImage : product.image
+    });
     setAddedId(product.id);
     setTimeout(() => setAddedId(null), 1600);
   };
 
-  const handleCardMouseMove = (e, id) => {
+  const handleCardMouseMove = (e) => {
     if (window.matchMedia('(pointer: coarse)').matches) return;
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
@@ -52,14 +67,16 @@ export default function Collection({ currency, onSelectProduct, onAddToCart }) {
         {/* Spacious Product Grid with Staggered Scroll Reveal */}
         <div className="collection-grid reveal-stagger">
           {premierItems.map((product, idx) => {
+            const activeSizeKey = cardSizes[product.id] || '250g';
+            const sizeObj = product.sizes?.find(s => s.size === activeSizeKey);
+            const currentPriceINR = sizeObj ? sizeObj.priceINR : (activeSizeKey === '500g' && product.price500INR ? product.price500INR : product.priceINR);
+            const currentPriceUSD = sizeObj ? sizeObj.priceUSD : (activeSizeKey === '500g' && product.price500USD ? product.price500USD : product.priceUSD);
             const price = currency === "INR" 
-              ? `₹${product.priceINR.toLocaleString('en-IN')}` 
-              : `$${product.priceUSD}`;
+              ? `₹${currentPriceINR.toLocaleString('en-IN')}` 
+              : `$${currentPriceUSD}`;
 
-            // Subtle alternating parallax float for magazine-like editorial rhythm
-            const cardParallaxY = (idx % 2 === 1 && idx !== 0) 
-              ? Math.sin((scrollY - 1100 + idx * 100) * 0.0016) * 10 
-              : 0;
+            const isBoxView = cardViews[product.id] === 'box';
+            const displayImage = isBoxView && product.packagingImage ? product.packagingImage : product.image;
 
             return (
               <article 
@@ -67,7 +84,7 @@ export default function Collection({ currency, onSelectProduct, onAddToCart }) {
                 data-cursor="view"
                 className={`product-card ${idx === 0 ? 'product-card-spotlight' : ''}`}
                 style={{ 
-                  transform: `translateY(${cardParallaxY}px) perspective(800px) rotateX(var(--card-rot-x, 0deg)) rotateY(var(--card-rot-y, 0deg))`
+                  transform: `perspective(800px) rotateX(var(--card-rot-x, 0deg)) rotateY(var(--card-rot-y, 0deg))`
                 }}
                 onMouseMove={(e) => handleCardMouseMove(e, product.id)}
                 onMouseLeave={handleCardMouseLeave}
@@ -76,9 +93,9 @@ export default function Collection({ currency, onSelectProduct, onAddToCart }) {
                 {/* Product Image Frame */}
                 <div className="product-image-container">
                   <img 
-                    src={product.image} 
+                    src={displayImage} 
                     alt={product.name}
-                    className="product-image"
+                    className={`product-image ${isBoxView ? 'product-image-box' : ''}`}
                     style={{
                       transform: `translate3d(var(--card-img-x, 0px), var(--card-img-y, 0px), 0) scale(var(--card-img-scale, 1))`
                     }}
@@ -88,7 +105,7 @@ export default function Collection({ currency, onSelectProduct, onAddToCart }) {
                   {/* Badge */}
                   {product.badge && (
                     <div className="product-badge font-royal">
-                      <span>{product.badge}</span>
+                      <span>{isBoxView ? 'Official Gift Box' : product.badge}</span>
                     </div>
                   )}
 
@@ -96,6 +113,28 @@ export default function Collection({ currency, onSelectProduct, onAddToCart }) {
                   <div className="product-veg-mark">
                     <span className="veg-stamp" aria-label="100% Pure Vegetarian" />
                   </div>
+
+                  {/* Card View Switcher Pill: Sweet vs Box */}
+                  {product.packagingImage && (
+                    <div className="card-view-toggle" onClick={(e) => e.stopPropagation()}>
+                      <button
+                        type="button"
+                        className={`card-view-btn ${!isBoxView ? 'active' : ''}`}
+                        onClick={() => setCardViews(prev => ({ ...prev, [product.id]: 'sweet' }))}
+                        title="View Fresh Sweet"
+                      >
+                        Sweet
+                      </button>
+                      <button
+                        type="button"
+                        className={`card-view-btn ${isBoxView ? 'active' : ''}`}
+                        onClick={() => setCardViews(prev => ({ ...prev, [product.id]: 'box' }))}
+                        title="View Box Packaging"
+                      >
+                        Box
+                      </button>
+                    </div>
+                  )}
 
                   {/* Quick inspect overlay button */}
                   <div className="image-hover-action">
@@ -117,15 +156,38 @@ export default function Collection({ currency, onSelectProduct, onAddToCart }) {
                 <div className="product-details">
                   <div className="product-meta-row">
                     <span className="product-hindi font-serif">{product.titleHindi}</span>
-                    <span className="product-weight">{product.weight}</span>
+                    <span className="product-weight">{sizeObj?.weight || (activeSizeKey + " Box")}</span>
                   </div>
 
                   <h3 className="product-name font-royal">{product.name}</h3>
                   <p className="product-desc font-serif">{product.tagline || product.description}</p>
 
+                  {/* Size Selector for 250g / 500g */}
+                  {product.sizes && (
+                    <div className="product-size-row" onClick={(e) => e.stopPropagation()}>
+                      <span className="size-row-label">Box Size:</span>
+                      <div className="size-row-chips">
+                        {product.sizes.map((s) => {
+                          const sPrice = currency === "INR" ? `₹${s.priceINR}` : `$${s.priceUSD}`;
+                          return (
+                            <button
+                              key={s.size}
+                              type="button"
+                              className={`size-mini-chip ${activeSizeKey === s.size ? 'active' : ''}`}
+                              onClick={() => setCardSizes(prev => ({ ...prev, [product.id]: s.size }))}
+                            >
+                              <span>{s.size}</span>
+                              <span className="mini-chip-price">{sPrice}</span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+
                   <div className="product-footer-row">
                     <div className="product-pricing">
-                      <span className="price-label">Per box</span>
+                      <span className="price-label">Price ({activeSizeKey})</span>
                       <span className="price-value font-royal">{price}</span>
                     </div>
 

@@ -4,7 +4,8 @@ import ScrollSweetShowcase from './components/ScrollSweetShowcase';
 import UnboxingSection from './components/UnboxingSection';
 import Collection from './components/Collection';
 import Craftsmanship from './components/Craftsmanship';
-import GiftingConcierge from './components/GiftingConcierge';
+import PurityPromise from './components/PurityPromise';
+// import GiftingConcierge from './components/GiftingConcierge';
 import Footer from './components/Footer';
 import ProductModal from './components/ProductModal';
 import CartDrawer from './components/CartDrawer';
@@ -28,11 +29,11 @@ export default function App() {
   }, []);
   const [cartItems, setCartItems] = useState([
     {
-      id: "nenshi-kaju-katli",
+      id: "nenshi-kaju-katli-500g",
       name: "Kaju Katli (500g Box)",
       weight: "500g · 24 Pieces",
-      priceINR: 1450,
-      priceUSD: 24,
+      priceINR: 550,
+      priceUSD: 9,
       quantity: 1,
       image: "/images/kaju_katli_luxury.jpg"
     }
@@ -128,11 +129,16 @@ export default function App() {
         {/* How We Make It - Made with Patience */}
         <Craftsmanship />
 
-        {/* Gifting & Celebrations */}
+        {/* Our Purity Promise */}
+        <PurityPromise />
+
+        {/* Gifting & Celebrations ("Send a Sweet Gift" section) */}
+        {/* 
         <GiftingConcierge 
           currency={currency}
           onAddBespokeHamper={handleAddToCart}
-        />
+        /> 
+        */}
       </main>
 
       {/* Hallmark Resolving Footer */}

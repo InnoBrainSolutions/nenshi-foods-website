@@ -879,7 +879,6 @@ export default function ThreeMithaiBox({ activeMode = 'kaju' }) {
     const handleTouchMove = (e) => {
       if (!isDraggingRef.current || e.touches.length !== 1) return;
       const deltaX = e.touches[0].clientX - previousMousePositionRef.current.x;
-      const deltaY = e.touches[0].clientY - previousMousePositionRef.current.y;
 
       if (stageGroupRef.current) {
         stageGroupRef.current.rotation.y += deltaX * 0.008;

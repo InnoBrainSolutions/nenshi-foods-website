@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ShoppingBag, Menu, X, Sparkles } from 'lucide-react';
+import { ShoppingBag, Menu, X } from 'lucide-react';
 
 export default function Header({ cartCount, onOpenCart, currency, onToggleCurrency }) {
   const [scrolled, setScrolled] = useState(false);
@@ -69,7 +69,7 @@ export default function Header({ cartCount, onOpenCart, currency, onToggleCurren
           {/* Right Nav Links */}
           <div className="nav-links nav-right">
             <a href="#crafts" className="nav-item">How We Make It</a>
-            <a href="#gifting" className="nav-item">Gift Boxes</a>
+            <a href="#unboxing" className="nav-item">Gift Boxes</a>
             
             {/* Bag Button with magnetic pull */}
             <button 
@@ -104,8 +104,7 @@ export default function Header({ cartCount, onOpenCart, currency, onToggleCurren
             <a href="#sweet-showcase" onClick={() => setMobileMenuOpen(false)}>Our Sweets</a>
             <a href="#collection" onClick={() => setMobileMenuOpen(false)}>All Mithai</a>
             <a href="#crafts" onClick={() => setMobileMenuOpen(false)}>How We Make It</a>
-            <a href="#gifting" onClick={() => setMobileMenuOpen(false)}>Gift Boxes</a>
-            <a href="#unboxing" onClick={() => setMobileMenuOpen(false)}>Packaging</a>
+            <a href="#unboxing" onClick={() => setMobileMenuOpen(false)}>Gift Boxes</a>
             <div className="mobile-drawer-footer">
               <button className="btn-outline-gold" onClick={onToggleCurrency}>
                 Currency: {currency}

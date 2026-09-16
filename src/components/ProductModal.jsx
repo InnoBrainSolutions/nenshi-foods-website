@@ -1,19 +1,31 @@
 import React, { useState } from 'react';
-import { X, Plus, Minus, Check, Sparkles, ShieldCheck } from 'lucide-react';
+import { X, Plus, Minus, Check } from 'lucide-react';
 
 export default function ProductModal({ product, currency, onClose, onAddToCart }) {
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
   const [activeView, setActiveView] = useState('sweet'); // 'sweet' | 'box'
+  const [selectedSize, setSelectedSize] = useState('250g'); // '250g' | '500g'
 
   if (!product) return null;
 
-  const unitPrice = currency === "INR" ? product.priceINR : product.priceUSD;
+  const activeSize = product.sizes?.find(s => s.size === selectedSize) || product.sizes?.[0];
+  const unitPrice = activeSize 
+    ? (currency === "INR" ? activeSize.priceINR : activeSize.priceUSD)
+    : (currency === "INR" ? product.priceINR : product.priceUSD);
   const totalPrice = unitPrice * quantity;
   const formattedPrice = currency === "INR" ? `₹${totalPrice.toLocaleString('en-IN')}` : `$${totalPrice}`;
 
   const handleAdd = () => {
-    onAddToCart(product, quantity);
+    onAddToCart({
+      ...product,
+      id: `${product.id}-${selectedSize}`,
+      name: `${product.name} (${selectedSize} Box)`,
+      weight: activeSize?.weight || `${selectedSize} Box`,
+      priceINR: activeSize ? activeSize.priceINR : product.priceINR,
+      priceUSD: activeSize ? activeSize.priceUSD : product.priceUSD,
+      image: currentDisplayImage
+    }, quantity);
     setAdded(true);
     setTimeout(() => {
       setAdded(false);
@@ -79,8 +91,33 @@ export default function ProductModal({ product, currency, onClose, onAddToCart }
             <div className="modal-header">
               <span className="modal-hindi font-serif">{product.titleHindi}</span>
               <h2 className="modal-title font-royal">{product.name}</h2>
-              <span className="modal-weight">{product.weight}</span>
+              <span className="modal-weight">{activeSize ? activeSize.weight : product.weight}</span>
             </div>
+
+            {/* Size Selector: 250g & 500g */}
+            {product.sizes && (
+              <div className="modal-size-picker">
+                <span className="size-picker-label font-royal">Select Box Size:</span>
+                <div className="size-picker-options">
+                  {product.sizes.map((s) => {
+                    const sPrice = currency === "INR" ? `₹${s.priceINR}` : `$${s.priceUSD}`;
+                    const isSelected = selectedSize === s.size;
+                    return (
+                      <button
+                        key={s.size}
+                        type="button"
+                        className={`size-picker-chip ${isSelected ? 'active' : ''}`}
+                        onClick={() => setSelectedSize(s.size)}
+                        data-magnetic
+                      >
+                        <span className="size-chip-weight font-royal">{s.size} Box</span>
+                        <span className="size-chip-price font-serif">{sPrice}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
 
             <p className="modal-description font-serif">{product.description}</p>
 

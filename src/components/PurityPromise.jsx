@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Leaf, HeartHandshake, Sparkles } from 'lucide-react';
+import { ShieldCheck, Leaf, Sparkles } from 'lucide-react';
 
 export default function PurityPromise() {
   const pillars = [

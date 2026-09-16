@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { UNBOXING_COMPARTMENTS } from '../data/products';
-import { Sparkles, Plus } from 'lucide-react';
-import { useParallax } from '../hooks/useParallax';
+import { Plus } from 'lucide-react';
 
 export default function UnboxingSection({ onQuickAdd }) {
   const [activeTab, setActiveTab] = useState(0);
+  const [selectedSize, setSelectedSize] = useState('250g');
   const current = UNBOXING_COMPARTMENTS[activeTab];
-  const scrollY = useParallax();
   const [boxTilt, setBoxTilt] = useState({ x: 0, y: 0 });
+
+  const activePriceINR = selectedSize === '500g' ? (current.price500INR || 300) : (current.priceINR || 150);
+  const activePriceUSD = selectedSize === '500g' ? (current.price500USD || 5) : (current.priceUSD || 3);
 
   const handleBoxMouseMove = (e) => {
     if (window.matchMedia('(pointer: coarse)').matches) return;
@@ -64,21 +66,44 @@ export default function UnboxingSection({ onQuickAdd }) {
                 <h3 className="clean-showcase-title font-royal">{current.name}</h3>
                 <p className="clean-showcase-desc font-serif">{current.desc}</p>
 
+                {/* Box Size Selector */}
+                <div className="unboxing-size-picker">
+                  <span className="unboxing-size-label font-royal">Select Weight:</span>
+                  <div className="unboxing-size-btns">
+                    <button
+                      type="button"
+                      className={`unboxing-size-btn ${selectedSize === '250g' ? 'active' : ''}`}
+                      onClick={() => setSelectedSize('250g')}
+                    >
+                      <span>250g Box</span>
+                      <span className="unboxing-size-price">₹{current.priceINR}</span>
+                    </button>
+                    <button
+                      type="button"
+                      className={`unboxing-size-btn ${selectedSize === '500g' ? 'active' : ''}`}
+                      onClick={() => setSelectedSize('500g')}
+                    >
+                      <span>500g Box</span>
+                      <span className="unboxing-size-price">₹{current.price500INR || 300}</span>
+                    </button>
+                  </div>
+                </div>
+
                 <div className="clean-showcase-action">
                   <button 
                     className="btn-clean-primary"
                     data-magnetic
                     onClick={() => onQuickAdd({
-                      id: current.id,
-                      name: current.name,
-                      priceINR: current.id === 'milkcake' ? 1350 : 1450,
-                      priceUSD: current.id === 'milkcake' ? 22 : 24,
-                      weight: "500g Box",
+                      id: `${current.id}-${selectedSize}`,
+                      name: `${current.name} (${selectedSize} Box)`,
+                      priceINR: activePriceINR,
+                      priceUSD: activePriceUSD,
+                      weight: `${selectedSize} Box`,
                       image: current.image
                     })}
                   >
                     <Plus size={15} />
-                    <span>Add to Bag</span>
+                    <span>Add to Bag · ₹{activePriceINR}</span>
                   </button>
                 </div>
               </div>

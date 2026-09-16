@@ -58,7 +58,7 @@ export default function Hero({ onExploreClick, onGiftingClick }) {
               <span>Explore Sweets</span>
               <ArrowRight size={15} />
             </a>
-            <a href="#gifting" className="btn-clean-secondary" onClick={onGiftingClick}>
+            <a href="#unboxing" className="btn-clean-secondary" onClick={onGiftingClick}>
               <span>Gift Boxes</span>
             </a>
           </div>

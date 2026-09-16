@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Gift, Check, Award, Send } from 'lucide-react';
+import { Gift, Check } from 'lucide-react';
 
 export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
   const [selectedBox, setSelectedBox] = useState('ivory-star');

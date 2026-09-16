@@ -90,7 +90,7 @@ export default function Footer() {
             <li><a href="#sweet-showcase">Alwar Milk Cake</a></li>
             <li><a href="#sweet-showcase">Mathura Peda</a></li>
             <li><a href="#sweet-showcase">Besan Laddu</a></li>
-            <li><a href="#gifting">Gift Boxes</a></li>
+            <li><a href="#unboxing">Gift Boxes</a></li>
             <li><a href="#crafts">How We Make It</a></li>
             <li><a href="#purity">Our Purity Promise</a></li>
           </ul>

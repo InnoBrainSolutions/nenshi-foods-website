@@ -17,6 +17,7 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
   const [viewMode, setViewMode] = useState('sweet'); // 'sweet' | 'box'
+  const [selectedSize, setSelectedSize] = useState('250g'); // '250g' | '500g'
   const isTransitioningRef = useRef(false);
   const wheelDrivenRef = useRef(false);
   const activeIndexRef = useRef(activeIndex);
@@ -280,27 +281,49 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
           {/* Centerpiece Active Sweet Showcase Card */}
           <div className="desserto-sweet-stage" key={`${currentSweet.id}-${viewMode}`}>
             
-            {/* View Mode Toggle: Fresh Mithai vs Official Gift Box */}
-            {currentSweet.boxImage && (
-              <div className="desserto-view-capsule" data-cursor="hover">
+            {/* View Mode & Size Toggle Capsules */}
+            <div className="desserto-toggles-row">
+              {currentSweet.boxImage && (
+                <div className="desserto-view-capsule" data-cursor="hover">
+                  <button
+                    type="button"
+                    className={`desserto-view-btn ${viewMode === 'sweet' ? 'view-btn-active' : ''}`}
+                    onClick={() => setViewMode('sweet')}
+                    data-magnetic
+                  >
+                    Fresh Mithai
+                  </button>
+                  <button
+                    type="button"
+                    className={`desserto-view-btn ${viewMode === 'box' ? 'view-btn-active' : ''}`}
+                    onClick={() => setViewMode('box')}
+                    data-magnetic
+                  >
+                    Gift Box
+                  </button>
+                </div>
+              )}
+
+              {/* 250g / 500g Size Capsule */}
+              <div className="desserto-size-capsule" data-cursor="hover">
                 <button
                   type="button"
-                  className={`desserto-view-btn ${viewMode === 'sweet' ? 'view-btn-active' : ''}`}
-                  onClick={() => setViewMode('sweet')}
+                  className={`desserto-view-btn ${selectedSize === '250g' ? 'view-btn-active' : ''}`}
+                  onClick={() => setSelectedSize('250g')}
                   data-magnetic
                 >
-                  Fresh Mithai
+                  250g (₹{currentSweet.priceINR})
                 </button>
                 <button
                   type="button"
-                  className={`desserto-view-btn ${viewMode === 'box' ? 'view-btn-active' : ''}`}
-                  onClick={() => setViewMode('box')}
+                  className={`desserto-view-btn ${selectedSize === '500g' ? 'view-btn-active' : ''}`}
+                  onClick={() => setSelectedSize('500g')}
                   data-magnetic
                 >
-                  Gift Box
+                  500g (₹{currentSweet.price500INR || 300})
                 </button>
               </div>
-            )}
+            </div>
 
             <div 
               className={`desserto-sweet-visual ${viewMode === 'box' && currentSweet.boxImage ? 'visual-is-box' : ''}`}
@@ -329,7 +352,9 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
             <div className="desserto-sweet-descriptor">
               <div className="descriptor-header">
                 <span className="descriptor-hindi">{currentSweet.hindi}</span>
-                <span className="descriptor-price">₹{currentSweet.priceINR} / ${currentSweet.priceUSD}</span>
+                <span className="descriptor-price">
+                  ₹{selectedSize === '500g' ? (currentSweet.price500INR || 300) : currentSweet.priceINR} / ${selectedSize === '500g' ? (currentSweet.price500USD || 5) : currentSweet.priceUSD} · {selectedSize}
+                </span>
               </div>
               <p className="descriptor-desc">{currentSweet.desc}</p>
 
@@ -350,16 +375,18 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
               className="btn-desserto-primary"
               data-magnetic
               onClick={() => onQuickAdd({
-                id: currentSweet.id,
-                name: currentSweet.name,
-                priceINR: currentSweet.priceINR,
-                priceUSD: currentSweet.priceUSD,
-                weight: currentSweet.weight,
-                image: currentSweet.image
+                id: `${currentSweet.id}-${selectedSize}`,
+                name: `${currentSweet.name} (${selectedSize} Box)`,
+                priceINR: selectedSize === '500g' ? (currentSweet.price500INR || 300) : currentSweet.priceINR,
+                priceUSD: selectedSize === '500g' ? (currentSweet.price500USD || 5) : currentSweet.priceUSD,
+                weight: `${selectedSize} Box`,
+                image: viewMode === 'box' && currentSweet.boxImage ? currentSweet.boxImage : currentSweet.image
               })}
             >
               <Plus size={14} />
-              <span>Order {currentSweet.name} · ₹{currentSweet.priceINR}</span>
+              <span>
+                Order {currentSweet.name} ({selectedSize}) · ₹{selectedSize === '500g' ? (currentSweet.price500INR || 300) : currentSweet.priceINR}
+              </span>
             </button>
 
             <a href="#collection" className="btn-desserto-secondary" data-magnetic onClick={onExploreClick}>

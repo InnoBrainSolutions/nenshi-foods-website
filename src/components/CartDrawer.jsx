@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Trash2, Plus, Minus, ArrowRight, ShieldCheck, Check, Sparkles } from 'lucide-react';
+import { X, Trash2, Plus, Minus, ArrowRight, ShieldCheck, Check } from 'lucide-react';
 
 export default function CartDrawer({ isOpen, onClose, cartItems, currency, onUpdateQuantity, onRemoveItem, onClearCart }) {
   const [checkoutComplete, setCheckoutComplete] = useState(false);
