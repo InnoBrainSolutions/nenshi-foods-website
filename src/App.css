@@ -311,7 +311,7 @@
 /* Golden Celestial Moon at Arch Apex */
 .desserto-arch-moon {
   position: absolute;
-  top: 14%;
+  top: 3.5%;
   left: 50%;
   transform: translateX(-50%);
   width: 28px;
@@ -510,7 +510,7 @@
 
 /* Poetic Central Headline */
 .desserto-headline-wrap {
-  margin-bottom: 0.6rem;
+  margin-bottom: 1.4rem;
 }
 
 .desserto-eyebrow {
@@ -519,7 +519,7 @@
   letter-spacing: 0.22em;
   color: var(--gold-burnished);
   text-transform: uppercase;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.4rem;
   display: block;
 }
 
@@ -529,7 +529,7 @@
   font-weight: 700;
   color: var(--ink-primary);
   letter-spacing: -0.025em;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.45rem;
 }
 
 .desserto-headline em {
@@ -558,7 +558,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 1.1rem;
+  margin-bottom: 1.5rem;
   animation: sweetReveal 0.62s var(--ease-luxury) both;
 }
 
@@ -567,10 +567,12 @@
     opacity: 0;
     transform: translateY(12px) scale(0.975);
   }
+
   58% {
     opacity: 1;
     transform: translateY(-2px) scale(1.006);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -584,7 +586,7 @@
   justify-content: center;
   gap: 0.65rem;
   flex-wrap: wrap;
-  margin-bottom: 0.85rem;
+  margin-bottom: 1.35rem;
   z-index: 10;
 }
 
@@ -734,7 +736,7 @@
 
 /* Active Sweet Descriptor Card */
 .desserto-sweet-descriptor {
-  margin-top: 0.4rem;
+  margin-top: 1.25rem;
   max-width: 580px;
 }
 
@@ -743,7 +745,7 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
 .descriptor-hindi {
@@ -767,7 +769,7 @@
   font-size: 0.84rem;
   line-height: 1.5;
   color: var(--ink-secondary);
-  margin-bottom: 0.55rem;
+  margin-bottom: 0.85rem;
 }
 
 .descriptor-notes {
@@ -795,6 +797,7 @@
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
+  margin-bottom: 0.4rem;
 }
 
 .btn-desserto-primary {
@@ -812,8 +815,8 @@
   cursor: pointer;
   box-shadow: 0 4px 16px rgba(36, 23, 14, 0.16);
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 0.3s ease,
-              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    background-color 0.3s ease,
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
 
@@ -849,10 +852,10 @@
   text-decoration: none;
   cursor: pointer;
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.3s ease,
-              color 0.3s ease,
-              background-color 0.3s ease,
-              box-shadow 0.35s ease;
+    border-color 0.3s ease,
+    color 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.35s ease;
   will-change: transform;
 }
 
@@ -886,7 +889,7 @@
   border-radius: var(--radius-pill);
   backdrop-filter: blur(8px);
   box-shadow: var(--shadow-warm-sm);
-  margin-top: 0.75rem;
+  margin-top: 1.4rem;
   z-index: 20;
 }
 
@@ -941,8 +944,15 @@
 }
 
 @keyframes bounceHint {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(3px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(3px);
+  }
 }
 
 /* Responsive Adaptations */
@@ -952,19 +962,25 @@
     right: 1rem;
     padding: 0.35rem 0.75rem 0.35rem 0.35rem;
   }
+
   .desserto-step-counter {
     top: 1rem;
     left: 1rem;
   }
+
   .desserto-headline {
     font-size: 2.2rem;
   }
+
   .orbit-sweet-item {
-    display: none; /* Keep clean on small mobile viewports */
+    display: none;
+    /* Keep clean on small mobile viewports */
   }
+
   .desserto-bottom-tabs {
     bottom: 1.2rem;
   }
+
   .desserto-tab-btn {
     padding: 0.35rem 0.65rem;
     font-size: 0.72rem;
@@ -1687,8 +1703,8 @@
   flex-direction: column;
   cursor: pointer;
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.35s ease,
-              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    border-color 0.35s ease,
+    box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: var(--shadow-warm-sm);
   position: relative;
   transform-style: preserve-3d;
@@ -1771,7 +1787,7 @@
   opacity: 0;
   transform: translateY(6px);
   transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 6;
 }
 
@@ -1829,6 +1845,7 @@
     opacity: 0.35;
     transform: scale(0.97);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -2019,10 +2036,10 @@
   cursor: pointer;
   box-shadow: var(--shadow-warm-sm);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 0.25s ease,
-              border-color 0.25s ease,
-              color 0.25s ease,
-              box-shadow 0.3s ease;
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.3s ease;
 }
 
 .btn-acquire svg {
@@ -3487,13 +3504,23 @@
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideInRight {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
 }
 
 /* ==========================================================================
@@ -3651,9 +3678,17 @@
     height: 34px;
   }
 
-  .chef-name { font-size: 0.66rem; }
-  .chef-role { font-size: 0.56rem; }
-  .chef-badge-sparkle { display: none; }
+  .chef-name {
+    font-size: 0.66rem;
+  }
+
+  .chef-role {
+    font-size: 0.56rem;
+  }
+
+  .chef-badge-sparkle {
+    display: none;
+  }
 
   .desserto-step-counter {
     top: 0.8rem;
@@ -3673,16 +3708,42 @@
     margin-top: 0;
   }
 
-  .desserto-headline-wrap { margin-bottom: 0.5rem; }
-  .desserto-eyebrow { font-size: 0.57rem; letter-spacing: 0.14em; margin-bottom: 0.4rem; }
-  .desserto-headline { font-size: clamp(1.8rem, 8.4vw, 2.35rem); line-height: 1.05; margin-bottom: 0.45rem; }
-  .desserto-subhead { font-size: 0.8rem; line-height: 1.45; }
+  .desserto-headline-wrap {
+    margin-bottom: 0.5rem;
+  }
+
+  .desserto-eyebrow {
+    font-size: 0.57rem;
+    letter-spacing: 0.14em;
+    margin-bottom: 0.4rem;
+  }
+
+  .desserto-headline {
+    font-size: clamp(1.8rem, 8.4vw, 2.35rem);
+    line-height: 1.05;
+    margin-bottom: 0.45rem;
+  }
+
+  .desserto-subhead {
+    font-size: 0.8rem;
+    line-height: 1.45;
+  }
+
   .desserto-sweet-stage {
     width: 100%;
     margin-bottom: 0.7rem;
   }
-  .desserto-view-capsule { margin-bottom: 0.55rem; }
-  .desserto-view-btn { min-height: 36px; padding: 0.28rem 0.7rem; font-size: 0.65rem; }
+
+  .desserto-view-capsule {
+    margin-bottom: 0.55rem;
+  }
+
+  .desserto-view-btn {
+    min-height: 36px;
+    padding: 0.28rem 0.7rem;
+    font-size: 0.65rem;
+  }
+
   .desserto-sweet-visual {
     width: min(49vw, 190px);
     height: min(49vw, 190px);
@@ -3703,11 +3764,31 @@
   .desserto-sweet-visual.visual-is-box::before {
     border-radius: 14px;
   }
-  .desserto-sweet-visual.visual-is-box { width: min(74vw, 285px); height: min(47vw, 170px); }
-  .desserto-sweet-descriptor { margin-top: 0.7rem; max-width: 360px; }
-  .descriptor-header { gap: 0.55rem; margin-bottom: 0.4rem; }
-  .descriptor-hindi { font-size: 0.8rem; }
-  .descriptor-price { font-size: 0.72rem; padding: 0.13rem 0.45rem; }
+
+  .desserto-sweet-visual.visual-is-box {
+    width: min(74vw, 285px);
+    height: min(47vw, 170px);
+  }
+
+  .desserto-sweet-descriptor {
+    margin-top: 0.7rem;
+    max-width: 360px;
+  }
+
+  .descriptor-header {
+    gap: 0.55rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .descriptor-hindi {
+    font-size: 0.8rem;
+  }
+
+  .descriptor-price {
+    font-size: 0.72rem;
+    padding: 0.13rem 0.45rem;
+  }
+
   .descriptor-desc {
     max-width: 335px;
     font-size: 0.75rem;
@@ -3719,10 +3800,28 @@
     -webkit-line-clamp: 3;
     overflow: hidden;
   }
-  .descriptor-notes { max-width: 348px; margin-inline: auto; gap: 0.38rem; }
-  .descriptor-note-badge { font-size: 0.61rem; padding: 0.21rem 0.45rem; }
-  .desserto-actions { gap: 0.5rem; }
-  .btn-desserto-primary, .btn-desserto-secondary { min-height: 42px; padding: 0.65rem 0.85rem; font-size: 0.69rem; }
+
+  .descriptor-notes {
+    max-width: 348px;
+    margin-inline: auto;
+    gap: 0.38rem;
+  }
+
+  .descriptor-note-badge {
+    font-size: 0.61rem;
+    padding: 0.21rem 0.45rem;
+  }
+
+  .desserto-actions {
+    gap: 0.5rem;
+  }
+
+  .btn-desserto-primary,
+  .btn-desserto-secondary {
+    min-height: 42px;
+    padding: 0.65rem 0.85rem;
+    font-size: 0.69rem;
+  }
 
   .desserto-bottom-tabs {
     width: calc(100vw - 2rem);
@@ -3742,16 +3841,43 @@
     font-size: 0;
   }
 
-  .desserto-tab-btn .tab-num { font-size: 0.69rem; }
-  /* Sections preserve the generous feeling while dropping excess vertical drift. */
-  .unboxing-section, .gifting-section { padding: 4.5rem 0; }
-  .collection-section, .crafts-clean-section, .purity-section { padding: 4.25rem 0; }
-  .clean-section-header { margin-bottom: 2.25rem; }
-  .clean-section-eyebrow { font-size: 0.62rem; letter-spacing: 0.16em; }
-  .clean-section-title { font-size: clamp(2rem, 9vw, 2.55rem); line-height: 1.1; }
-  .clean-section-lead { font-size: 0.98rem; line-height: 1.6; }
+  .desserto-tab-btn .tab-num {
+    font-size: 0.69rem;
+  }
 
-  .clean-compartment-tabs, .category-filter-bar {
+  /* Sections preserve the generous feeling while dropping excess vertical drift. */
+  .unboxing-section,
+  .gifting-section {
+    padding: 4.5rem 0;
+  }
+
+  .collection-section,
+  .crafts-clean-section,
+  .purity-section {
+    padding: 4.25rem 0;
+  }
+
+  .clean-section-header {
+    margin-bottom: 2.25rem;
+  }
+
+  .clean-section-eyebrow {
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+  }
+
+  .clean-section-title {
+    font-size: clamp(2rem, 9vw, 2.55rem);
+    line-height: 1.1;
+  }
+
+  .clean-section-lead {
+    font-size: 0.98rem;
+    line-height: 1.6;
+  }
+
+  .clean-compartment-tabs,
+  .category-filter-bar {
     justify-content: flex-start;
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -3761,116 +3887,462 @@
     padding: 0 1rem 0.55rem;
   }
 
-  .clean-compartment-tabs::-webkit-scrollbar, .category-filter-bar::-webkit-scrollbar { display: none; }
-  .clean-tab-link, .category-pill { flex: 0 0 auto; min-height: 42px; }
-  .clean-tab-link { padding: 0.5rem 0.9rem; }
-  .tab-label { font-size: 0.92rem; }
-  .category-filter-bar { gap: 0.45rem; margin-bottom: 2rem; }
-  .category-pill { padding: 0.5rem 0.9rem; font-size: 0.72rem; }
+  .clean-compartment-tabs::-webkit-scrollbar,
+  .category-filter-bar::-webkit-scrollbar {
+    display: none;
+  }
 
-  .clean-showcase-card { padding: 1.35rem; }
-  .clean-showcase-grid { gap: 1.8rem; }
-  .clean-showcase-title { font-size: 1.9rem; margin-bottom: 0.7rem; }
-  .clean-showcase-desc { font-size: 0.96rem; line-height: 1.6; margin-bottom: 1.4rem; }
-  .clean-showcase-action .btn-gold { width: 100%; }
+  .clean-tab-link,
+  .category-pill {
+    flex: 0 0 auto;
+    min-height: 42px;
+  }
 
-  .collection-grid { gap: 1rem; }
-  .product-card { padding: 0.7rem; }
-  .product-card-spotlight { gap: 0.65rem; }
-  .product-card-spotlight .product-image-container { aspect-ratio: 4 / 3; }
-  .product-details { padding-top: 0.75rem; }
-  .product-name { font-size: 1.12rem; }
-  .product-desc { font-size: 0.83rem; line-height: 1.45; }
-  .image-hover-action { opacity: 1; transform: none; bottom: 8px; }
-  .inspect-btn { min-height: 36px; font-size: 0.67rem; }
-  .product-footer-row { gap: 0.75rem; }
-  .btn-acquire { min-height: 42px; padding: 0.6rem 0.7rem; font-size: 0.7rem; }
+  .clean-tab-link {
+    padding: 0.5rem 0.9rem;
+  }
 
-  .crafts-clean-grid { gap: 2rem; }
-  .craft-clean-col { padding-top: 1.1rem; }
-  .craft-clean-num { font-size: 2.2rem; margin-bottom: 0.5rem; }
-  .craft-clean-title { font-size: 1.35rem; margin-bottom: 0.65rem; }
-  .craft-clean-desc { font-size: 0.96rem; line-height: 1.6; }
+  .tab-label {
+    font-size: 0.92rem;
+  }
 
-  .concierge-workspace-grid { gap: 2.25rem; }
-  .concierge-controls { gap: 2rem; }
-  .box-select-card { align-items: flex-start; padding: 1rem; gap: 0.6rem; }
-  .box-option-title { font-size: 0.94rem; }
-  .box-option-desc { font-size: 0.75rem; line-height: 1.45; }
-  .box-card-right { flex-direction: column; align-items: flex-end; gap: 0.5rem; }
-  .box-price { font-size: 0.95rem; white-space: nowrap; }
-  .ribbon-selection-row, .seal-selection-row { gap: 0.75rem; }
-  .config-sub-label { min-width: 100%; }
-  .seal-input-group { flex-wrap: wrap; }
-  .seal-letter-btn, .ribbon-swatch-btn { width: 40px; height: 40px; }
-  .preview-sticky-card { position: static; padding: 1.1rem; }
-  .parchment-letter-wrapper { padding: 1.8rem 1rem; }
-  .parchment-crest { font-size: 0.58rem; letter-spacing: 0.11em; }
-  .parchment-message { font-size: 0.9rem; }
-  .preview-order-bar { align-items: flex-end; }
-  .preview-order-bar .btn-gold { padding-inline: 0.85rem; font-size: 0.7rem; }
+  .category-filter-bar {
+    gap: 0.45rem;
+    margin-bottom: 2rem;
+  }
 
-  .purity-inner-card { padding: 1.4rem; }
-  .purity-header-row { gap: 1.2rem; margin-bottom: 2rem; }
-  .purity-title { font-size: 1.85rem; }
-  .purity-lead { font-size: 0.96rem; line-height: 1.6; }
-  .purity-pillars-grid { gap: 0.75rem; margin-bottom: 2rem; }
-  .purity-pillar-item { padding: 1.1rem; }
+  .category-pill {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.72rem;
+  }
+
+  .clean-showcase-card {
+    padding: 1.35rem;
+  }
+
+  .clean-showcase-grid {
+    gap: 1.8rem;
+  }
+
+  .clean-showcase-title {
+    font-size: 1.9rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .clean-showcase-desc {
+    font-size: 0.96rem;
+    line-height: 1.6;
+    margin-bottom: 1.4rem;
+  }
+
+  .clean-showcase-action .btn-gold {
+    width: 100%;
+  }
+
+  .collection-grid {
+    gap: 1rem;
+  }
+
+  .product-card {
+    padding: 0.7rem;
+  }
+
+  .product-card-spotlight {
+    gap: 0.65rem;
+  }
+
+  .product-card-spotlight .product-image-container {
+    aspect-ratio: 4 / 3;
+  }
+
+  .product-details {
+    padding-top: 0.75rem;
+  }
+
+  .product-name {
+    font-size: 1.12rem;
+  }
+
+  .product-desc {
+    font-size: 0.83rem;
+    line-height: 1.45;
+  }
+
+  .image-hover-action {
+    opacity: 1;
+    transform: none;
+    bottom: 8px;
+  }
+
+  .inspect-btn {
+    min-height: 36px;
+    font-size: 0.67rem;
+  }
+
+  .product-footer-row {
+    gap: 0.75rem;
+  }
+
+  .btn-acquire {
+    min-height: 42px;
+    padding: 0.6rem 0.7rem;
+    font-size: 0.7rem;
+  }
+
+  .crafts-clean-grid {
+    gap: 2rem;
+  }
+
+  .craft-clean-col {
+    padding-top: 1.1rem;
+  }
+
+  .craft-clean-num {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .craft-clean-title {
+    font-size: 1.35rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .craft-clean-desc {
+    font-size: 0.96rem;
+    line-height: 1.6;
+  }
+
+  .concierge-workspace-grid {
+    gap: 2.25rem;
+  }
+
+  .concierge-controls {
+    gap: 2rem;
+  }
+
+  .box-select-card {
+    align-items: flex-start;
+    padding: 1rem;
+    gap: 0.6rem;
+  }
+
+  .box-option-title {
+    font-size: 0.94rem;
+  }
+
+  .box-option-desc {
+    font-size: 0.75rem;
+    line-height: 1.45;
+  }
+
+  .box-card-right {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+
+  .box-price {
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  .ribbon-selection-row,
+  .seal-selection-row {
+    gap: 0.75rem;
+  }
+
+  .config-sub-label {
+    min-width: 100%;
+  }
+
+  .seal-input-group {
+    flex-wrap: wrap;
+  }
+
+  .seal-letter-btn,
+  .ribbon-swatch-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .preview-sticky-card {
+    position: static;
+    padding: 1.1rem;
+  }
+
+  .parchment-letter-wrapper {
+    padding: 1.8rem 1rem;
+  }
+
+  .parchment-crest {
+    font-size: 0.58rem;
+    letter-spacing: 0.11em;
+  }
+
+  .parchment-message {
+    font-size: 0.9rem;
+  }
+
+  .preview-order-bar {
+    align-items: flex-end;
+  }
+
+  .preview-order-bar .btn-gold {
+    padding-inline: 0.85rem;
+    font-size: 0.7rem;
+  }
+
+  .purity-inner-card {
+    padding: 1.4rem;
+  }
+
+  .purity-header-row {
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .purity-title {
+    font-size: 1.85rem;
+  }
+
+  .purity-lead {
+    font-size: 0.96rem;
+    line-height: 1.6;
+  }
+
+  .purity-pillars-grid {
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .purity-pillar-item {
+    padding: 1.1rem;
+  }
 
   /* Sheets use the entire phone canvas and retain their checkout action above safe areas. */
-  .modal-backdrop { align-items: flex-end; padding: 0; }
+  .modal-backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+
   .modal-container {
     max-height: min(92svh, 760px);
     border-radius: 18px 18px 0 0;
     border-bottom: 0;
     padding: 1.15rem 1rem max(1.15rem, env(safe-area-inset-bottom));
   }
-  .modal-inner-grid { gap: 1.25rem; }
-  .modal-image-wrapper { aspect-ratio: 16 / 10; }
-  .modal-close-btn { top: 10px; right: 10px; width: 42px; height: 42px; }
-  .modal-title { font-size: 1.5rem; }
-  .modal-description { font-size: 0.94rem; margin-bottom: 1.1rem; }
-  .modal-tasting-grid { gap: 0.75rem; padding: 0.85rem; margin-bottom: 1.1rem; }
-  .tasting-val { font-size: 0.78rem; }
-  .modal-shelflife { margin-bottom: 1.1rem; }
-  .modal-action-row { gap: 0.6rem; }
-  .modal-add-btn { min-height: 48px; padding-inline: 0.7rem; font-size: 0.72rem; }
-  .quantity-stepper { min-height: 44px; }
-  .step-btn { width: 34px; height: 34px; }
 
-  .drawer-panel { max-width: none; height: 100svh; border-left: 0; }
-  .drawer-header { padding: 1.1rem 1rem; }
-  .drawer-body { padding: 1rem; }
-  .drawer-footer { padding: 1rem max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)); }
-  .drawer-item-row { gap: 0.7rem; }
-  .drawer-item-thumb { width: 76px; height: 76px; }
-  .shipping-badge { align-items: flex-start; line-height: 1.35; }
-  .checkout-success-view { padding: 2rem 1.2rem max(2rem, env(safe-area-inset-bottom)); }
+  .modal-inner-grid {
+    gap: 1.25rem;
+  }
 
-  .footer-root { padding-top: 3rem; }
-  .footer-hallmark-banner { gap: 0.75rem; margin-bottom: 2.5rem; padding: 0 1rem; }
-  .footer-star-svg { width: 46px; height: 46px; margin-bottom: 0.45rem; }
-  .footer-brand-title { font-size: 1.1rem; letter-spacing: 0.14em; }
-  .footer-brand-tag { font-size: 0.67rem; }
-  .footer-content-grid { gap: 2rem; margin-bottom: 2.5rem; }
-  .footer-bottom-bar { padding: 1.25rem 0 max(1.25rem, env(safe-area-inset-bottom)); }
-  .bottom-content { align-items: flex-start; flex-direction: column; gap: 0.8rem; }
-  .bottom-links { align-items: flex-start; flex-wrap: wrap; gap: 0.4rem 0.6rem; line-height: 1.5; }
+  .modal-image-wrapper {
+    aspect-ratio: 16 / 10;
+  }
+
+  .modal-close-btn {
+    top: 10px;
+    right: 10px;
+    width: 42px;
+    height: 42px;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+  }
+
+  .modal-description {
+    font-size: 0.94rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .modal-tasting-grid {
+    gap: 0.75rem;
+    padding: 0.85rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .tasting-val {
+    font-size: 0.78rem;
+  }
+
+  .modal-shelflife {
+    margin-bottom: 1.1rem;
+  }
+
+  .modal-action-row {
+    gap: 0.6rem;
+  }
+
+  .modal-add-btn {
+    min-height: 48px;
+    padding-inline: 0.7rem;
+    font-size: 0.72rem;
+  }
+
+  .quantity-stepper {
+    min-height: 44px;
+  }
+
+  .step-btn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .drawer-panel {
+    max-width: none;
+    height: 100svh;
+    border-left: 0;
+  }
+
+  .drawer-header {
+    padding: 1.1rem 1rem;
+  }
+
+  .drawer-body {
+    padding: 1rem;
+  }
+
+  .drawer-footer {
+    padding: 1rem max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom));
+  }
+
+  .drawer-item-row {
+    gap: 0.7rem;
+  }
+
+  .drawer-item-thumb {
+    width: 76px;
+    height: 76px;
+  }
+
+  .shipping-badge {
+    align-items: flex-start;
+    line-height: 1.35;
+  }
+
+  .checkout-success-view {
+    padding: 2rem 1.2rem max(2rem, env(safe-area-inset-bottom));
+  }
+
+  .footer-root {
+    padding-top: 3rem;
+  }
+
+  .footer-hallmark-banner {
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+    padding: 0 1rem;
+  }
+
+  .footer-star-svg {
+    width: 46px;
+    height: 46px;
+    margin-bottom: 0.45rem;
+  }
+
+  .footer-brand-title {
+    font-size: 1.1rem;
+    letter-spacing: 0.14em;
+  }
+
+  .footer-brand-tag {
+    font-size: 0.67rem;
+  }
+
+  .footer-content-grid {
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .footer-bottom-bar {
+    padding: 1.25rem 0 max(1.25rem, env(safe-area-inset-bottom));
+  }
+
+  .bottom-content {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .bottom-links {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.6rem;
+    line-height: 1.5;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 959px) {
-  .mobile-bag-btn { display: inline-flex; }
-  .nav-container { display: grid; grid-template-columns: 52px 1fr 52px; }
-  .mobile-menu-btn { width: 48px; height: 48px; border: 1px solid var(--gold-hairline); border-radius: 50%; justify-content: center; }
-  .mobile-bag-btn { position: relative; justify-self: end; width: 48px; height: 48px; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid var(--gold-border); background: var(--ink-primary); color: #fff; }
-  .mobile-bag-count { position: absolute; top: -4px; right: -4px; min-width: 19px; height: 19px; display: grid; place-items: center; border-radius: 50%; background: var(--gold-burnished); color: #fff; font-size: 0.65rem; }
+  .mobile-bag-btn {
+    display: inline-flex;
+  }
+
+  .nav-container {
+    display: grid;
+    grid-template-columns: 52px 1fr 52px;
+  }
+
+  .mobile-menu-btn {
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--gold-hairline);
+    border-radius: 50%;
+    justify-content: center;
+  }
+
+  .mobile-bag-btn {
+    position: relative;
+    justify-self: end;
+    width: 48px;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid var(--gold-border);
+    background: var(--ink-primary);
+    color: #fff;
+  }
+
+  .mobile-bag-count {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 19px;
+    height: 19px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--gold-burnished);
+    color: #fff;
+    font-size: 0.65rem;
+  }
 }
 
 @media (max-width: 359px) {
-  .desserto-sticky-stage { padding-top: 4.65rem; }
-  .desserto-headline { font-size: 1.65rem; }
-  .desserto-sweet-visual { width: 160px; height: 160px; }
-  .descriptor-notes { display: none; }
-  .desserto-bottom-tabs { margin-top: 0.35rem; }
-  .btn-desserto-primary, .btn-desserto-secondary { padding-inline: 0.65rem; }
+  .desserto-sticky-stage {
+    padding-top: 4.65rem;
+  }
+
+  .desserto-headline {
+    font-size: 1.65rem;
+  }
+
+  .desserto-sweet-visual {
+    width: 160px;
+    height: 160px;
+  }
+
+  .descriptor-notes {
+    display: none;
+  }
+
+  .desserto-bottom-tabs {
+    margin-top: 0.35rem;
+  }
+
+  .btn-desserto-primary,
+  .btn-desserto-secondary {
+    padding-inline: 0.65rem;
+  }
 }

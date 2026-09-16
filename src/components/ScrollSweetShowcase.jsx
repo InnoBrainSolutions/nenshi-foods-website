@@ -152,15 +152,15 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
   return (
     <section ref={trackRef} className="desserto-track" id="sweet-showcase">
       {/* Pinned 100vh Sticky Viewport with mousemove physical interaction */}
-      <div 
+      <div
         className="desserto-sticky-stage"
         onMouseMove={handleStageMouseMove}
         onMouseLeave={handleStageMouseLeave}
       >
-        
+
         {/* Architectural Background Line Arches with subtle counter-depth */}
-        <div 
-          className="desserto-arch-canvas" 
+        <div
+          className="desserto-arch-canvas"
           aria-hidden="true"
           style={{
             transform: `translate3d(${-mouseOffset.x * 12}px, ${-mouseOffset.y * 8}px, 0) rotate(${scrollProgress * 2.5 - 1.25}deg)`,
@@ -199,7 +199,7 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
         </div>
 
         {/* Master Halwai Artisan Badge with subtle parallax */}
-        <div 
+        <div
           className="desserto-chef-badge"
           data-magnetic
           style={{
@@ -266,7 +266,7 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
 
         {/* Centerpiece Hero Content & Main Active Sweet */}
         <div className="desserto-center-container">
-          
+
           {/* Poetic Central Headline */}
           <div className="desserto-headline-wrap">
             <span className="desserto-eyebrow">NENSHI FOODS · EST. 1968</span>
@@ -280,7 +280,7 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
 
           {/* Centerpiece Active Sweet Showcase Card */}
           <div className="desserto-sweet-stage" key={`${currentSweet.id}-${viewMode}`}>
-            
+
             {/* View Mode & Size Toggle Capsules */}
             <div className="desserto-toggles-row">
               {currentSweet.boxImage && (
@@ -325,7 +325,7 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
               </div>
             </div>
 
-            <div 
+            <div
               className={`desserto-sweet-visual ${viewMode === 'box' && currentSweet.boxImage ? 'visual-is-box' : ''}`}
               data-cursor="view"
               style={{
@@ -334,13 +334,13 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
               }}
             >
               <div className="sweet-halo-glow" />
-              <img 
-                src={viewMode === 'box' && currentSweet.boxImage ? currentSweet.boxImage : currentSweet.image} 
-                alt={currentSweet.name} 
+              <img
+                src={viewMode === 'box' && currentSweet.boxImage ? currentSweet.boxImage : currentSweet.image}
+                alt={currentSweet.name}
                 className={`desserto-hero-img ${viewMode === 'box' && currentSweet.boxImage ? 'desserto-box-img' : ''}`}
               />
-              <div 
-                className="sweet-shadow-soft" 
+              <div
+                className="sweet-shadow-soft"
                 style={{
                   transform: `translate3d(${-mouseOffset.x * 12}px, ${-mouseOffset.y * 8}px, 0)`,
                   transition: 'transform 0.22s cubic-bezier(0.16, 1, 0.3, 1)'
@@ -371,7 +371,7 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
 
           {/* Action Buttons (Desserto Pill Style) */}
           <div className="desserto-actions">
-            <button 
+            <button
               className="btn-desserto-primary"
               data-magnetic
               onClick={() => onQuickAdd({
