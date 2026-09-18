@@ -288,13 +288,6 @@ body {
 }
 
 /* Custom Cursor Styles (Desktop & Fine Pointers Only) */
-/* The native cursor is intentionally retained: it is more reliable and less
-   visually noisy than an overlay cursor, especially around fixed UI. */
-.custom-cursor-dot,
-.custom-cursor-ring {
-  display: none !important;
-}
-
 .custom-cursor-dot {
   position: fixed;
   top: 0;
@@ -307,7 +300,8 @@ body {
   pointer-events: none;
   z-index: 99999;
   opacity: 0;
-  transition: opacity 0.25s ease, transform 0.04s linear;
+  transition: opacity 0.25s ease;
+  will-change: transform;
 }
 
 .custom-cursor-dot.cursor-visible {
@@ -322,11 +316,11 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 28px;
-  height: 28px;
-  margin: -14px 0 0 -14px;
+  width: 32px;
+  height: 32px;
+  margin: -16px 0 0 -16px;
   border-radius: 50%;
-  border: 1.2px solid rgba(197, 154, 69, 0.45);
+  border: 1.5px solid rgba(197, 154, 69, 0.55);
   pointer-events: none;
   z-index: 99998;
   opacity: 0;
@@ -349,19 +343,19 @@ body {
 
 /* Hovering interactive elements */
 .custom-cursor-ring.cursor-hover {
-  width: 40px;
-  height: 40px;
-  margin: -20px 0 0 -20px;
+  width: 44px;
+  height: 44px;
+  margin: -22px 0 0 -22px;
   border-color: var(--gold-foil);
-  background-color: rgba(197, 154, 69, 0.08);
-  box-shadow: 0 0 20px rgba(197, 154, 69, 0.2);
+  background-color: rgba(197, 154, 69, 0.09);
+  box-shadow: 0 0 22px rgba(197, 154, 69, 0.28);
 }
 
 /* Hovering viewable cards/media */
 .custom-cursor-ring.cursor-view {
-  width: 52px;
-  height: 52px;
-  margin: -26px 0 0 -26px;
+  width: 56px;
+  height: 56px;
+  margin: -28px 0 0 -28px;
   border-color: var(--gold-burnished);
   background-color: rgba(251, 248, 242, 0.94);
   box-shadow: 0 8px 24px rgba(78, 60, 47, 0.16);
@@ -379,16 +373,16 @@ body {
 
 /* Hovering tabs / draggable content */
 .custom-cursor-ring.cursor-drag {
-  width: 42px;
-  height: 42px;
-  margin: -21px 0 0 -21px;
+  width: 44px;
+  height: 44px;
+  margin: -22px 0 0 -22px;
   border-color: var(--gold-foil);
   background-color: rgba(251, 248, 242, 0.9);
   box-shadow: 0 4px 16px rgba(78, 60, 47, 0.12);
 }
 
 .cursor-label-drag {
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--gold-burnished);
   line-height: 1;
@@ -396,7 +390,8 @@ body {
 
 /* Active click state */
 .custom-cursor-ring.cursor-pressed {
-  transform: scale(0.82) !important;
+  border-color: var(--gold-burnished);
+  background-color: rgba(197, 154, 69, 0.16);
 }
 
 /* Hide custom cursor on coarse touch pointers */

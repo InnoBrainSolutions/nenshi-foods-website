@@ -1,8 +1,11 @@
-import { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-// A small, desktop-only magnetic response for controls. Deliberately no custom
-// cursor: it avoids fixed-layer glitches and keeps the native cursor familiar.
+// Luxury Gold Circle & Follower Ring Cursor Animation with Physics Damping & Magnetic Control
 export default function MouseEffects() {
+  const dotRef = useRef(null);
+  const ringRef = useRef(null);
+  const [cursorLabel, setCursorLabel] = useState('');
+
   useEffect(() => {
     if (
       !window.matchMedia('(pointer: fine)').matches ||
@@ -11,66 +14,200 @@ export default function MouseEffects() {
       return;
     }
 
+    const dotEl = dotRef.current;
+    const ringEl = ringRef.current;
+    if (!dotEl || !ringEl) return;
+
+    let mouseX = -100;
+    let mouseY = -100;
+    let ringX = -100;
+    let ringY = -100;
+    let isVisible = false;
+    let isHover = false;
+    let isView = false;
+    let isDrag = false;
+    let isPressed = false;
+    let rafId = null;
+
     let activeMagneticEl = null;
 
     const findMagneticTarget = (target) => {
       const candidate = target?.closest?.(
-        '[data-magnetic], .btn-desserto-primary, .btn-desserto-secondary, .btn-clean-primary, .btn-gold, .btn-acquire, .bag-btn, .brand-crest'
+        '[data-magnetic], .btn-desserto-primary, .btn-desserto-secondary, .btn-clean-primary, .btn-gold, .btn-acquire, .bag-btn, .brand-crest, .desserto-tab-btn, .orbit-sweet-item'
       );
-
-      // Orbit items own their transform for scroll/parallax, so never let the
-      // magnetic system overwrite it.
       return candidate?.classList.contains('orbit-sweet-item') ? null : candidate;
     };
 
-    const resetActive = () => {
+    const resetMagnetic = () => {
       if (activeMagneticEl) {
         activeMagneticEl.style.transform = '';
         activeMagneticEl = null;
       }
     };
 
-    const onMouseMove = (event) => {
-      if (!activeMagneticEl) return;
-
-      const rect = activeMagneticEl.getBoundingClientRect();
-      const distX = event.clientX - (rect.left + rect.width / 2);
-      const distY = event.clientY - (rect.top + rect.height / 2);
-      const maxDist = Math.max(rect.width, rect.height) * 0.8;
-
-      if (Math.hypot(distX, distY) >= maxDist) {
-        resetActive();
-        return;
+    const updateCursorClasses = () => {
+      if (isVisible) {
+        dotEl.classList.add('cursor-visible');
+        ringEl.classList.add('cursor-visible');
+      } else {
+        dotEl.classList.remove('cursor-visible');
+        ringEl.classList.remove('cursor-visible');
       }
 
-      activeMagneticEl.style.transform = `translate3d(${distX * 0.2}px, ${distY * 0.2}px, 0)`;
+      ringEl.classList.toggle('cursor-hover', isHover);
+      ringEl.classList.toggle('cursor-view', isView);
+      ringEl.classList.toggle('cursor-drag', isDrag);
+      ringEl.classList.toggle('cursor-pressed', isPressed);
     };
 
-    const onMouseOver = (event) => {
-      const target = findMagneticTarget(event.target);
-      if (target) activeMagneticEl = target;
-    };
+    const onMouseMove = (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
 
-    const onMouseOut = (event) => {
-      const target = findMagneticTarget(event.target);
-      if (target && target === activeMagneticEl && !target.contains(event.relatedTarget)) {
-        resetActive();
+      if (!isVisible) {
+        isVisible = true;
+        ringX = mouseX;
+        ringY = mouseY;
+        updateCursorClasses();
+      }
+
+      // Magnetic pull logic
+      if (activeMagneticEl) {
+        const rect = activeMagneticEl.getBoundingClientRect();
+        const distX = mouseX - (rect.left + rect.width / 2);
+        const distY = mouseY - (rect.top + rect.height / 2);
+        const maxDist = Math.max(rect.width, rect.height) * 0.85;
+
+        if (Math.hypot(distX, distY) >= maxDist) {
+          resetMagnetic();
+        } else {
+          activeMagneticEl.style.transform = `translate3d(${distX * 0.22}px, ${distY * 0.22}px, 0)`;
+        }
       }
     };
+
+    const onMouseOver = (e) => {
+      const target = e.target;
+      if (!target || !(target instanceof Element)) return;
+
+      const viewTarget = target.closest('[data-cursor="view"]');
+      const dragTarget = target.closest('[data-cursor="drag"]');
+      const interactiveTarget = target.closest(
+        'button, a, input, select, textarea, [role="button"], [role="tab"], [data-magnetic], [data-cursor="hover"], .orbit-sweet-item'
+      );
+
+      if (viewTarget) {
+        isView = true;
+        isHover = false;
+        isDrag = false;
+        setCursorLabel('VIEW');
+      } else if (dragTarget) {
+        isDrag = true;
+        isView = false;
+        isHover = false;
+        setCursorLabel('⇄');
+      } else if (interactiveTarget) {
+        isHover = true;
+        isView = false;
+        isDrag = false;
+        setCursorLabel('');
+      } else {
+        isHover = false;
+        isView = false;
+        isDrag = false;
+        setCursorLabel('');
+      }
+
+      const magneticTarget = findMagneticTarget(target);
+      if (magneticTarget) {
+        activeMagneticEl = magneticTarget;
+      }
+
+      updateCursorClasses();
+    };
+
+    const onMouseOut = (e) => {
+      const target = e.target;
+      if (target && target === activeMagneticEl && !target.contains(e.relatedTarget)) {
+        resetMagnetic();
+      }
+
+      if (!e.relatedTarget || !document.contains(e.relatedTarget)) {
+        isVisible = false;
+        updateCursorClasses();
+      }
+    };
+
+    const onMouseDown = () => {
+      isPressed = true;
+      updateCursorClasses();
+    };
+
+    const onMouseUp = () => {
+      isPressed = false;
+      updateCursorClasses();
+    };
+
+    const onMouseLeave = () => {
+      isVisible = false;
+      resetMagnetic();
+      updateCursorClasses();
+    };
+
+    const onMouseEnter = () => {
+      isVisible = true;
+      updateCursorClasses();
+    };
+
+    // Smooth physics loop for the trailing circle
+    const loop = () => {
+      // Lerp ring towards mouse with smooth damping factor
+      ringX += (mouseX - ringX) * 0.16;
+      ringY += (mouseY - ringY) * 0.16;
+
+      const scale = isPressed ? 0.78 : isView ? 1.35 : isDrag ? 1.2 : isHover ? 1.28 : 1;
+
+      dotEl.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+      ringEl.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) scale(${scale})`;
+
+      rafId = requestAnimationFrame(loop);
+    };
+
+    rafId = requestAnimationFrame(loop);
 
     window.addEventListener('mousemove', onMouseMove, { passive: true });
     window.addEventListener('mouseover', onMouseOver, { passive: true });
     window.addEventListener('mouseout', onMouseOut, { passive: true });
-    window.addEventListener('blur', resetActive);
+    window.addEventListener('mousedown', onMouseDown, { passive: true });
+    window.addEventListener('mouseup', onMouseUp, { passive: true });
+    document.addEventListener('mouseleave', onMouseLeave);
+    document.addEventListener('mouseenter', onMouseEnter);
+    window.addEventListener('blur', onMouseLeave);
 
     return () => {
+      cancelAnimationFrame(rafId);
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('mouseover', onMouseOver);
       window.removeEventListener('mouseout', onMouseOut);
-      window.removeEventListener('blur', resetActive);
-      resetActive();
+      window.removeEventListener('mousedown', onMouseDown);
+      window.removeEventListener('mouseup', onMouseUp);
+      document.removeEventListener('mouseleave', onMouseLeave);
+      document.removeEventListener('mouseenter', onMouseEnter);
+      window.removeEventListener('blur', onMouseLeave);
+      resetMagnetic();
     };
   }, []);
 
-  return null;
+  return (
+    <>
+      <div ref={dotRef} className="custom-cursor-dot" aria-hidden="true" />
+      <div ref={ringRef} className="custom-cursor-ring" aria-hidden="true">
+        {cursorLabel && (
+          <span className={cursorLabel === 'VIEW' ? 'cursor-label-view' : 'cursor-label-drag'}>
+            {cursorLabel}
+          </span>
+        )}
+      </div>
+    </>
+  );
 }
