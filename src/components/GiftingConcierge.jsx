@@ -210,7 +210,6 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
               {/* Digital Parchment Envelope with 3D physical tilt */}
               <div 
                 className="parchment-letter-wrapper"
-                data-cursor="view"
                 onMouseMove={handleLetterMouseMove}
                 onMouseLeave={handleLetterMouseLeave}
                 style={{

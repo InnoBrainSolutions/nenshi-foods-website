@@ -116,7 +116,6 @@ export default function UnboxingSection({ onQuickAdd }) {
               >
                 <div 
                   className="clean-media-frame"
-                  data-cursor="view"
                   style={{
                     transform: `perspective(900px) rotateY(${boxTilt.x * 6}deg) rotateX(${-boxTilt.y * 6}deg)`,
                     transition: 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)'

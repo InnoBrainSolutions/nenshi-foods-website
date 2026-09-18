@@ -81,7 +81,6 @@ export default function Collection({ currency, onSelectProduct, onAddToCart }) {
             return (
               <article 
                 key={product.id}
-                data-cursor="view"
                 className={`product-card ${idx === 0 ? 'product-card-spotlight' : ''}`}
                 style={{ 
                   transform: `perspective(800px) rotateX(var(--card-rot-x, 0deg)) rotateY(var(--card-rot-y, 0deg))`
