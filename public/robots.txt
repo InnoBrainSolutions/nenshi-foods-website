@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-# Sitemap URL (Configure domain before deployment)
-Sitemap: https://nenshifoods.com/sitemap.xml
+# Sitemap URL
+Sitemap: https://nenshifoods.in/sitemap.xml

@@ -1,0 +1,10 @@
+# Vercel Deployment Ignore
+# Keeps deployments fast, lightweight, and within Hobby plan limits
+
+.agents
+.git
+.oxlintrc.json
+skills-lock.json
+README.md
+.DS_Store
+*.log

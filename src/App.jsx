@@ -5,7 +5,6 @@ import UnboxingSection from './components/UnboxingSection';
 import Collection from './components/Collection';
 import Craftsmanship from './components/Craftsmanship';
 import PurityPromise from './components/PurityPromise';
-// import GiftingConcierge from './components/GiftingConcierge';
 import Footer from './components/Footer';
 import ProductModal from './components/ProductModal';
 import CartDrawer from './components/CartDrawer';
@@ -13,33 +12,36 @@ import MouseEffects from './components/MouseEffects';
 import { useScrollReveal } from './hooks/useScrollReveal';
 import './App.css';
 
+const INITIAL_CART = [
+  {
+    id: "nenshi-kaju-katli-500g",
+    name: "Kaju Katli (500g Box)",
+    weight: "500g · 24 Pieces",
+    priceINR: 550,
+    priceUSD: 9,
+    quantity: 1,
+    image: "/images/kaju_katli_luxury.webp"
+  }
+];
+
 export default function App() {
   useScrollReveal();
   const [currency, setCurrency] = useState("INR");
-
-  React.useEffect(() => {
-    if (window.location.hash) {
-      const el = document.querySelector(window.location.hash);
-      if (el) {
-        setTimeout(() => {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }, 150);
-      }
-    }
-  }, []);
-  const [cartItems, setCartItems] = useState([
-    {
-      id: "nenshi-kaju-katli-500g",
-      name: "Kaju Katli (500g Box)",
-      weight: "500g · 24 Pieces",
-      priceINR: 550,
-      priceUSD: 9,
-      quantity: 1,
-      image: "/images/kaju_katli_luxury.jpg"
-    }
-  ]);
+  const [cartItems, setCartItems] = useState(INITIAL_CART);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
+
+  React.useEffect(() => {
+    if (!window.location.hash) return;
+    const target = document.querySelector(window.location.hash);
+    if (!target) return;
+
+    const timer = setTimeout(() => {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }, 150);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const toggleCurrency = () => {
     setCurrency(prev => prev === "INR" ? "USD" : "INR");
@@ -131,14 +133,6 @@ export default function App() {
 
         {/* Our Purity Promise */}
         <PurityPromise />
-
-        {/* Gifting & Celebrations ("Send a Sweet Gift" section) */}
-        {/* 
-        <GiftingConcierge 
-          currency={currency}
-          onAddBespokeHamper={handleAddToCart}
-        /> 
-        */}
       </main>
 
       {/* Hallmark Resolving Footer */}

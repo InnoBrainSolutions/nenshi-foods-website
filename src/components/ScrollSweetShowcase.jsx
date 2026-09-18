@@ -16,7 +16,13 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
   });
   const [scrollProgress, setScrollProgress] = useState(0);
   const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
-  const [viewMode, setViewMode] = useState('sweet'); // 'sweet' | 'box'
+  const [viewMode, setViewMode] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('view') === 'box') return 'box';
+    }
+    return 'sweet';
+  });
   const [selectedSize, setSelectedSize] = useState('250g'); // '250g' | '500g'
   const isTransitioningRef = useRef(false);
   const wheelDrivenRef = useRef(false);
@@ -41,17 +47,6 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
 
   // Monitor scroll position through the 160vh track
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const sParam = params.get('sweet');
-    const vParam = params.get('view');
-    if (sParam !== null && !isNaN(parseInt(sParam))) {
-      const idx = Math.max(0, Math.min(SCROLL_SHOWCASE_SWEETS.length - 1, parseInt(sParam)));
-      setActiveIndex(idx);
-    }
-    if (vParam === 'box') {
-      setViewMode('box');
-    }
-
     const handleScroll = () => {
       if (!trackRef.current) return;
       // Skip scroll-based index updates while the wheel handler is driving
@@ -208,7 +203,7 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
           }}
         >
           <div className="chef-avatar-frame">
-            <img src="/images/master_halwai.jpg" alt="Ramkishan Nenshi" className="chef-avatar-img" />
+            <img src="/images/master_halwai.webp" alt="Ramkishan Nenshi · Master Halwai" className="chef-avatar-img" width="44" height="44" />
             <div className="chef-badge-sparkle">
               <Award size={10} color="#9E742A" />
             </div>

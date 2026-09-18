@@ -1,0 +1,822 @@
+/* ==========================================================================
+   PHONE & TABLET RESPONSIVE COMPOSITION
+   ========================================================================== */
+.mobile-bag-btn {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .container {
+    padding-inline: 1rem;
+  }
+
+  /* Header: keep the brand, navigation, and bag immediately reachable. */
+  .announcement-bar {
+    padding: 0.36rem 0;
+  }
+
+  .announcement-content {
+    justify-content: center;
+  }
+
+  .announcement-text {
+    font-size: 0.59rem;
+    letter-spacing: 0.075em;
+    line-height: 1.35;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .announcement-text .star-icon,
+  .announcement-right {
+    display: none;
+  }
+
+  .main-nav {
+    padding: 0.68rem 0;
+  }
+
+  .nav-container {
+    display: grid;
+    grid-template-columns: 44px 1fr 44px;
+  }
+
+  .mobile-menu-btn,
+  .mobile-bag-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    justify-content: center;
+  }
+
+  .mobile-menu-btn {
+    border: 1px solid var(--gold-hairline);
+    background: rgba(255, 255, 255, 0.55);
+  }
+
+  .mobile-bag-btn {
+    display: inline-flex;
+    position: relative;
+    justify-self: end;
+    border: 1px solid var(--gold-border);
+    background: var(--ink-primary);
+    color: #fffdf9;
+    cursor: pointer;
+  }
+
+  .mobile-bag-count {
+    position: absolute;
+    top: -5px;
+    right: -4px;
+    min-width: 19px;
+    height: 19px;
+    padding: 0 4px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #fffdf9;
+    border-radius: 50%;
+    background: var(--gold-burnished);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+  }
+
+  .crest-emblem {
+    padding: 0.15rem 0.3rem;
+  }
+
+  .crest-title {
+    font-size: 1.45rem;
+  }
+
+  .crest-tag {
+    font-size: 0.51rem;
+  }
+
+  .crest-sub {
+    font-size: 0.58rem;
+    letter-spacing: 0.11em;
+  }
+
+  .mobile-drawer {
+    padding: 1.15rem 1rem max(1.35rem, env(safe-area-inset-bottom));
+    box-shadow: 0 14px 24px rgba(36, 23, 14, 0.08);
+  }
+
+  .mobile-drawer-links {
+    gap: 0.35rem;
+  }
+
+  .mobile-drawer-links a {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    padding: 0.65rem 0.3rem;
+    border-bottom: 1px solid var(--gold-hairline);
+  }
+
+  /* Signature scrollytelling stays dramatic but gives thumb-friendly controls. */
+  .desserto-track {
+    height: 250svh;
+  }
+
+  .desserto-sticky-stage {
+    height: 100svh;
+    justify-content: flex-start;
+    padding: 5.2rem 1rem 2.25rem;
+  }
+
+  .desserto-arch-svg {
+    transform: scale(1.42);
+  }
+
+  /* The full arch has room on desktop; on phones its moon competes with the headline. */
+  .desserto-arch-moon,
+  .desserto-scroll-hint {
+    display: none;
+  }
+
+  .desserto-chef-badge {
+    top: 0.75rem;
+    right: 0.8rem;
+    gap: 0.45rem;
+    padding: 0.25rem 0.55rem 0.25rem 0.25rem;
+  }
+
+  .chef-avatar-frame {
+    width: 34px;
+    height: 34px;
+  }
+
+  .chef-name {
+    font-size: 0.66rem;
+  }
+
+  .chef-role {
+    font-size: 0.56rem;
+  }
+
+  .chef-badge-sparkle {
+    display: none;
+  }
+
+  .desserto-step-counter {
+    top: 0.8rem;
+    left: 0.8rem;
+    padding: 0.36rem 0.65rem;
+    gap: 0.28rem;
+  }
+
+  .step-title {
+    display: none;
+  }
+
+  .desserto-center-container {
+    width: 100%;
+    max-width: 440px;
+    padding: 0;
+    margin-top: 0;
+  }
+
+  .desserto-headline-wrap {
+    margin-bottom: 0.5rem;
+  }
+
+  .desserto-eyebrow {
+    font-size: 0.57rem;
+    letter-spacing: 0.14em;
+    margin-bottom: 0.4rem;
+  }
+
+  .desserto-headline {
+    font-size: clamp(1.8rem, 8.4vw, 2.35rem);
+    line-height: 1.05;
+    margin-bottom: 0.45rem;
+  }
+
+  .desserto-subhead {
+    font-size: 0.8rem;
+    line-height: 1.45;
+  }
+
+  .desserto-sweet-stage {
+    width: 100%;
+    margin-bottom: 0.7rem;
+  }
+
+  .desserto-view-capsule {
+    margin-bottom: 0.55rem;
+  }
+
+  .desserto-view-btn {
+    min-height: 36px;
+    padding: 0.28rem 0.7rem;
+    font-size: 0.65rem;
+  }
+
+  .desserto-sweet-visual {
+    width: min(49vw, 190px);
+    height: min(49vw, 190px);
+  }
+
+  /* A quiet pedestal makes the mithai read as a crafted object, not a card image. */
+  .desserto-sweet-visual::before {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    z-index: 0;
+    border: 1px solid rgba(197, 154, 69, 0.24);
+    border-radius: 50%;
+    box-shadow: 0 0 0 8px rgba(255, 253, 249, 0.24);
+    pointer-events: none;
+  }
+
+  .desserto-sweet-visual.visual-is-box::before {
+    border-radius: 14px;
+  }
+
+  .desserto-sweet-visual.visual-is-box {
+    width: min(74vw, 285px);
+    height: min(47vw, 170px);
+  }
+
+  .desserto-sweet-descriptor {
+    margin-top: 0.7rem;
+    max-width: 360px;
+  }
+
+  .descriptor-header {
+    gap: 0.55rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .descriptor-hindi {
+    font-size: 0.8rem;
+  }
+
+  .descriptor-price {
+    font-size: 0.72rem;
+    padding: 0.13rem 0.45rem;
+  }
+
+  .descriptor-desc {
+    max-width: 335px;
+    font-size: 0.75rem;
+    line-height: 1.42;
+    margin: 0 auto 0.55rem;
+    text-wrap: pretty;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+
+  .descriptor-notes {
+    max-width: 348px;
+    margin-inline: auto;
+    gap: 0.38rem;
+  }
+
+  .descriptor-note-badge {
+    font-size: 0.61rem;
+    padding: 0.21rem 0.45rem;
+  }
+
+  .desserto-actions {
+    gap: 0.5rem;
+  }
+
+  .btn-desserto-primary,
+  .btn-desserto-secondary {
+    min-height: 42px;
+    padding: 0.65rem 0.85rem;
+    font-size: 0.69rem;
+  }
+
+  .desserto-bottom-tabs {
+    width: calc(100vw - 2rem);
+    max-width: 430px;
+    margin-top: 0.75rem;
+    justify-content: space-between;
+    gap: 0.15rem;
+    padding: 0.2rem;
+  }
+
+  .desserto-tab-btn {
+    min-width: 0;
+    flex: 1;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0.48rem 0.18rem;
+    font-size: 0;
+  }
+
+  .desserto-tab-btn .tab-num {
+    font-size: 0.69rem;
+  }
+
+  /* Sections preserve the generous feeling while dropping excess vertical drift. */
+  .unboxing-section,
+  .gifting-section {
+    padding: 4.5rem 0;
+  }
+
+  .collection-section,
+  .crafts-clean-section,
+  .purity-section {
+    padding: 4.25rem 0;
+  }
+
+  .clean-section-header {
+    margin-bottom: 2.25rem;
+  }
+
+  .clean-section-eyebrow {
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+  }
+
+  .clean-section-title {
+    font-size: clamp(2rem, 9vw, 2.55rem);
+    line-height: 1.1;
+  }
+
+  .clean-section-lead {
+    font-size: 0.98rem;
+    line-height: 1.6;
+  }
+
+  .clean-compartment-tabs,
+  .category-filter-bar {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+    margin-inline: -1rem;
+    padding: 0 1rem 0.55rem;
+  }
+
+  .clean-compartment-tabs::-webkit-scrollbar,
+  .category-filter-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .clean-tab-link,
+  .category-pill {
+    flex: 0 0 auto;
+    min-height: 42px;
+  }
+
+  .clean-tab-link {
+    padding: 0.5rem 0.9rem;
+  }
+
+  .tab-label {
+    font-size: 0.92rem;
+  }
+
+  .category-filter-bar {
+    gap: 0.45rem;
+    margin-bottom: 2rem;
+  }
+
+  .category-pill {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.72rem;
+  }
+
+  .clean-showcase-card {
+    padding: 1.35rem;
+  }
+
+  .clean-showcase-grid {
+    gap: 1.8rem;
+  }
+
+  .clean-showcase-title {
+    font-size: 1.9rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .clean-showcase-desc {
+    font-size: 0.96rem;
+    line-height: 1.6;
+    margin-bottom: 1.4rem;
+  }
+
+  .clean-showcase-action .btn-gold {
+    width: 100%;
+  }
+
+  .collection-grid {
+    gap: 1rem;
+  }
+
+  .product-card {
+    padding: 0.7rem;
+  }
+
+  .product-card-spotlight {
+    gap: 0.65rem;
+  }
+
+  .product-card-spotlight .product-image-container {
+    aspect-ratio: 4 / 3;
+  }
+
+  .product-details {
+    padding-top: 0.75rem;
+  }
+
+  .product-name {
+    font-size: 1.12rem;
+  }
+
+  .product-desc {
+    font-size: 0.83rem;
+    line-height: 1.45;
+  }
+
+  .image-hover-action {
+    opacity: 1;
+    transform: none;
+    bottom: 8px;
+  }
+
+  .inspect-btn {
+    min-height: 36px;
+    font-size: 0.67rem;
+  }
+
+  .product-footer-row {
+    gap: 0.75rem;
+  }
+
+  .btn-acquire {
+    min-height: 42px;
+    padding: 0.6rem 0.7rem;
+    font-size: 0.7rem;
+  }
+
+  .crafts-clean-grid {
+    gap: 2rem;
+  }
+
+  .craft-clean-col {
+    padding-top: 1.1rem;
+  }
+
+  .craft-clean-num {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .craft-clean-title {
+    font-size: 1.35rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .craft-clean-desc {
+    font-size: 0.96rem;
+    line-height: 1.6;
+  }
+
+  .concierge-workspace-grid {
+    gap: 2.25rem;
+  }
+
+  .concierge-controls {
+    gap: 2rem;
+  }
+
+  .box-select-card {
+    align-items: flex-start;
+    padding: 1rem;
+    gap: 0.6rem;
+  }
+
+  .box-option-title {
+    font-size: 0.94rem;
+  }
+
+  .box-option-desc {
+    font-size: 0.75rem;
+    line-height: 1.45;
+  }
+
+  .box-card-right {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+
+  .box-price {
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  .ribbon-selection-row,
+  .seal-selection-row {
+    gap: 0.75rem;
+  }
+
+  .config-sub-label {
+    min-width: 100%;
+  }
+
+  .seal-input-group {
+    flex-wrap: wrap;
+  }
+
+  .seal-letter-btn,
+  .ribbon-swatch-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .preview-sticky-card {
+    position: static;
+    padding: 1.1rem;
+  }
+
+  .parchment-letter-wrapper {
+    padding: 1.8rem 1rem;
+  }
+
+  .parchment-crest {
+    font-size: 0.58rem;
+    letter-spacing: 0.11em;
+  }
+
+  .parchment-message {
+    font-size: 0.9rem;
+  }
+
+  .preview-order-bar {
+    align-items: flex-end;
+  }
+
+  .preview-order-bar .btn-gold {
+    padding-inline: 0.85rem;
+    font-size: 0.7rem;
+  }
+
+  .purity-inner-card {
+    padding: 1.4rem;
+  }
+
+  .purity-header-row {
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .purity-title {
+    font-size: 1.85rem;
+  }
+
+  .purity-lead {
+    font-size: 0.96rem;
+    line-height: 1.6;
+  }
+
+  .purity-pillars-grid {
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .purity-pillar-item {
+    padding: 1.1rem;
+  }
+
+  /* Sheets use the entire phone canvas and retain their checkout action above safe areas. */
+  .modal-backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .modal-container {
+    max-height: min(92svh, 760px);
+    border-radius: 18px 18px 0 0;
+    border-bottom: 0;
+    padding: 1.15rem 1rem max(1.15rem, env(safe-area-inset-bottom));
+  }
+
+  .modal-inner-grid {
+    gap: 1.25rem;
+  }
+
+  .modal-image-wrapper {
+    aspect-ratio: 16 / 10;
+  }
+
+  .modal-close-btn {
+    top: 10px;
+    right: 10px;
+    width: 42px;
+    height: 42px;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+  }
+
+  .modal-description {
+    font-size: 0.94rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .modal-tasting-grid {
+    gap: 0.75rem;
+    padding: 0.85rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .tasting-val {
+    font-size: 0.78rem;
+  }
+
+  .modal-shelflife {
+    margin-bottom: 1.1rem;
+  }
+
+  .modal-action-row {
+    gap: 0.6rem;
+  }
+
+  .modal-add-btn {
+    min-height: 48px;
+    padding-inline: 0.7rem;
+    font-size: 0.72rem;
+  }
+
+  .quantity-stepper {
+    min-height: 44px;
+  }
+
+  .step-btn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .drawer-panel {
+    max-width: none;
+    height: 100svh;
+    border-left: 0;
+  }
+
+  .drawer-header {
+    padding: 1.1rem 1rem;
+  }
+
+  .drawer-body {
+    padding: 1rem;
+  }
+
+  .drawer-footer {
+    padding: 1rem max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom));
+  }
+
+  .drawer-item-row {
+    gap: 0.7rem;
+  }
+
+  .drawer-item-thumb {
+    width: 76px;
+    height: 76px;
+  }
+
+  .shipping-badge {
+    align-items: flex-start;
+    line-height: 1.35;
+  }
+
+  .checkout-success-view {
+    padding: 2rem 1.2rem max(2rem, env(safe-area-inset-bottom));
+  }
+
+  .footer-root {
+    padding-top: 3rem;
+  }
+
+  .footer-hallmark-banner {
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+    padding: 0 1rem;
+  }
+
+  .footer-star-svg {
+    width: 46px;
+    height: 46px;
+    margin-bottom: 0.45rem;
+  }
+
+  .footer-brand-title {
+    font-size: 1.1rem;
+    letter-spacing: 0.14em;
+  }
+
+  .footer-brand-tag {
+    font-size: 0.67rem;
+  }
+
+  .footer-content-grid {
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .footer-bottom-bar {
+    padding: 1.25rem 0 max(1.25rem, env(safe-area-inset-bottom));
+  }
+
+  .bottom-content {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .bottom-links {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.6rem;
+    line-height: 1.5;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 959px) {
+  .mobile-bag-btn {
+    display: inline-flex;
+  }
+
+  .nav-container {
+    display: grid;
+    grid-template-columns: 52px 1fr 52px;
+  }
+
+  .mobile-menu-btn {
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--gold-hairline);
+    border-radius: 50%;
+    justify-content: center;
+  }
+
+  .mobile-bag-btn {
+    position: relative;
+    justify-self: end;
+    width: 48px;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid var(--gold-border);
+    background: var(--ink-primary);
+    color: #fff;
+  }
+
+  .mobile-bag-count {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 19px;
+    height: 19px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--gold-burnished);
+    color: #fff;
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 359px) {
+  .desserto-sticky-stage {
+    padding-top: 4.65rem;
+  }
+
+  .desserto-headline {
+    font-size: 1.65rem;
+  }
+
+  .desserto-sweet-visual {
+    width: 160px;
+    height: 160px;
+  }
+
+  .descriptor-notes {
+    display: none;
+  }
+
+  .desserto-bottom-tabs {
+    margin-top: 0.35rem;
+  }
+
+  .btn-desserto-primary,
+  .btn-desserto-secondary {
+    padding-inline: 0.65rem;
+  }
+}

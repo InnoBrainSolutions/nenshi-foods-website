@@ -1,0 +1,430 @@
+.collection-section {
+  padding: 6rem 0;
+}
+
+.category-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 3.5rem;
+}
+
+.category-pill {
+  background: transparent;
+  border: 1px solid var(--gold-hairline);
+  color: var(--ink-secondary);
+  padding: 0.55rem 1.2rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.category-pill:hover {
+  border-color: var(--gold-foil);
+  color: var(--ink-primary);
+}
+
+.category-pill-active {
+  background: var(--ink-primary);
+  color: #FFFDF9;
+  border-color: var(--ink-primary);
+}
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.2rem;
+}
+
+@media (min-width: 680px) {
+  .collection-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1080px) {
+  .collection-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.product-card {
+  background: #FFFDF9;
+  border: 1px solid var(--gold-hairline);
+  border-radius: var(--radius-md);
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s ease,
+    box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--shadow-warm-sm);
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+}
+
+.product-card:hover {
+  border-color: rgba(197, 154, 69, 0.5);
+  box-shadow: 0 20px 48px rgba(78, 60, 47, 0.12), 0 4px 16px rgba(197, 154, 69, 0.08);
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+.product-card-spotlight {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 960px) {
+  .product-card-spotlight {
+    grid-template-columns: 1.2fr 1fr;
+    align-items: center;
+    padding: 1.8rem;
+  }
+}
+
+.product-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background-color: var(--bg-cream);
+  border: 1px solid rgba(197, 154, 69, 0.2);
+}
+
+.product-card-spotlight .product-image-container {
+  aspect-ratio: 16 / 10;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.product-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(36, 23, 14, 0.88);
+  color: #DFC07A;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(197, 154, 69, 0.4);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.product-veg-mark {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.image-hover-action {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 6;
+}
+
+.product-card:hover .image-hover-action {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card Sweet / Box View Switcher */
+.card-view-toggle {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  display: flex;
+  background: rgba(255, 253, 249, 0.94);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(197, 154, 69, 0.4);
+  border-radius: var(--radius-pill);
+  padding: 2px;
+  z-index: 6;
+  box-shadow: 0 2px 8px rgba(36, 23, 14, 0.12);
+}
+
+.card-view-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-royal);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.24rem 0.62rem;
+  border-radius: var(--radius-pill);
+  color: var(--ink-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.card-view-btn:hover {
+  color: var(--ink-primary);
+}
+
+.card-view-btn.active {
+  background: var(--ink-primary);
+  color: #FFFDF9;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.16);
+}
+
+.product-image-box {
+  object-fit: cover;
+  animation: boxFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes boxFadeIn {
+  from {
+    opacity: 0.35;
+    transform: scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.inspect-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid var(--gold-border);
+  color: var(--ink-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.5rem 1.05rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.inspect-btn svg {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.inspect-btn:hover {
+  background: #FFF;
+  border-color: var(--gold-burnished);
+  color: var(--gold-burnished);
+  box-shadow: 0 6px 20px rgba(197, 154, 69, 0.25);
+  transform: scale(1.04);
+}
+
+.inspect-btn:hover svg {
+  transform: scale(1.15);
+}
+
+.inspect-btn:active {
+  transform: scale(0.96);
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-top: 1rem;
+}
+
+.product-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+}
+
+.product-hindi {
+  font-size: 0.88rem;
+  color: var(--gold-burnished);
+}
+
+.product-weight {
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.04em;
+}
+
+.product-name {
+  font-size: 1.25rem;
+  color: var(--ink-primary);
+  margin-bottom: 0.5rem;
+  line-height: 1.25;
+  transition: color 0.25s ease;
+}
+
+.product-card:hover .product-name {
+  color: var(--gold-deep);
+}
+
+.product-desc {
+  font-size: 0.94rem;
+  line-height: 1.55;
+  color: var(--ink-secondary);
+  margin-bottom: 1.1rem;
+  flex: 1;
+}
+
+/* Card Size Selector (250g / 500g) */
+.product-size-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.size-row-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+}
+
+.size-row-chips {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.size-mini-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(197, 154, 69, 0.3);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-royal);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.size-mini-chip:hover {
+  border-color: var(--ink-primary);
+  color: var(--ink-primary);
+}
+
+.size-mini-chip.active {
+  background: var(--ink-primary);
+  color: #FFFDF9;
+  border-color: var(--ink-primary);
+  box-shadow: 0 1px 4px rgba(36, 23, 14, 0.15);
+}
+
+.mini-chip-price {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  color: var(--gold-burnished);
+  font-size: 0.68rem;
+}
+
+.size-mini-chip.active .mini-chip-price {
+  color: #DFC07A;
+}
+
+.product-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--gold-hairline);
+  padding-top: 0.85rem;
+  margin-top: auto;
+}
+
+.product-pricing {
+  display: flex;
+  flex-direction: column;
+}
+
+.price-label {
+  font-size: 0.65rem;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.price-value {
+  font-size: 1.22rem;
+  font-weight: 700;
+  color: var(--gold-burnished);
+}
+
+.btn-acquire {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: var(--bg-ivory);
+  border: 1px solid var(--gold-border);
+  color: var(--ink-primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 0.55rem 1.05rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  box-shadow: var(--shadow-warm-sm);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.3s ease;
+}
+
+.btn-acquire svg {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-acquire:hover {
+  background: var(--gold-foil);
+  color: #FFF;
+  border-color: var(--gold-foil);
+  box-shadow: 0 4px 14px rgba(197, 154, 69, 0.3);
+}
+
+.btn-acquire:hover svg {
+  transform: rotate(90deg);
+}
+
+.btn-acquire:active {
+  transform: scale(0.96) translateY(1px);
+}
+
+.btn-acquired {
+  background: var(--veg-green) !important;
+  color: #FFF !important;
+  border-color: var(--veg-green) !important;
+}
+
+
+/* --- CRAFTS CLEAN SECTION --- */

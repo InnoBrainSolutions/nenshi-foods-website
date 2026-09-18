@@ -63,23 +63,25 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Col 2: Our Stores */}
+        {/* Col 2: Store & Kitchen */}
         <div className="footer-col">
-          <h4 className="footer-heading font-royal">Our Stores</h4>
-          <ul className="atelier-list font-serif">
-            <li>
-              <strong>Jaipur</strong>
-              <span>Johari Bazaar, Heritage Quarter</span>
-            </li>
-            <li>
-              <strong>Mumbai</strong>
-              <span>Bandra West & Marine Drive</span>
-            </li>
-            <li>
-              <strong>New Delhi</strong>
-              <span>Defence Colony</span>
-            </li>
-          </ul>
+          <h4 className="footer-heading font-royal">Visit & Contact</h4>
+          <div className="atelier-list font-serif">
+            <div className="footer-address-block">
+              <strong className="footer-location-title">Sweet Shop & Kitchen</strong>
+              <address className="footer-location-address">
+                New Bus Stand, In Front of Sai Mandir,<br />
+                Kukshi, District Dhar,<br />
+                Madhya Pradesh — 454331
+              </address>
+            </div>
+            <div className="footer-fssai-box">
+              <span className="fssai-tag">Govt. Food Safety License</span>
+              <span className="fssai-number">
+                FSSAI Lic. No: <strong>21426990001615</strong>
+              </span>
+            </div>
+          </div>
         </div>
 
         {/* Col 3: Sweets Links */}
@@ -87,7 +89,7 @@ export default function Footer() {
           <h4 className="footer-heading font-royal">Our Sweets</h4>
           <ul className="footer-links-list">
             <li><a href="#sweet-showcase">Kaju Katli</a></li>
-            <li><a href="#sweet-showcase">Alwar Milk Cake</a></li>
+            <li><a href="#sweet-showcase">Milk Cake</a></li>
             <li><a href="#sweet-showcase">Mathura Peda</a></li>
             <li><a href="#sweet-showcase">Besan Laddu</a></li>
             <li><a href="#unboxing">Gift Boxes</a></li>
@@ -133,7 +135,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Nenshi Foods Private Limited. All rights reserved.
           </span>
           <div className="bottom-links">
-            <a href="#purity">Food Safety & FSSAI Certified</a>
+            <a href="#purity">FSSAI Lic. No: 21426990001615</a>
             <span>·</span>
             <a href="#gifting">Gifting Inquiries</a>
             <span>·</span>

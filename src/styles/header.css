@@ -1,0 +1,264 @@
+/* ==========================================================================
+   NENSHI FOODS — APP STYLES
+   Minimalist Royal Ivory & Pinned Sweet Showcase
+   ========================================================================== */
+
+/* --- HEADER --- */
+.header-root {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  background-color: rgba(251, 248, 242, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gold-hairline);
+  transition: all var(--transition-smooth);
+}
+
+.header-scrolled {
+  box-shadow: 0 8px 24px rgba(78, 60, 47, 0.07);
+}
+
+.announcement-bar {
+  background-color: var(--ink-primary);
+  color: #EBDDC3;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid rgba(197, 154, 69, 0.2);
+}
+
+.announcement-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.announcement-text {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 500;
+}
+
+.star-icon {
+  color: var(--gold-foil);
+}
+
+.announcement-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.currency-toggle-btn {
+  background: none;
+  border: 1px solid rgba(197, 154, 69, 0.35);
+  color: #EBDDC3;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.currency-toggle-btn:hover {
+  border-color: var(--gold-foil);
+  color: #FFF;
+}
+
+.veg-badge-inline {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: #EBDDC3;
+}
+
+/* Nav */
+.main-nav {
+  padding: 0.9rem 0;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-links {
+  display: none;
+  align-items: center;
+  gap: 2rem;
+}
+
+@media (min-width: 960px) {
+  .nav-links {
+    display: flex;
+  }
+}
+
+.nav-item {
+  color: var(--ink-secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  position: relative;
+  transition: color var(--transition-fast);
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background-color: var(--gold-foil);
+  transition: width var(--transition-fast);
+}
+
+.nav-item:hover {
+  color: var(--gold-burnished);
+}
+
+.nav-item:hover::after {
+  width: 100%;
+}
+
+/* Center Brand Crest */
+.brand-crest {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  text-align: center;
+}
+
+.crest-emblem {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  background: radial-gradient(circle, rgba(197, 154, 69, 0.12) 0%, transparent 70%);
+  padding: 0.2rem 0.8rem;
+  border-radius: var(--radius-pill);
+}
+
+.crest-star {
+  color: var(--gold-foil);
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.crest-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink-primary);
+  line-height: 1;
+}
+
+.crest-tag {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--gold-burnished);
+}
+
+.crest-sub {
+  font-family: var(--font-serif);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  color: var(--gold-burnished);
+  margin-top: 2px;
+}
+
+/* Bag Button */
+.bag-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--gold-border);
+  color: var(--ink-primary);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.bag-btn:hover {
+  background: var(--gold-subtle);
+  border-color: var(--gold-foil);
+}
+
+.bag-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bag-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gold-burnished);
+  color: #FFF;
+  font-size: 0.72rem;
+  font-weight: 700;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.mobile-menu-btn {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  color: var(--ink-primary);
+  cursor: pointer;
+}
+
+@media (min-width: 960px) {
+  .mobile-menu-btn {
+    display: none;
+  }
+}
+
+.mobile-drawer {
+  background: var(--bg-ivory);
+  border-bottom: 1px solid var(--gold-border);
+  padding: 1.5rem;
+}
+
+.mobile-drawer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.mobile-drawer-links a {
+  color: var(--ink-primary);
+  text-decoration: none;
+  font-family: var(--font-royal);
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
+}
+
+.mobile-drawer-footer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--gold-hairline);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+

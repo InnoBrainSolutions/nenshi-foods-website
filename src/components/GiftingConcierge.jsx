@@ -64,14 +64,15 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
     : `$${currentBox.priceUSD}`;
 
   const handleAddHamper = () => {
+    const hamperId = `giftbox-${currentBox.id}-${ribbonColor}`;
     onAddBespokeHamper({
-      id: `giftbox-${Date.now()}`,
+      id: hamperId,
       name: currentBox.name,
       category: "Gift Box",
       weight: currentBox.weight,
       priceINR: currentBox.priceINR,
       priceUSD: currentBox.priceUSD,
-      image: "/images/ref1.jpg",
+      image: "/images/ref1.webp",
       customDetails: {
         ribbon: ribbonColor,
         seal: sealInitial,
@@ -282,7 +283,7 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
               {/* Corporate and Wedding Notice */}
               <div className="concierge-hotline-note">
                 <p>
-                  Need sweets for a wedding, festival, or corporate gifting? Reach us at <strong>gifts@nenshifoods.com</strong> or <strong>+91 98200 19680</strong>.
+                  Need sweets for a wedding, festival, or corporate gifting? Reach us at <strong>gifts@nenshifoods.in</strong> or <strong>+91 98200 19680</strong>.
                 </p>
               </div>
 

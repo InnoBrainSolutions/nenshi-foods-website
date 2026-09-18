@@ -1,0 +1,55 @@
+.crafts-clean-section {
+  padding: 8rem 0;
+  background-color: var(--bg-ivory);
+  border-top: 1px solid rgba(197, 154, 69, 0.15);
+}
+
+.crafts-clean-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+}
+
+@media (min-width: 960px) {
+  .crafts-clean-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4.5rem;
+  }
+}
+
+.craft-clean-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 1.8rem;
+  border-top: 1px solid rgba(197, 154, 69, 0.25);
+}
+
+.craft-clean-num {
+  font-size: 2.8rem;
+  color: var(--gold-burnished);
+  line-height: 1;
+  margin-bottom: 0.9rem;
+}
+
+.craft-clean-hindi {
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+  margin-bottom: 0.4rem;
+}
+
+.craft-clean-title {
+  font-size: 1.65rem;
+  color: var(--ink-primary);
+  margin-bottom: 1.1rem;
+  line-height: 1.25;
+}
+
+.craft-clean-desc {
+  font-size: 1.12rem;
+  line-height: 1.78;
+  color: var(--ink-secondary);
+}
+
+
+/* --- GIFTING CONCIERGE --- */

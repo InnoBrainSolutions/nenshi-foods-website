@@ -1,27 +1,27 @@
 import React from 'react';
 
-export default function Craftsmanship() {
-  const pillars = [
-    {
-      num: "01",
-      hindi: "पिसाई",
-      title: "Slow-ground nuts",
-      desc: "We grind our cashews and almonds slowly to keep their natural oils and flavour intact. No water added."
-    },
-    {
-      num: "02",
-      hindi: "धीमी आंच",
-      title: "Slow-cooked milk",
-      desc: "Our milk sweets are cooked for hours in heavy brass pans on a low flame — no shortcuts."
-    },
-    {
-      num: "03",
-      hindi: "चांदी वर्क",
-      title: "Pure silver vark",
-      desc: "Topped with 100% vegetarian silver leaf — lab tested and certified safe."
-    }
-  ];
+const CRAFTSMANSHIP_PILLARS = [
+  {
+    num: "01",
+    hindi: "पिसाई",
+    title: "Slow-ground nuts",
+    desc: "We grind our cashews and almonds slowly to keep their natural oils and flavour intact. No water added."
+  },
+  {
+    num: "02",
+    hindi: "धीमी आंच",
+    title: "Slow-cooked milk",
+    desc: "Our milk sweets are cooked for hours in heavy brass pans on a low flame — no shortcuts."
+  },
+  {
+    num: "03",
+    hindi: "चांदी वर्क",
+    title: "Pure silver vark",
+    desc: "Topped with 100% vegetarian silver leaf — lab tested and certified safe."
+  }
+];
 
+export default function Craftsmanship() {
   return (
     <section id="crafts" className="crafts-clean-section">
       <div className="container">
@@ -37,7 +37,7 @@ export default function Craftsmanship() {
 
         {/* 3 Spacious Pillars Grid with Staggered Scroll Reveal */}
         <div className="crafts-clean-grid reveal-stagger">
-          {pillars.map((pillar) => (
+          {CRAFTSMANSHIP_PILLARS.map((pillar) => (
             <div key={pillar.num} className="craft-clean-col" data-cursor="hover">
               <div className="craft-clean-num font-royal">{pillar.num}</div>
               <span className="craft-clean-hindi font-serif">{pillar.hindi}</span>

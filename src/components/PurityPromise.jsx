@@ -1,34 +1,34 @@
 import React from 'react';
 import { ShieldCheck, Leaf, Sparkles } from 'lucide-react';
 
-export default function PurityPromise() {
-  const pillars = [
-    {
-      title: "100% Pure Vegetarian",
-      hindi: "शुद्ध शाकाहारी",
-      desc: "All our sweets are made in a dedicated vegetarian kitchen with real milk, whole nuts, and no chemicals.",
-      badge: "100% Veg"
-    },
-    {
-      title: "Real Silver Vark",
-      hindi: "चांदी वर्क",
-      desc: "Our silver vark is 100% vegetarian, lab tested, and certified safe.",
-      badge: "Lab Tested"
-    },
-    {
-      title: "No Artificial Colours or Flavours",
-      hindi: "प्राकृतिक रंग",
-      desc: "We never use synthetic dyes or chemical essences. Colour comes from Kashmiri saffron, aroma from green cardamom.",
-      badge: "Natural"
-    },
-    {
-      title: "Freshly Made Every Day",
-      hindi: "रोज़ ताज़ा",
-      desc: "Our halwais cook fresh sweets every morning in small batches — so you always get them at their best.",
-      badge: "Fresh Daily"
-    }
-  ];
+const PURITY_PILLARS = [
+  {
+    title: "100% Pure Vegetarian",
+    hindi: "शुद्ध शाकाहारी",
+    desc: "All our sweets are made in a dedicated vegetarian kitchen with real milk, whole nuts, and no chemicals.",
+    badge: "100% Veg"
+  },
+  {
+    title: "Real Silver Vark",
+    hindi: "चांदी वर्क",
+    desc: "Our silver vark is 100% vegetarian, lab tested, and certified safe.",
+    badge: "Lab Tested"
+  },
+  {
+    title: "No Artificial Colours or Flavours",
+    hindi: "प्राकृतिक रंग",
+    desc: "We never use synthetic dyes or chemical essences. Colour comes from Kashmiri saffron, aroma from green cardamom.",
+    badge: "Natural"
+  },
+  {
+    title: "Freshly Made Every Day",
+    hindi: "रोज़ ताज़ा",
+    desc: "Our halwais cook fresh sweets every morning in small batches — so you always get them at their best.",
+    badge: "Fresh Daily"
+  }
+];
 
+export default function PurityPromise() {
   return (
     <section id="purity" className="purity-section">
       <div className="container">
@@ -51,7 +51,7 @@ export default function PurityPromise() {
           </div>
 
           <div className="purity-pillars-grid reveal-stagger">
-            {pillars.map((pillar, idx) => (
+            {PURITY_PILLARS.map((pillar, idx) => (
               <div key={idx} className="purity-pillar-item" data-cursor="hover">
                 <div className="pillar-top">
                   <span className="pillar-hindi font-serif">{pillar.hindi}</span>
@@ -67,7 +67,7 @@ export default function PurityPromise() {
           <div className="purity-seal-strip">
             <div className="strip-item">
               <ShieldCheck size={18} className="strip-icon" />
-              <span>FSSAI Licensed & Food Safety Tested</span>
+              <span>FSSAI Certified · Lic. No. 21426990001615</span>
             </div>
             <div className="strip-divider">✦</div>
             <div className="strip-item">

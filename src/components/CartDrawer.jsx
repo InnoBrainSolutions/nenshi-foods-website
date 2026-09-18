@@ -73,7 +73,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, currency, onUpd
                   <div className="empty-star font-royal">✦</div>
                   <h4 className="empty-title font-royal">Your Bag Is Empty</h4>
                   <p className="empty-desc font-serif">
-                    Explore our signature Kaju Katli, Alwar Milk Cake, Mathura Peda, and festive gift boxes.
+                    Explore our signature Kaju Katli, Milk Cake, Mathura Peda, and festive gift boxes.
                   </p>
                   <button className="btn-outline-gold" onClick={onClose}>
                     <span>Explore Sweets</span>

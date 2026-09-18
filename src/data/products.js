@@ -15,8 +15,8 @@ export const CONFECTIONS = [
     ],
     description: "Our signature Kaju Katli. Made with whole Goan cashews, slow-ground and cooked in desi ghee. Topped with real silver vark and saffron.",
     tagline: "Our signature Kaju Katli",
-    image: "/images/kaju_katli_luxury.jpg",
-    packagingImage: "/images/nenshi-box-kaju-katli.jpg",
+    image: "/images/kaju_katli_luxury.webp",
+    packagingImage: "/images/nenshi-box-kaju-katli.webp",
     accent: "#C59A45",
     badge: "Bestseller",
     tastingNotes: {
@@ -31,7 +31,7 @@ export const CONFECTIONS = [
   },
   {
     id: "nenshi-milk-cake",
-    name: "Alwar Milk Cake",
+    name: "Milk Cake",
     titleHindi: "मिल्क केक",
     category: "Signature Mithai",
     priceINR: 150,
@@ -45,8 +45,8 @@ export const CONFECTIONS = [
     ],
     description: "Milk simmered for hours on a slow flame until it turns into soft, golden mawa. Flavoured with green cardamom.",
     tagline: "Slow-cooked golden mawa",
-    image: "/images/milk_cake_luxury.jpg",
-    packagingImage: "/images/nenshi-box-milk-cake.jpg",
+    image: "/images/milk_cake_luxury.webp",
+    packagingImage: "/images/nenshi-box-milk-cake.webp",
     accent: "#9E742A",
     badge: "Traditional Recipe",
     tastingNotes: {
@@ -75,8 +75,8 @@ export const CONFECTIONS = [
     ],
     description: "Roasted khoya pedas with crushed cardamom and a light dusting of sugar. Crafted with slow-roasted cow milk khoya and sealed fresh in our royal packaging box.",
     tagline: "Roasted khoya pedas",
-    image: "/images/mathura_peda_luxury.jpg",
-    packagingImage: "/images/mawa_peda.png",
+    image: "/images/mathura_peda_luxury.webp",
+    packagingImage: "/images/mawa_peda.webp",
     accent: "#B45309",
     badge: "Classic Recipe",
     tastingNotes: {
@@ -105,8 +105,8 @@ export const CONFECTIONS = [
     ],
     description: "Gram flour slow-roasted in pure desi ghee, hand-rolled with crunchy melon seeds and toasted almonds. Sealed in our signature golden-filigree box.",
     tagline: "Pure ghee besan laddoo",
-    image: "/images/besan_laddu_luxury.jpg",
-    packagingImage: "/images/besan_laddoo.png",
+    image: "/images/besan_laddu_luxury.webp",
+    packagingImage: "/images/besan_laddoo.webp",
     accent: "#D97706",
     badge: "Festive Favorite",
     tastingNotes: {
@@ -129,7 +129,7 @@ export const CONFECTIONS = [
     weight: "1,000g · Assorted 9-Compartment Box",
     description: "A classic assortment of Kaju Katli, Milk Cake, Mathura Peda, and roasted almonds in a gift box.",
     tagline: "For every special occasion",
-    image: "/images/ref1.jpg",
+    image: "/images/ref1.webp",
     accent: "#9E742A",
     badge: "Popular Gift",
     tastingNotes: {
@@ -152,7 +152,7 @@ export const CONFECTIONS = [
     weight: "1,250g · Mithai & Dry Fruits",
     description: "Our grand celebration box. Filled with Kaju Katli, saffron sweets, roasted cashews, and pistachios.",
     tagline: "Made to share with family and friends",
-    image: "/images/ref2.jpg",
+    image: "/images/ref2.webp",
     accent: "#1A7A4A",
     badge: "Festive Collection",
     tastingNotes: {
@@ -175,7 +175,7 @@ export const CONFECTIONS = [
     weight: "750g · 6 Rows of Sweets",
     description: "Six varieties of our best-loved sweets: kaju katli, pista barfi, Mysore pak, and dry fruit bites.",
     tagline: "Six sweets in one box",
-    image: "/images/ref3.jpg",
+    image: "/images/ref3.webp",
     accent: "#0D9488",
     badge: "Family Favorite",
     tastingNotes: {
@@ -198,7 +198,7 @@ export const CONFECTIONS = [
     weight: "1,200g · Two-Tier Gift Box",
     description: "A two-tier gift box with individually placed sweets, a greeting card, and our finest handcrafted mithai.",
     tagline: "Perfect for weddings and big celebrations",
-    image: "/images/ref4.jpg",
+    image: "/images/ref4.webp",
     accent: "#1E3A8A",
     badge: "Wedding Favorite",
     tastingNotes: {
@@ -229,7 +229,7 @@ export const UNBOXING_COMPARTMENTS = [
       { size: "250g", priceINR: 300, priceUSD: 5 },
       { size: "500g", priceINR: 550, priceUSD: 9 }
     ],
-    image: "/images/nenshi-box-kaju-katli.jpg",
+    image: "/images/nenshi-box-kaju-katli.webp",
     desc: "Presented in our warm ivory gift box with gold borders, an airtight inner tray, and silver-vark kaju katli pieces.",
     specs: {
       cashewContent: "65% whole cashew nuts",
@@ -241,7 +241,7 @@ export const UNBOXING_COMPARTMENTS = [
   {
     id: "milkcake",
     number: "02",
-    name: "Alwar Milk Cake",
+    name: "Milk Cake",
     sub: "Slow-Cooked Caramelized Milk",
     tag: "Artisan Box",
     priceINR: 150,
@@ -253,7 +253,7 @@ export const UNBOXING_COMPARTMENTS = [
       { size: "250g", priceINR: 150, priceUSD: 3 },
       { size: "500g", priceINR: 300, priceUSD: 5 }
     ],
-    image: "/images/nenshi-box-milk-cake.jpg",
+    image: "/images/nenshi-box-milk-cake.webp",
     desc: "Slow-cooked caramelised milk cake in a gold-embossed box with sealed lining to preserve moisture and cardamom aroma.",
     specs: {
       milkReduction: "Slow-reduced pure cow milk",
@@ -277,7 +277,7 @@ export const UNBOXING_COMPARTMENTS = [
       { size: "250g", priceINR: 150, priceUSD: 3 },
       { size: "500g", priceINR: 300, priceUSD: 5 }
     ],
-    image: "/images/mawa_peda.png",
+    image: "/images/mawa_peda.webp",
     desc: "Cow milk khoya roasted over gentle heat until golden-brown, presented in our gold-filigree Nenshi Mawa Peda luxury gift box.",
     specs: {
       base: "Slow-roasted milk khoya",
@@ -301,7 +301,7 @@ export const UNBOXING_COMPARTMENTS = [
       { size: "250g", priceINR: 150, priceUSD: 3 },
       { size: "500g", priceINR: 300, priceUSD: 5 }
     ],
-    image: "/images/besan_laddoo.png",
+    image: "/images/besan_laddoo.webp",
     desc: "Gram flour slow-roasted patiently in pure desi ghee, hand-rolled with crunchy melon seeds and presented in our royal Nenshi Besan Laddoo gift box.",
     specs: {
       gheeGrade: "Pure cow ghee",
@@ -373,23 +373,23 @@ export const SCROLL_SHOWCASE_SWEETS = [
       { size: "250g", priceINR: 300, priceUSD: 5 },
       { size: "500g", priceINR: 550, priceUSD: 9 }
     ],
-    image: "/images/kaju_katli_luxury.jpg",
-    boxImage: "/images/nenshi-box-kaju-katli.jpg",
+    image: "/images/kaju_katli_luxury.webp",
+    boxImage: "/images/nenshi-box-kaju-katli.webp",
     accent: "#C59A45",
     desc: "Made with whole Goan cashews, slow-ground without water and cooked with pure cane sugar. Topped with silver vark and saffron.",
     tastingNotes: ["Whole Goan Cashews", "Pure Silver Leaf", "Kashmiri Saffron", "Soft Melt-in-Mouth"],
     floatingSweets: [
-      { id: "f1", name: "Kaju Diamond", img: "/images/kaju_katli_luxury.jpg", x: -280, y: -160, size: 90, rot: -15 },
-      { id: "f2", name: "Silver Leaf", img: "/images/kaju_katli_luxury.jpg", x: -320, y: 110, size: 75, rot: 25 },
-      { id: "f3", name: "Saffron Katli", img: "/images/kaju_katli_luxury.jpg", x: 290, y: -120, size: 85, rot: 18 },
-      { id: "f4", name: "Cashew Gem", img: "/images/kaju_katli_luxury.jpg", x: 310, y: 130, size: 80, rot: -20 }
+      { id: "f1", name: "Kaju Diamond", img: "/images/kaju_katli_luxury.webp", x: -280, y: -160, size: 90, rot: -15 },
+      { id: "f2", name: "Silver Leaf", img: "/images/kaju_katli_luxury.webp", x: -320, y: 110, size: 75, rot: 25 },
+      { id: "f3", name: "Saffron Katli", img: "/images/kaju_katli_luxury.webp", x: 290, y: -120, size: 85, rot: 18 },
+      { id: "f4", name: "Cashew Gem", img: "/images/kaju_katli_luxury.webp", x: 310, y: 130, size: 80, rot: -20 }
     ]
   },
   {
     id: "milk-cake",
     number: "02",
     total: "04",
-    name: "Alwar Milk Cake",
+    name: "Milk Cake",
     hindi: "मिल्क केक",
     tagline: "Milk simmered for hours into rich, golden mawa.",
     sub: "Slow-Cooked Whole Milk · Green Cardamom",
@@ -402,16 +402,16 @@ export const SCROLL_SHOWCASE_SWEETS = [
       { size: "250g", priceINR: 150, priceUSD: 3 },
       { size: "500g", priceINR: 300, priceUSD: 5 }
     ],
-    image: "/images/milk_cake_luxury.jpg",
-    boxImage: "/images/nenshi-box-milk-cake.jpg",
+    image: "/images/milk_cake_luxury.webp",
+    boxImage: "/images/nenshi-box-milk-cake.webp",
     accent: "#9E742A",
     desc: "Pure whole milk simmered in heavy brass pans until it becomes rich, soft, golden mawa. Finished with cardamom and pistachios.",
     tastingNotes: ["Pure Cow Milk", "Rich Caramelized Mawa", "Green Cardamom", "Soft Grainy Crumb"],
     floatingSweets: [
-      { id: "f1", name: "Caramel Core", img: "/images/milk_cake_luxury.jpg", x: -290, y: -140, size: 95, rot: -10 },
-      { id: "f2", name: "Mawa Bite", img: "/images/milk_cake_luxury.jpg", x: -310, y: 120, size: 80, rot: 20 },
-      { id: "f3", name: "Pistachio Cake", img: "/images/milk_cake_luxury.jpg", x: 300, y: -130, size: 88, rot: 15 },
-      { id: "f4", name: "Amber Cut", img: "/images/milk_cake_luxury.jpg", x: 280, y: 140, size: 76, rot: -18 }
+      { id: "f1", name: "Caramel Core", img: "/images/milk_cake_luxury.webp", x: -290, y: -140, size: 95, rot: -10 },
+      { id: "f2", name: "Mawa Bite", img: "/images/milk_cake_luxury.webp", x: -310, y: 120, size: 80, rot: 20 },
+      { id: "f3", name: "Pistachio Cake", img: "/images/milk_cake_luxury.webp", x: 300, y: -130, size: 88, rot: 15 },
+      { id: "f4", name: "Amber Cut", img: "/images/milk_cake_luxury.webp", x: 280, y: 140, size: 76, rot: -18 }
     ]
   },
   {
@@ -431,16 +431,16 @@ export const SCROLL_SHOWCASE_SWEETS = [
       { size: "250g", priceINR: 150, priceUSD: 3 },
       { size: "500g", priceINR: 300, priceUSD: 5 }
     ],
-    image: "/images/mathura_peda_luxury.jpg",
-    boxImage: "/images/mawa_peda.png",
+    image: "/images/mathura_peda_luxury.webp",
+    boxImage: "/images/mawa_peda.webp",
     accent: "#B45309",
     desc: "Cow milk khoya roasted over gentle heat until golden-brown. Hand-stamped and dusted with cardamom sugar, presented in our bespoke gift box.",
     tastingNotes: ["Slow-Roasted Khoya", "Traditional Seal", "Crushed Cardamom", "Soft Velvety Texture"],
     floatingSweets: [
-      { id: "f1", name: "Seal Medallion", img: "/images/mathura_peda_luxury.jpg", x: -280, y: -150, size: 90, rot: -12 },
-      { id: "f2", name: "Peda Round", img: "/images/mathura_peda_luxury.jpg", x: -300, y: 130, size: 82, rot: 22 },
-      { id: "f3", name: "Cardamom Peda", img: "/images/mathura_peda_luxury.jpg", x: 310, y: -110, size: 85, rot: 12 },
-      { id: "f4", name: "Golden Khoya", img: "/images/mathura_peda_luxury.jpg", x: 290, y: 135, size: 78, rot: -25 }
+      { id: "f1", name: "Seal Medallion", img: "/images/mathura_peda_luxury.webp", x: -280, y: -150, size: 90, rot: -12 },
+      { id: "f2", name: "Peda Round", img: "/images/mathura_peda_luxury.webp", x: -300, y: 130, size: 82, rot: 22 },
+      { id: "f3", name: "Cardamom Peda", img: "/images/mathura_peda_luxury.webp", x: 310, y: -110, size: 85, rot: 12 },
+      { id: "f4", name: "Golden Khoya", img: "/images/mathura_peda_luxury.webp", x: 290, y: 135, size: 78, rot: -25 }
     ]
   },
   {
@@ -460,16 +460,16 @@ export const SCROLL_SHOWCASE_SWEETS = [
       { size: "250g", priceINR: 150, priceUSD: 3 },
       { size: "500g", priceINR: 300, priceUSD: 5 }
     ],
-    image: "/images/besan_laddu_luxury.jpg",
-    boxImage: "/images/besan_laddoo.png",
+    image: "/images/besan_laddu_luxury.webp",
+    boxImage: "/images/besan_laddoo.webp",
     accent: "#D97706",
     desc: "Gram flour roasted slowly in pure desi ghee until fragrant and nutty, hand-rolled with crunchy melon seeds and toasted almonds in our royal gift box.",
     tastingNotes: ["Pure Cow Ghee", "Coarse Gram Flour", "Toasted Almonds", "Melt-in-Mouth"],
     floatingSweets: [
-      { id: "f1", name: "Golden Sphere", img: "/images/besan_laddu_luxury.jpg", x: -285, y: -155, size: 92, rot: -14 },
-      { id: "f2", name: "Ghee Laddu", img: "/images/besan_laddu_luxury.jpg", x: -305, y: 125, size: 78, rot: 28 },
-      { id: "f3", name: "Almond Laddu", img: "/images/besan_laddu_luxury.jpg", x: 295, y: -125, size: 86, rot: 14 },
-      { id: "f4", name: "Saffron Pearl", img: "/images/besan_laddu_luxury.jpg", x: 300, y: 130, size: 80, rot: -22 }
+      { id: "f1", name: "Golden Sphere", img: "/images/besan_laddu_luxury.webp", x: -285, y: -155, size: 92, rot: -14 },
+      { id: "f2", name: "Ghee Laddu", img: "/images/besan_laddu_luxury.webp", x: -305, y: 125, size: 78, rot: 28 },
+      { id: "f3", name: "Almond Laddu", img: "/images/besan_laddu_luxury.webp", x: 295, y: -125, size: 86, rot: 14 },
+      { id: "f4", name: "Saffron Pearl", img: "/images/besan_laddu_luxury.webp", x: 300, y: 130, size: 80, rot: -22 }
     ]
   }
 ];
