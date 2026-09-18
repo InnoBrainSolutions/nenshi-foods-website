@@ -80,7 +80,7 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
             window.setTimeout(() => {
               isTransitioningRef.current = false;
               wheelDrivenRef.current = false;
-            }, 620);
+            }, 520);
             return;
           }
 
@@ -116,7 +116,7 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
           window.setTimeout(() => {
             isTransitioningRef.current = false;
             wheelDrivenRef.current = false;
-          }, 620);
+          }, 520);
           return;
         }
 
@@ -242,11 +242,6 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
             <circle cx="600" cy="460" r="320" stroke="#C59A45" strokeWidth="0.8" strokeDasharray="4 6" strokeOpacity="0.24" />
             <circle cx="600" cy="460" r="220" stroke="#C59A45" strokeWidth="1" strokeOpacity="0.30" />
           </svg>
-
-          {/* Golden Celestial Moon at Arch Apex */}
-          <div className="desserto-arch-moon">
-            <div className="moon-crescent-icon" />
-          </div>
         </div>
 
         {/* Master Halwai Artisan Badge with subtle parallax */}
@@ -270,18 +265,12 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
           </div>
         </div>
 
-        {/* Progress Step Counter (01 / 04) with smooth editorial slide */}
+        {/* Progress Step Counter (01 / 04) */}
         <div className="desserto-step-counter">
-          <span className="step-num-wrap">
-            <span key={currentSweet.number} className="step-num-anim">
-              {currentSweet.number}
-            </span>
-          </span>
+          <span className="step-current">{currentSweet.number}</span>
           <span className="step-sep">/</span>
           <span className="step-total">{currentSweet.total}</span>
-          <span key={currentSweet.name} className="step-title-anim">
-            {currentSweet.name}
-          </span>
+          <span className="step-title">{currentSweet.name}</span>
         </div>
 
         {/* Dynamic Floating Sweets Orbiting Around The Arch (4 Sweets Orbiting) */}
@@ -336,12 +325,12 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
           </div>
 
           {/* Centerpiece Active Sweet Showcase Card */}
-          <div className="desserto-sweet-stage">
+          <div className="desserto-sweet-stage" key={`${currentSweet.id}-${viewMode}`}>
 
             {/* View Mode & Size Toggle Capsules */}
             <div className="desserto-toggles-row">
               {currentSweet.boxImage && (
-                <div className="desserto-view-capsule">
+                <div className="desserto-view-capsule" data-cursor="hover">
                   <button
                     type="button"
                     className={`desserto-view-btn ${viewMode === 'sweet' ? 'view-btn-active' : ''}`}
@@ -362,7 +351,7 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
               )}
 
               {/* 250g / 500g Size Capsule */}
-              <div className="desserto-size-capsule">
+              <div className="desserto-size-capsule" data-cursor="hover">
                 <button
                   type="button"
                   className={`desserto-view-btn ${selectedSize === '250g' ? 'view-btn-active' : ''}`}
@@ -382,45 +371,20 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
               </div>
             </div>
 
-            {/* Butter-Smooth 3D Layered Platters Viewport */}
             <div
               className={`desserto-sweet-visual ${viewMode === 'box' && currentSweet.boxImage ? 'visual-is-box' : ''}`}
+              data-cursor="view"
               style={{
                 transform: `perspective(1000px) rotateY(${mouseOffset.x * 5.5}deg) rotateX(${-mouseOffset.y * 5.5}deg) scale(${1 + Math.sin(localProgress * Math.PI) * 0.04}) rotate(${Math.sin(scrollProgress * Math.PI * 2) * 2}deg)`,
                 transition: 'transform 0.22s cubic-bezier(0.16, 1, 0.3, 1)'
               }}
             >
               <div className="sweet-halo-glow" />
-              <div className="desserto-platters-viewport">
-                {SCROLL_SHOWCASE_SWEETS.map((sweet, idx) => {
-                  const isActive = idx === activeIndex;
-                  const isPast = idx < activeIndex;
-                  const isBox = viewMode === 'box' && sweet.boxImage;
-                  const imgSrc = isBox ? sweet.boxImage : sweet.image;
-
-                  return (
-                    <div
-                      key={sweet.id}
-                      className={`desserto-platter-layer ${
-                        isActive
-                          ? 'platter-active'
-                          : isPast
-                          ? 'platter-past'
-                          : 'platter-future'
-                      }`}
-                      aria-hidden={!isActive}
-                    >
-                      <img
-                        src={imgSrc}
-                        alt={sweet.name}
-                        className={`desserto-hero-img ${isBox ? 'desserto-box-img' : ''}`}
-                        loading="eager"
-                        decoding="async"
-                      />
-                    </div>
-                  );
-                })}
-              </div>
+              <img
+                src={viewMode === 'box' && currentSweet.boxImage ? currentSweet.boxImage : currentSweet.image}
+                alt={currentSweet.name}
+                className={`desserto-hero-img ${viewMode === 'box' && currentSweet.boxImage ? 'desserto-box-img' : ''}`}
+              />
               <div
                 className="sweet-shadow-soft"
                 style={{
@@ -430,40 +394,24 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
               />
             </div>
 
-            {/* Butter-Smooth Layered Descriptor Stage */}
-            <div className="desserto-descriptor-stage">
-              {SCROLL_SHOWCASE_SWEETS.map((sweet, idx) => {
-                const isActive = idx === activeIndex;
-                const isPast = idx < activeIndex;
-                return (
-                  <div
-                    key={sweet.id}
-                    className={`desserto-descriptor-panel ${
-                      isActive
-                        ? 'descriptor-active'
-                        : isPast
-                        ? 'descriptor-past'
-                        : 'descriptor-future'
-                    }`}
-                    aria-hidden={!isActive}
-                  >
-                    <div className="descriptor-header">
-                      <span className="descriptor-hindi">{sweet.hindi}</span>
-                      <span className="descriptor-price">
-                        ₹{selectedSize === '500g' ? (sweet.price500INR || 300) : sweet.priceINR} / ${selectedSize === '500g' ? (sweet.price500USD || 5) : sweet.priceUSD} · {selectedSize}
-                      </span>
-                    </div>
-                    <p className="descriptor-desc">{sweet.desc}</p>
-                    <div className="descriptor-notes">
-                      {sweet.tastingNotes.map((note, i) => (
-                        <span key={i} className="descriptor-note-badge">
-                          {note}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                );
-              })}
+            {/* Active Sweet Descriptor */}
+            <div className="desserto-sweet-descriptor">
+              <div className="descriptor-header">
+                <span className="descriptor-hindi">{currentSweet.hindi}</span>
+                <span className="descriptor-price">
+                  ₹{selectedSize === '500g' ? (currentSweet.price500INR || 300) : currentSweet.priceINR} / ${selectedSize === '500g' ? (currentSweet.price500USD || 5) : currentSweet.priceUSD} · {selectedSize}
+                </span>
+              </div>
+              <p className="descriptor-desc">{currentSweet.desc}</p>
+
+              {/* Tasting Note Badges */}
+              <div className="descriptor-notes">
+                {currentSweet.tastingNotes.map((note, i) => (
+                  <span key={i} className="descriptor-note-badge">
+                    {note}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
 

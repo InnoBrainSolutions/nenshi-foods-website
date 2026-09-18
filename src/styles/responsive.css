@@ -137,8 +137,6 @@
     transform: scale(1.42);
   }
 
-  /* The full arch has room on desktop; on phones its moon competes with the headline. */
-  .desserto-arch-moon,
   .desserto-scroll-hint {
     display: none;
   }
