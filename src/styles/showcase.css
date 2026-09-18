@@ -2,21 +2,20 @@
    DESSERTO-INSPIRED PINNED SCROLL SWEET SHOWCASE (WARM WHITE & GOLD THEME)
    ========================================================================== */
 
-/* Desktop progression is wheel-controlled in React; keep just enough runway
-   after the fourth sweet for the sticky stage to release gracefully. */
+/* Desktop progression is wheel-controlled in React, staying steady at the top
+   for all 4 sweets before natural page scroll seamlessly takes over. */
 .desserto-track {
   position: relative;
   width: 100%;
-  height: 160vh;
+  min-height: calc(100vh - 95px);
   background-color: var(--bg-ivory);
 }
 
-/* Pinned 100vh Sticky Viewport */
+/* Pinned Steady Viewport */
 .desserto-sticky-stage {
-  position: sticky;
-  top: 0;
+  position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: calc(100vh - 95px);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -25,6 +24,7 @@
   background: radial-gradient(circle at 50% 45%, #FFFDF9 0%, #F8F1E5 60%, #EFE4D0 100%);
   border-bottom: 1px solid var(--gold-hairline);
   user-select: none;
+  padding: 1.2rem 0 1.8rem 0;
 }
 
 /* Architectural Concentric Golden Line Arches */

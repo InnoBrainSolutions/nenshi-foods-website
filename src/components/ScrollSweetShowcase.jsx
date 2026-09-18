@@ -45,96 +45,150 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
     setMouseOffset({ x: 0, y: 0 });
   };
 
-  // Monitor scroll position through the 160vh track
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!trackRef.current) return;
-      // Skip scroll-based index updates while the wheel handler is driving
-      if (wheelDrivenRef.current) return;
-
-      const rect = trackRef.current.getBoundingClientRect();
-      const windowH = window.innerHeight;
-      const totalDist = trackRef.current.offsetHeight - windowH;
-
-      if (totalDist <= 0) return;
-
-      const scrolled = -rect.top;
-      if (scrolled <= 0) {
-        return;
-      }
-
-      const progress = Math.max(0, Math.min(1, scrolled / totalDist));
-      const numSweets = SCROLL_SHOWCASE_SWEETS.length;
-      const rawIdx = Math.min(numSweets - 1, Math.floor(progress * numSweets));
-      setScrollProgress(progress);
-      if (rawIdx !== activeIndexRef.current) {
-        activeIndexRef.current = rawIdx;
-        setActiveIndex(rawIdx);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // On desktop, wheel gestures step through sweets one at a time.
-  // When the user reaches the last sweet and scrolls down (or first and scrolls up),
-  // we programmatically scroll past the track so the rest of the page continues.
+  // Switch sweets via mouse wheel while keeping the page completely steady at the top.
+  // Scrolling down cycles Sweet 1 -> 2 -> 3 -> 4 in place without moving the page.
+  // When Sweet 4 is reached and the user scrolls down again, native page scroll naturally takes over.
   useEffect(() => {
     const handleWheel = (event) => {
-      if (!trackRef.current || !window.matchMedia('(pointer: fine)').matches) return;
+      // Only fine pointer devices (mice, trackpads)
+      if (!window.matchMedia('(pointer: fine)').matches) return;
 
-      const rect = trackRef.current.getBoundingClientRect();
-      const isPinnedStory = rect.top <= 1 && rect.bottom > window.innerHeight + 1;
-      if (!isPinnedStory || Math.abs(event.deltaY) < 4) return;
-
+      const isAtTop = window.scrollY <= 15;
       const direction = event.deltaY > 0 ? 1 : -1;
       const currentIndex = activeIndexRef.current;
-      const nextIndex = currentIndex + direction;
-      const isAtEnd = direction > 0 && currentIndex === SCROLL_SHOWCASE_SWEETS.length - 1;
-      const isAtStart = direction < 0 && currentIndex === 0;
+      const numSweets = SCROLL_SHOWCASE_SWEETS.length;
 
-      if (isAtEnd) {
-        // Scroll past the track so the rest of the page takes over
-        const trackBottom = trackRef.current.offsetTop + trackRef.current.offsetHeight - window.innerHeight;
-        window.scrollTo({ top: trackBottom + 2, behavior: 'smooth' });
-        return;
+      // Scrolling DOWN
+      if (direction > 0) {
+        if (isAtTop) {
+          // If we haven't reached the last sweet (0 -> 1 -> 2 -> 3), stay steady and cycle
+          if (currentIndex < numSweets - 1) {
+            event.preventDefault();
+            if (window.scrollY > 0) {
+              window.scrollTo({ top: 0 });
+            }
+
+            if (isTransitioningRef.current || Math.abs(event.deltaY) < 4) return;
+
+            isTransitioningRef.current = true;
+            wheelDrivenRef.current = true;
+            const nextIndex = currentIndex + 1;
+            activeIndexRef.current = nextIndex;
+            setActiveIndex(nextIndex);
+            setScrollProgress(nextIndex / (numSweets - 1));
+
+            window.setTimeout(() => {
+              isTransitioningRef.current = false;
+              wheelDrivenRef.current = false;
+            }, 520);
+            return;
+          }
+
+          // If on the final sweet (index 3), prevent residual momentum from jerking the scroll immediately
+          if (isTransitioningRef.current) {
+            event.preventDefault();
+            return;
+          }
+
+          // All 4 sweets finished! Let native scroll naturally proceed down the page.
+          return;
+        }
       }
 
-      if (isAtStart) {
-        // Scroll above the track so the user can go back up
-        window.scrollTo({ top: Math.max(0, trackRef.current.offsetTop - 2), behavior: 'smooth' });
-        return;
+      // Scrolling UP
+      if (direction < 0) {
+        // When at top and not on first sweet, step backward (3 -> 2 -> 1 -> 0)
+        if (isAtTop && currentIndex > 0) {
+          event.preventDefault();
+          if (window.scrollY > 0) {
+            window.scrollTo({ top: 0 });
+          }
+
+          if (isTransitioningRef.current || Math.abs(event.deltaY) < 4) return;
+
+          isTransitioningRef.current = true;
+          wheelDrivenRef.current = true;
+          const nextIndex = currentIndex - 1;
+          activeIndexRef.current = nextIndex;
+          setActiveIndex(nextIndex);
+          setScrollProgress(nextIndex / (numSweets - 1));
+
+          window.setTimeout(() => {
+            isTransitioningRef.current = false;
+            wheelDrivenRef.current = false;
+          }, 520);
+          return;
+        }
+
+        // If at top and on sweet 0, or if scrolled down the page, allow native scrolling
       }
-
-      event.preventDefault();
-      if (isTransitioningRef.current) return;
-
-      // Mark that the wheel handler is driving so the scroll handler doesn't interfere
-      wheelDrivenRef.current = true;
-      isTransitioningRef.current = true;
-      activeIndexRef.current = nextIndex;
-      setActiveIndex(nextIndex);
-      setScrollProgress(nextIndex / (SCROLL_SHOWCASE_SWEETS.length - 1));
-
-      window.setTimeout(() => {
-        isTransitioningRef.current = false;
-        wheelDrivenRef.current = false;
-      }, 620);
     };
 
     window.addEventListener('wheel', handleWheel, { passive: false });
     return () => window.removeEventListener('wheel', handleWheel);
   }, []);
 
-  // Programmatic jump to sweet on tab click
+  // Programmatic select sweet on tab or orbit click
   const handleSelectSweet = (index) => {
-    if (!trackRef.current) return;
-    const totalDist = trackRef.current.offsetHeight - window.innerHeight;
-    const targetScroll = trackRef.current.offsetTop + (index / (SCROLL_SHOWCASE_SWEETS.length - 1)) * totalDist;
-    window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+    if (index < 0 || index >= SCROLL_SHOWCASE_SWEETS.length) return;
     activeIndexRef.current = index;
     setActiveIndex(index);
+    setScrollProgress(index / (SCROLL_SHOWCASE_SWEETS.length - 1));
+    if (window.scrollY > 0 && window.scrollY < 200) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  // Keyboard navigation for sweets when viewing the showcase at top
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (window.scrollY > 15) return;
+      if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)) return;
+
+      const currentIndex = activeIndexRef.current;
+      const numSweets = SCROLL_SHOWCASE_SWEETS.length;
+
+      if (['ArrowDown', 'ArrowRight'].includes(event.key)) {
+        if (currentIndex < numSweets - 1) {
+          event.preventDefault();
+          handleSelectSweet(currentIndex + 1);
+        }
+      } else if (['ArrowUp', 'ArrowLeft'].includes(event.key)) {
+        if (currentIndex > 0) {
+          event.preventDefault();
+          handleSelectSweet(currentIndex - 1);
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  // Mobile touch swipe gestures
+  const touchStartRef = useRef({ x: 0, y: 0 });
+
+  const handleTouchStart = (e) => {
+    if (!e.touches || e.touches.length === 0) return;
+    touchStartRef.current = {
+      x: e.touches[0].clientX,
+      y: e.touches[0].clientY
+    };
+  };
+
+  const handleTouchEnd = (e) => {
+    if (!e.changedTouches || e.changedTouches.length === 0) return;
+    const diffX = touchStartRef.current.x - e.changedTouches[0].clientX;
+    const diffY = touchStartRef.current.y - e.changedTouches[0].clientY;
+    if (Math.abs(diffX) > 45 && Math.abs(diffX) > Math.abs(diffY)) {
+      const currentIndex = activeIndexRef.current;
+      const numSweets = SCROLL_SHOWCASE_SWEETS.length;
+      if (diffX > 0 && currentIndex < numSweets - 1) {
+        handleSelectSweet(currentIndex + 1);
+      } else if (diffX < 0 && currentIndex > 0) {
+        handleSelectSweet(currentIndex - 1);
+      }
+    }
   };
 
   const currentSweet = SCROLL_SHOWCASE_SWEETS[activeIndex];
@@ -146,11 +200,13 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
 
   return (
     <section ref={trackRef} className="desserto-track" id="sweet-showcase">
-      {/* Pinned 100vh Sticky Viewport with mousemove physical interaction */}
+      {/* Pinned Steady Viewport with physical interaction & touch support */}
       <div
         className="desserto-sticky-stage"
         onMouseMove={handleStageMouseMove}
         onMouseLeave={handleStageMouseLeave}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
       >
 
         {/* Architectural Background Line Arches with subtle counter-depth */}
@@ -411,7 +467,11 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
 
         {/* Scroll Interaction Indicator Hint */}
         <div className="desserto-scroll-hint">
-          <span>Scroll to cycle sweets ({currentSweet.number} / 04)</span>
+          <span>
+            {activeIndex < SCROLL_SHOWCASE_SWEETS.length - 1
+              ? `Scroll to cycle sweets (${currentSweet.number} / 04)`
+              : 'Scroll down to explore our craft'}
+          </span>
           <ChevronDown size={14} className="scroll-hint-arrow" />
         </div>
 
