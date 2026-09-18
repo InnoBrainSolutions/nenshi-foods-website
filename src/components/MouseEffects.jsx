@@ -1,9 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-// Pure Gold Center Dot & Smooth Following Circle Cursor with Click Effect
+// Luxury Gold Circle & Follower Ring Cursor Animation with Physics Damping & Magnetic Control
 export default function MouseEffects() {
   const dotRef = useRef(null);
   const ringRef = useRef(null);
+  const [cursorLabel, setCursorLabel] = useState('');
 
   useEffect(() => {
     if (
@@ -23,6 +24,8 @@ export default function MouseEffects() {
     let ringY = -100;
     let isVisible = false;
     let isHover = false;
+    let isView = false;
+    let isDrag = false;
     let isPressed = false;
     let rafId = null;
 
@@ -52,6 +55,8 @@ export default function MouseEffects() {
       }
 
       ringEl.classList.toggle('cursor-hover', isHover);
+      ringEl.classList.toggle('cursor-view', isView);
+      ringEl.classList.toggle('cursor-drag', isDrag);
       ringEl.classList.toggle('cursor-pressed', isPressed);
     };
 
@@ -66,7 +71,7 @@ export default function MouseEffects() {
         updateCursorClasses();
       }
 
-      // Subtle magnetic pull for buttons
+      // Magnetic pull logic
       if (activeMagneticEl) {
         const rect = activeMagneticEl.getBoundingClientRect();
         const distX = mouseX - (rect.left + rect.width / 2);
@@ -76,7 +81,7 @@ export default function MouseEffects() {
         if (Math.hypot(distX, distY) >= maxDist) {
           resetMagnetic();
         } else {
-          activeMagneticEl.style.transform = `translate3d(${distX * 0.2}px, ${distY * 0.2}px, 0)`;
+          activeMagneticEl.style.transform = `translate3d(${distX * 0.22}px, ${distY * 0.22}px, 0)`;
         }
       }
     };
@@ -85,11 +90,33 @@ export default function MouseEffects() {
       const target = e.target;
       if (!target || !(target instanceof Element)) return;
 
+      const viewTarget = target.closest('[data-cursor="view"]');
+      const dragTarget = target.closest('[data-cursor="drag"]');
       const interactiveTarget = target.closest(
         'button, a, input, select, textarea, [role="button"], [role="tab"], [data-magnetic], [data-cursor="hover"], .orbit-sweet-item'
       );
 
-      isHover = Boolean(interactiveTarget);
+      if (viewTarget) {
+        isView = true;
+        isHover = false;
+        isDrag = false;
+        setCursorLabel('VIEW');
+      } else if (dragTarget) {
+        isDrag = true;
+        isView = false;
+        isHover = false;
+        setCursorLabel('⇄');
+      } else if (interactiveTarget) {
+        isHover = true;
+        isView = false;
+        isDrag = false;
+        setCursorLabel('');
+      } else {
+        isHover = false;
+        isView = false;
+        isDrag = false;
+        setCursorLabel('');
+      }
 
       const magneticTarget = findMagneticTarget(target);
       if (magneticTarget) {
@@ -138,7 +165,7 @@ export default function MouseEffects() {
       ringX += (mouseX - ringX) * 0.16;
       ringY += (mouseY - ringY) * 0.16;
 
-      const scale = isPressed ? 0.75 : isHover ? 1.25 : 1;
+      const scale = isPressed ? 0.78 : isView ? 1.35 : isDrag ? 1.2 : isHover ? 1.28 : 1;
 
       dotEl.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
       ringEl.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) scale(${scale})`;
@@ -174,7 +201,13 @@ export default function MouseEffects() {
   return (
     <>
       <div ref={dotRef} className="custom-cursor-dot" aria-hidden="true" />
-      <div ref={ringRef} className="custom-cursor-ring" aria-hidden="true" />
+      <div ref={ringRef} className="custom-cursor-ring" aria-hidden="true">
+        {cursorLabel && (
+          <span className={cursorLabel === 'VIEW' ? 'cursor-label-view' : 'cursor-label-drag'}>
+            {cursorLabel}
+          </span>
+        )}
+      </div>
     </>
   );
 }

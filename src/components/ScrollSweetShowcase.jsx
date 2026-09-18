@@ -80,7 +80,7 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
             window.setTimeout(() => {
               isTransitioningRef.current = false;
               wheelDrivenRef.current = false;
-            }, 620);
+            }, 520);
             return;
           }
 
@@ -116,7 +116,7 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
           window.setTimeout(() => {
             isTransitioningRef.current = false;
             wheelDrivenRef.current = false;
-          }, 620);
+          }, 520);
           return;
         }
 
@@ -265,18 +265,12 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
           </div>
         </div>
 
-        {/* Progress Step Counter (01 / 04) with smooth editorial slide */}
+        {/* Progress Step Counter (01 / 04) */}
         <div className="desserto-step-counter">
-          <span className="step-num-wrap">
-            <span key={currentSweet.number} className="step-num-anim">
-              {currentSweet.number}
-            </span>
-          </span>
+          <span className="step-current">{currentSweet.number}</span>
           <span className="step-sep">/</span>
           <span className="step-total">{currentSweet.total}</span>
-          <span key={currentSweet.name} className="step-title-anim">
-            {currentSweet.name}
-          </span>
+          <span className="step-title">{currentSweet.name}</span>
         </div>
 
         {/* Dynamic Floating Sweets Orbiting Around The Arch (4 Sweets Orbiting) */}
@@ -319,9 +313,8 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
         {/* Centerpiece Hero Content & Main Active Sweet */}
         <div className="desserto-center-container">
 
-          {/* Poetic Central Headline */}
+          {/* Poetic Central Headline with Crown Insignia */}
           <div className="desserto-headline-wrap">
-            {/* Celestial Royal Moon Insignia Crown */}
             <div className="desserto-crest-crown" aria-hidden="true">
               <span className="crown-line" />
               <div className="desserto-arch-moon">
@@ -329,7 +322,6 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
               </div>
               <span className="crown-line" />
             </div>
-
             <span className="desserto-eyebrow">NENSHI FOODS · EST. 1968</span>
             <h1 className="desserto-headline">
               Made slow, <em>made right.</em>

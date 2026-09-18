@@ -44,38 +44,38 @@
   opacity: 0.9;
 }
 
-/* Celestial Moon Insignia Crown (Carefully Placed Above Eyebrow) */
+/* Celestial Moon Insignia Crown (Positioned Safely Above Headline with Zero Overlap) */
 .desserto-crest-crown {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  margin-bottom: 0.55rem;
+  margin-bottom: 0.75rem;
 }
 
 .crown-line {
-  width: 28px;
+  width: 32px;
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(197, 154, 69, 0.45), transparent);
 }
 
 .desserto-arch-moon {
   position: relative;
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   border: 1.2px solid var(--gold-burnished);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.88);
-  box-shadow: 0 0 14px rgba(197, 154, 69, 0.26);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 14px rgba(197, 154, 69, 0.28);
   backdrop-filter: blur(4px);
 }
 
 .moon-crescent-icon {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: var(--gold-burnished);
   clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
@@ -169,19 +169,6 @@
   color: var(--ink-primary);
 }
 
-.step-num-wrap {
-  display: inline-flex;
-  overflow: hidden;
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--ink-primary);
-}
-
-.step-num-anim {
-  display: inline-block;
-  animation: stepNumFade 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
 .step-sep {
   font-size: 0.75rem;
   color: var(--ink-faint);
@@ -199,39 +186,6 @@
   font-size: 0.76rem;
   font-weight: 600;
   color: var(--gold-burnished);
-}
-
-.step-title-anim {
-  display: inline-block;
-  margin-left: 0.4rem;
-  padding-left: 0.6rem;
-  border-left: 1px solid var(--gold-hairline);
-  font-size: 0.76rem;
-  font-weight: 600;
-  color: var(--gold-burnished);
-  animation: stepTitleFade 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-@keyframes stepNumFade {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes stepTitleFade {
-  from {
-    opacity: 0;
-    transform: translateX(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
 }
 
 /* Orbital Floating Sweets (Matching Reference Composition) */
@@ -352,6 +306,24 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 1.5rem;
+  animation: sweetReveal 0.62s var(--ease-luxury) both;
+}
+
+@keyframes sweetReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.975);
+  }
+
+  58% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.006);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* Desserto View Mode & Size Toggle Capsules */
@@ -423,19 +395,6 @@
   }
 }
 
-.desserto-sweet-visual.visual-is-box {
-  border-radius: var(--radius-md);
-  width: 260px;
-  height: 180px;
-}
-
-@media (min-width: 768px) {
-  .desserto-sweet-visual.visual-is-box {
-    width: 320px;
-    height: 220px;
-  }
-}
-
 .desserto-platters-viewport {
   position: relative;
   width: 100%;
@@ -485,6 +444,19 @@
   z-index: 2;
 }
 
+.desserto-sweet-visual.visual-is-box {
+  border-radius: var(--radius-md);
+  width: 260px;
+  height: 180px;
+}
+
+@media (min-width: 768px) {
+  .desserto-sweet-visual.visual-is-box {
+    width: 320px;
+    height: 220px;
+  }
+}
+
 .desserto-box-img {
   border-radius: var(--radius-md) !important;
   object-fit: cover !important;
@@ -528,10 +500,10 @@
 
 .sweet-halo-glow {
   position: absolute;
-  width: 112%;
-  height: 112%;
+  width: 110%;
+  height: 110%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(235, 205, 140, 0.36) 0%, rgba(245, 237, 224, 0.05) 70%, transparent 100%);
+  background: radial-gradient(circle, rgba(235, 205, 140, 0.35) 0%, rgba(245, 237, 224, 0.05) 70%, transparent 100%);
   filter: blur(14px);
   z-index: 1;
 }
@@ -542,9 +514,10 @@
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-  border: 3px solid rgba(255, 255, 255, 0.92);
+  border: 3px solid rgba(255, 255, 255, 0.9);
   box-shadow: 0 16px 44px rgba(50, 30, 15, 0.22);
   z-index: 2;
+  transition: opacity 0.3s ease;
 }
 
 .sweet-shadow-soft {
@@ -771,19 +744,17 @@
   color: var(--ink-muted);
   font-size: 0.78rem;
   font-weight: 600;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all var(--transition-fast);
 }
 
 .desserto-tab-btn:hover {
   color: var(--ink-primary);
-  background: rgba(197, 154, 69, 0.08);
 }
 
 .desserto-tab-active {
-  background: var(--ink-primary) !important;
+  background: var(--ink-primary);
   color: #FFFDF9 !important;
-  box-shadow: 0 4px 14px rgba(36, 23, 14, 0.2);
-  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(36, 23, 14, 0.16);
 }
 
 .tab-num {
