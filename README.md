@@ -8,6 +8,10 @@
 > **Live Website**: [https://nenshifoods.in](https://nenshifoods.in)  
 > Handcrafted traditional Indian sweets (mithai) made slow, made right. Est. 1968.
 
+<p align="center">
+  <img src="./public/images/website-preview.webp" alt="Nenshi Foods Luxury Showcase Preview" width="100%" />
+</p>
+
 ---
 
 ## ✦ Brand Story & Experience
