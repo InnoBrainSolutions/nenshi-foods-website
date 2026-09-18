@@ -296,5 +296,156 @@
   color: var(--ink-secondary);
 }
 
+/* --- CHECKOUT FORM VIEW --- */
+.checkout-form-view {
+  padding: 1.25rem 1.5rem 2rem 1.5rem;
+}
 
-/* --- FOOTER --- */
+.btn-back-cart {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: none;
+  border: none;
+  color: var(--gold-burnished);
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 1rem;
+  transition: color var(--transition-fast);
+}
+
+.btn-back-cart:hover {
+  color: var(--ink-primary);
+}
+
+.checkout-hero-note {
+  background: rgba(197, 154, 69, 0.08);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 0.95rem;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--ink-secondary);
+  margin-bottom: 1.25rem;
+}
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.05rem;
+}
+
+.checkout-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.checkout-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink-primary);
+}
+
+.checkout-label svg {
+  color: var(--gold-burnished);
+}
+
+.checkout-input {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  color: var(--ink-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  box-sizing: border-box;
+}
+
+.checkout-input:focus {
+  outline: none;
+  border-color: var(--gold-burnished);
+  box-shadow: 0 0 0 3px rgba(197, 154, 69, 0.15);
+  background: #FFF;
+}
+
+.checkout-textarea {
+  resize: vertical;
+  min-height: 72px;
+}
+
+.checkout-input.input-error {
+  border-color: #DC2626;
+  background: rgba(220, 38, 38, 0.02);
+}
+
+.field-error-text {
+  font-size: 0.75rem;
+  color: #DC2626;
+  margin-top: 0.15rem;
+}
+
+.checkout-order-summary-box {
+  background: var(--bg-ivory);
+  border: 1px solid var(--gold-hairline);
+  border-radius: var(--radius-sm);
+  padding: 0.9rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--ink-secondary);
+}
+
+.summary-total {
+  font-size: 1.15rem;
+  color: var(--gold-burnished);
+  font-weight: 700;
+}
+
+/* WhatsApp Primary Action Button */
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  background: linear-gradient(135deg, #25D366 0%, #1EBE5D 100%);
+  color: #FFFFFF !important;
+  font-family: var(--font-sans);
+  font-size: 0.94rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 0.95rem 1.4rem;
+  border-radius: var(--radius-pill);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.32);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.btn-whatsapp:hover {
+  background: linear-gradient(135deg, #2EE06E 0%, #22C55E 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.42);
+}
+
+.btn-whatsapp:active {
+  transform: translateY(0);
+}

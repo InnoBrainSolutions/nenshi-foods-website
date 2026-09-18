@@ -125,6 +125,30 @@ body {
   color: var(--gold-burnished);
 }
 
+/* Accessibility Skip-To-Content Link */
+.skip-to-content {
+  position: fixed;
+  top: -100px;
+  left: 1.5rem;
+  background: var(--ink-primary);
+  color: var(--gold-foil);
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--gold-burnished);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  z-index: 100000;
+  text-decoration: none;
+  transition: top 0.2s ease-in-out;
+  box-shadow: 0 8px 24px rgba(36, 23, 14, 0.3);
+}
+
+.skip-to-content:focus {
+  top: 1.5rem;
+  outline: 2px solid var(--gold-burnished);
+}
+
 /* Buttons */
 .btn-gold {
   display: inline-flex;

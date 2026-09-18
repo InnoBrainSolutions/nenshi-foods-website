@@ -1,0 +1,17 @@
+{
+  "name": "Nenshi Foods · Traditional Indian Sweets",
+  "short_name": "Nenshi Foods",
+  "description": "Handcrafted traditional Indian sweets (mithai) made with pure cow ghee, real milk & whole nuts since 1968.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FBF8F2",
+  "theme_color": "#1A0F08",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

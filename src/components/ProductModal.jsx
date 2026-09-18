@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Plus, Minus, Check } from 'lucide-react';
 
 export default function ProductModal({ product, currency, onClose, onAddToCart }) {
@@ -6,6 +6,25 @@ export default function ProductModal({ product, currency, onClose, onAddToCart }
   const [added, setAdded] = useState(false);
   const [activeView, setActiveView] = useState('sweet'); // 'sweet' | 'box'
   const [selectedSize, setSelectedSize] = useState('250g'); // '250g' | '500g'
+
+  useEffect(() => {
+    if (!product) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [product, onClose]);
 
   if (!product) return null;
 

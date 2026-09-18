@@ -12,8 +12,11 @@
     <meta name="theme-color" content="#1A0F08" />
     <link rel="canonical" href="https://nenshifoods.in/" />
 
-    <!-- Favicon -->
+    <!-- Favicon & PWA App Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="format-detection" content="telephone=no" />
     <link rel="alternate icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,5 61,35 95,35 68,55 79,88 50,68 21,88 32,55 5,35 39,35' fill='%23C59A45'/></svg>" />
 
     <!-- Open Graph / Facebook -->
@@ -35,7 +38,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Schema.org JSON-LD Structured Data for LocalBusiness & WebSite -->
+    <!-- Schema.org JSON-LD Structured Data for LocalBusiness, WebSite & Product Catalog -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -69,6 +72,65 @@
           "publisher": {
             "@id": "https://nenshifoods.in/#organization"
           }
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://nenshifoods.in/#mithai-collection",
+          "name": "Signature Mithai Collection",
+          "itemListElement": [
+            {
+              "@type": "Product",
+              "position": 1,
+              "name": "Kaju Katli",
+              "description": "Delicate diamond diamonds crafted from slow-ground Goan cashews and edible silver leaf.",
+              "image": "https://nenshifoods.in/images/kaju_katli_luxury.webp",
+              "offers": {
+                "@type": "Offer",
+                "price": "300",
+                "priceCurrency": "INR",
+                "availability": "https://schema.org/InStock"
+              }
+            },
+            {
+              "@type": "Product",
+              "position": 2,
+              "name": "Alwar Milk Cake",
+              "description": "Slow-simmered whole dairy caramelized in brass kadhais to a golden two-tone grain.",
+              "image": "https://nenshifoods.in/images/milk_cake_luxury.webp",
+              "offers": {
+                "@type": "Offer",
+                "price": "240",
+                "priceCurrency": "INR",
+                "availability": "https://schema.org/InStock"
+              }
+            },
+            {
+              "@type": "Product",
+              "position": 3,
+              "name": "Mathura Mawa Peda",
+              "description": "Dark-roasted bati mawa infused with green cardamom and fragrant nutmeg.",
+              "image": "https://nenshifoods.in/images/mawa_peda_luxury.webp",
+              "offers": {
+                "@type": "Offer",
+                "price": "220",
+                "priceCurrency": "INR",
+                "availability": "https://schema.org/InStock"
+              }
+            },
+            {
+              "@type": "Product",
+              "position": 4,
+              "name": "Besan Laddoo",
+              "description": "Coarsely ground gram flour roasted for 4 hours in pure desi cow ghee with chopped nuts.",
+              "image": "https://nenshifoods.in/images/motichoor_laddu_luxury.webp",
+              "offers": {
+                "@type": "Offer",
+                "price": "200",
+                "priceCurrency": "INR",
+                "availability": "https://schema.org/InStock"
+              }
+            }
+          ]
         }
       ]
     }

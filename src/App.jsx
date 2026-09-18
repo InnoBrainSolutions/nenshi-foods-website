@@ -95,6 +95,11 @@ export default function App() {
 
   return (
     <div className="app-shell">
+      {/* Accessibility Skip Link */}
+      <a href="#main-content" className="skip-to-content">
+        Skip to main content
+      </a>
+
       {/* Subtle Custom Interaction Cursor & Magnetic Field */}
       <MouseEffects />
 
