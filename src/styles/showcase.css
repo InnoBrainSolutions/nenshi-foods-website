@@ -158,6 +158,19 @@
   color: var(--ink-primary);
 }
 
+.step-num-wrap {
+  display: inline-flex;
+  overflow: hidden;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.step-num-anim {
+  display: inline-block;
+  animation: stepNumFade 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 .step-sep {
   font-size: 0.75rem;
   color: var(--ink-faint);
@@ -175,6 +188,39 @@
   font-size: 0.76rem;
   font-weight: 600;
   color: var(--gold-burnished);
+}
+
+.step-title-anim {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding-left: 0.6rem;
+  border-left: 1px solid var(--gold-hairline);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--gold-burnished);
+  animation: stepTitleFade 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes stepNumFade {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes stepTitleFade {
+  from {
+    opacity: 0;
+    transform: translateX(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* Orbital Floating Sweets (Matching Reference Composition) */
@@ -295,24 +341,6 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 1.5rem;
-  animation: sweetReveal 0.62s var(--ease-luxury) both;
-}
-
-@keyframes sweetReveal {
-  from {
-    opacity: 0;
-    transform: translateY(12px) scale(0.975);
-  }
-
-  58% {
-    opacity: 1;
-    transform: translateY(-2px) scale(1.006);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
 }
 
 /* Desserto View Mode & Size Toggle Capsules */
@@ -373,6 +401,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  perspective: 1200px;
   transition: transform 0.25s ease-out, width 0.35s ease, height 0.35s ease, border-radius 0.35s ease;
 }
 
@@ -394,6 +423,55 @@
     width: 320px;
     height: 220px;
   }
+}
+
+.desserto-platters-viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+/* Butter-Smooth 3D Crossfading Platter Layers */
+.desserto-platter-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform, opacity, filter;
+  transition: transform 0.74s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.desserto-platter-layer.platter-active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  filter: blur(0px);
+  pointer-events: auto;
+  z-index: 5;
+}
+
+.desserto-platter-layer.platter-past {
+  opacity: 0;
+  transform: translate3d(0, -38px, 0) scale(0.84) rotate(-14deg);
+  filter: blur(5px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.desserto-platter-layer.platter-future {
+  opacity: 0;
+  transform: translate3d(0, 38px, 0) scale(0.84) rotate(14deg);
+  filter: blur(5px);
+  pointer-events: none;
+  z-index: 2;
 }
 
 .desserto-box-img {
@@ -439,10 +517,10 @@
 
 .sweet-halo-glow {
   position: absolute;
-  width: 110%;
-  height: 110%;
+  width: 112%;
+  height: 112%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(235, 205, 140, 0.35) 0%, rgba(245, 237, 224, 0.05) 70%, transparent 100%);
+  background: radial-gradient(circle, rgba(235, 205, 140, 0.36) 0%, rgba(245, 237, 224, 0.05) 70%, transparent 100%);
   filter: blur(14px);
   z-index: 1;
 }
@@ -453,10 +531,9 @@
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-  border: 3px solid rgba(255, 255, 255, 0.9);
+  border: 3px solid rgba(255, 255, 255, 0.92);
   box-shadow: 0 16px 44px rgba(50, 30, 15, 0.22);
   z-index: 2;
-  transition: opacity 0.3s ease;
 }
 
 .sweet-shadow-soft {
@@ -470,10 +547,52 @@
   z-index: 0;
 }
 
-/* Active Sweet Descriptor Card */
-.desserto-sweet-descriptor {
+/* Butter-Smooth Descriptor Stage with Fluid Masked Crossfade */
+.desserto-descriptor-stage {
+  position: relative;
   margin-top: 1.25rem;
   max-width: 580px;
+  width: 100%;
+  min-height: 115px;
+}
+
+.desserto-descriptor-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  will-change: transform, opacity, filter;
+  transition: transform 0.68s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.58s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.58s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.desserto-descriptor-panel.descriptor-active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  filter: blur(0px);
+  pointer-events: auto;
+  position: relative;
+}
+
+.desserto-descriptor-panel.descriptor-past {
+  opacity: 0;
+  transform: translate3d(0, -18px, 0);
+  filter: blur(3px);
+  pointer-events: none;
+  position: absolute;
+}
+
+.desserto-descriptor-panel.descriptor-future {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  filter: blur(3px);
+  pointer-events: none;
+  position: absolute;
 }
 
 .descriptor-header {
@@ -641,17 +760,19 @@
   color: var(--ink-muted);
   font-size: 0.78rem;
   font-weight: 600;
-  transition: all var(--transition-fast);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .desserto-tab-btn:hover {
   color: var(--ink-primary);
+  background: rgba(197, 154, 69, 0.08);
 }
 
 .desserto-tab-active {
-  background: var(--ink-primary);
+  background: var(--ink-primary) !important;
   color: #FFFDF9 !important;
-  box-shadow: 0 2px 8px rgba(36, 23, 14, 0.16);
+  box-shadow: 0 4px 14px rgba(36, 23, 14, 0.2);
+  transform: translateY(-1px);
 }
 
 .tab-num {
