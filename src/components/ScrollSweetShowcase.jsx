@@ -59,7 +59,7 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
       if (totalDist <= 0) return;
 
       const scrolled = -rect.top;
-      if (scrolled <= 0 && sParam !== null) {
+      if (scrolled <= 0) {
         return;
       }
 
