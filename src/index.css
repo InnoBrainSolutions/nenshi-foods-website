@@ -63,7 +63,9 @@
 }
 
 /* Reset & Base */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -249,18 +251,39 @@ body {
 
 /* Animations */
 @keyframes foilShimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 @keyframes gentleFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 @keyframes pulseSubtle {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.05); }
+
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
 }
 
 /* Responsive container */
@@ -328,12 +351,12 @@ body {
   align-items: center;
   justify-content: center;
   transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              margin 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.25s ease,
-              background-color 0.25s ease,
-              box-shadow 0.25s ease,
-              opacity 0.25s ease;
+    height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    margin 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease,
+    opacity 0.25s ease;
   will-change: transform;
 }
 
@@ -358,7 +381,9 @@ body {
 }
 
 /* Hide custom cursor on coarse touch pointers */
-@media (pointer: coarse), (hover: none) {
+@media (pointer: coarse),
+(hover: none) {
+
   .custom-cursor-dot,
   .custom-cursor-ring {
     display: none !important;
@@ -370,7 +395,7 @@ body {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
@@ -379,33 +404,33 @@ body {
   transform: translateY(0);
 }
 
-.reveal-stagger > * {
+.reveal-stagger>* {
   opacity: 0;
   transform: translateY(22px);
   transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
-.reveal-stagger.revealed > *:nth-child(1) {
+.reveal-stagger.revealed>*:nth-child(1) {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.05s;
 }
 
-.reveal-stagger.revealed > *:nth-child(2) {
+.reveal-stagger.revealed>*:nth-child(2) {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.16s;
 }
 
-.reveal-stagger.revealed > *:nth-child(3) {
+.reveal-stagger.revealed>*:nth-child(3) {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.27s;
 }
 
-.reveal-stagger.revealed > *:nth-child(4) {
+.reveal-stagger.revealed>*:nth-child(4) {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.38s;
@@ -413,18 +438,23 @@ body {
 
 /* Accessibility: Respect Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+
   .custom-cursor-dot,
   .custom-cursor-ring {
     display: none !important;
   }
+
   .reveal-on-scroll,
-  .reveal-stagger > * {
+  .reveal-stagger>* {
     opacity: 1 !important;
     transform: none !important;
   }
