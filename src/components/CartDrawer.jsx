@@ -77,30 +77,34 @@ export default function CartDrawer({ isOpen, onClose, cartItems, currency, onUpd
     e.preventDefault();
     if (!validateForm()) return;
 
-    // Generate beautifully formatted WhatsApp receipt message
+    // Generate beautifully formatted luxury WhatsApp receipt message
     const orderItemsSummary = cartItems
-      .map(
-        (item, i) =>
-          `${i + 1}. *${item.name}* (${item.weight || 'Artisanal Box'})\n   Qty: ${item.quantity} × ${currency === 'INR' ? '₹' + item.priceINR : '$' + item.priceUSD} = ${currency === 'INR' ? '₹' + (item.priceINR * item.quantity) : '$' + (item.priceUSD * item.quantity)}`
-      )
-      .join('\n');
+      .map((item, i) => {
+        const unitPrice = currency === 'INR' ? `₹${item.priceINR}` : `$${item.priceUSD}`;
+        const itemTotal = currency === 'INR' ? `₹${item.priceINR * item.quantity}` : `$${item.priceUSD * item.quantity}`;
+        return `${i + 1}️⃣ *${item.name}*\n   ▫️ Pack: ${item.weight || 'Artisanal Box'}\n   ▫️ Qty: ${item.quantity} × ${unitPrice}\n   ▫️ Subtotal: *${itemTotal}*`;
+      })
+      .join('\n\n');
 
-    const messageText = `*✦ NEW ORDER — NENSHI FOODS ✦*
-────────────────────────
-*CUSTOMER DETAILS*
-👤 *Name:* ${formData.name.trim()}
-📞 *Phone:* ${formData.phone.trim()}
-📍 *Delivery Address:* ${formData.address.trim()}
+    const messageText = `✨ *NENSHI FOODS — DIRECT ORDER RECEIPT* ✨
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👤 *CUSTOMER INFORMATION*
+▫️ *Name:* ${formData.name.trim()}
+▫️ *Phone:* ${formData.phone.trim()}
+▫️ *Delivery Address:* ${formData.address.trim()}
 ${includeGiftCard && formData.giftNote.trim() ? `💌 *Gift Note:* "${formData.giftNote.trim()}"\n` : ''}
-────────────────────────
-*ORDER ITEMS (${cartItems.length})*
+🛒 *ORDER SUMMARY (${cartItems.length} ${cartItems.length === 1 ? 'Item' : 'Items'})*
+───────────────────────────
 ${orderItemsSummary}
-────────────────────────
-💰 *TOTAL PAYABLE:* ${formattedTotal}
-💳 *Payment Mode:* Cash on Delivery / UPI
-✨ *Packing:* Safe Food-Grade Luxury Pack
+───────────────────────────
 
-_Please confirm my order and share estimated dispatch time!_`;
+💳 *PAYMENT & SUMMARY*
+▫️ *Total Payable:* *${formattedTotal}*
+▫️ *Payment Method:* Cash on Delivery / UPI
+▫️ *Packaging:* Sealed Food-Grade Luxury Box
+
+🙏 _Thank you for choosing Nenshi Foods! Please confirm my order and share estimated dispatch time._`;
 
     const encodedMsg = encodeURIComponent(messageText);
     const whatsappUrl = `https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodedMsg}`;
