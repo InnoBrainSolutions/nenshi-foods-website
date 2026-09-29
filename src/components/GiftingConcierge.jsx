@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Gift, Check } from 'lucide-react';
+import { STORE_CONFIG } from '../config/store';
 
 export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
   const [selectedBox, setSelectedBox] = useState('ivory-star');
@@ -282,7 +283,7 @@ export default function GiftingConcierge({ currency, onAddBespokeHamper }) {
               {/* Corporate and Wedding Notice */}
               <div className="concierge-hotline-note">
                 <p>
-                  Need sweets for a wedding, festival, or corporate gifting? Reach us at <strong>gifts@nenshifoods.in</strong> or <strong>+91 98200 19680</strong>.
+                  Need sweets for a wedding, festival, or corporate gifting? Reach us at <strong>gifts@nenshifoods.in</strong> or <a href={`https://wa.me/${STORE_CONFIG.whatsappNumber}`} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}><strong>{STORE_CONFIG.formattedPhone}</strong></a>.
                 </p>
               </div>
 

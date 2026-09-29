@@ -8,6 +8,7 @@ import PurityPromise from './components/PurityPromise';
 import Footer from './components/Footer';
 import ProductModal from './components/ProductModal';
 import CartDrawer from './components/CartDrawer';
+import WhatsAppButton from './components/WhatsAppButton';
 import MouseEffects from './components/MouseEffects';
 import { useScrollReveal } from './hooks/useScrollReveal';
 import './App.css';
@@ -161,6 +162,8 @@ export default function App() {
         onRemoveItem={handleRemoveItem}
         onClearCart={handleClearCart}
       />
+      {/* Floating Luxury WhatsApp Chat Widget */}
+      <WhatsAppButton />
     </div>
   );
 }

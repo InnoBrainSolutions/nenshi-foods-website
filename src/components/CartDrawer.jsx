@@ -158,7 +158,7 @@ _Please confirm my order and share estimated dispatch time!_`;
               </div>
               <div className="manifesto-row">
                 <span>Notification:</span>
-                <span>Sent to WhatsApp ({STORE_CONFIG.whatsappNumber})</span>
+                <span>Sent to WhatsApp ({STORE_CONFIG.formattedPhone})</span>
               </div>
             </div>
 
@@ -218,7 +218,7 @@ _Please confirm my order and share estimated dispatch time!_`;
                   id="cust-phone"
                   type="tel"
                   className={`checkout-input ${formErrors.phone ? 'input-error' : ''}`}
-                  placeholder="e.g. +91 98260 XXXXX"
+                  placeholder="e.g. +91 90398 21471"
                   value={formData.phone}
                   onChange={(e) => handleInputChange('phone', e.target.value)}
                 />

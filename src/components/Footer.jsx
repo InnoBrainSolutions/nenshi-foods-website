@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Send, Check } from 'lucide-react';
+import { Send, Check, Phone } from 'lucide-react';
+import { STORE_CONFIG } from '../config/store';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -61,6 +62,32 @@ export default function Footer() {
             <span className="veg-stamp" aria-hidden="true" />
             <span>100% Pure Vegetarian</span>
           </div>
+          <div style={{ marginTop: '1rem' }}>
+            <a 
+              href={STORE_CONFIG.facebookUrl} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="Follow Nenshi Foods on Facebook"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                color: '#DFC07A',
+                fontSize: '0.85rem',
+                textDecoration: 'none',
+                padding: '0.4rem 0.8rem',
+                borderRadius: '20px',
+                border: '1px solid rgba(223, 192, 122, 0.3)',
+                background: 'rgba(255, 255, 255, 0.03)',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+              <span>Follow on Facebook</span>
+            </a>
+          </div>
         </div>
 
         {/* Col 2: Store & Kitchen */}
@@ -74,6 +101,17 @@ export default function Footer() {
                 Kukshi, District Dhar,<br />
                 Madhya Pradesh — 454331
               </address>
+              <div style={{ marginTop: '0.6rem', fontSize: '0.85rem' }}>
+                <a 
+                  href={`https://wa.me/${STORE_CONFIG.whatsappNumber}`} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  style={{ color: '#DFC07A', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
+                >
+                  <Phone size={13} />
+                  <span>WhatsApp: <strong>{STORE_CONFIG.formattedPhone}</strong></span>
+                </a>
+              </div>
             </div>
             <div className="footer-fssai-box">
               <span className="fssai-tag">Govt. Food Safety License</span>
@@ -136,6 +174,8 @@ export default function Footer() {
           </span>
           <div className="bottom-links">
             <a href="#purity">FSSAI Lic. No: 21426990001615</a>
+            <span>·</span>
+            <a href={STORE_CONFIG.facebookUrl} target="_blank" rel="noopener noreferrer">Facebook Page</a>
             <span>·</span>
             <a href="#gifting">Gifting Inquiries</a>
             <span>·</span>
