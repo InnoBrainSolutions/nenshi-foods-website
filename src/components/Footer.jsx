@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Send, Check, Phone } from 'lucide-react';
 import { STORE_CONFIG } from '../config/store';
+import { trackNewsletterLead, trackWhatsAppContact } from '../utils/analytics';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -9,6 +10,7 @@ export default function Footer() {
   const handleSubscribe = (e) => {
     e.preventDefault();
     if (email.trim()) {
+      trackNewsletterLead();
       setSubscribed(true);
       setEmail('');
       setTimeout(() => setSubscribed(false), 3000);
@@ -106,6 +108,7 @@ export default function Footer() {
                   href={`https://wa.me/${STORE_CONFIG.whatsappNumber}`} 
                   target="_blank" 
                   rel="noopener noreferrer"
+                  onClick={() => trackWhatsAppContact('footer_whatsapp_link')}
                   style={{ color: '#DFC07A', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
                 >
                   <Phone size={13} />

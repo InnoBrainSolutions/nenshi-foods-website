@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, Trash2, Plus, Minus, ArrowRight, ArrowLeft, ShieldCheck, Check, MessageCircle, MapPin, Phone, User, Send } from 'lucide-react';
 import { STORE_CONFIG } from '../config/store';
+import { trackInitiateCheckout, trackWhatsAppPurchase } from '../utils/analytics';
 
 export default function CartDrawer({ isOpen, onClose, cartItems, currency, onUpdateQuantity, onRemoveItem, onClearCart }) {
   const [step, setStep] = useState('cart'); // 'cart' | 'checkout' | 'success'
@@ -66,6 +67,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, currency, onUpd
   };
 
   const handleProceedToCheckout = () => {
+    trackInitiateCheckout(cartItems, total, currency);
     setStep('checkout');
   };
 
@@ -111,6 +113,8 @@ ${orderItemsSummary}
 
     const encodedMsg = encodeURIComponent(messageText);
     const whatsappUrl = `https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodedMsg}`;
+
+    trackWhatsAppPurchase(cartItems, total, currency, formData);
 
     setLastOrderUrl(whatsappUrl);
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');

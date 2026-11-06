@@ -1,9 +1,11 @@
 import React from 'react';
 import { MessageCircle } from 'lucide-react';
 import { STORE_CONFIG } from '../config/store';
+import { trackWhatsAppContact } from '../utils/analytics';
 
 export default function WhatsAppButton() {
   const handleOpenWhatsApp = () => {
+    trackWhatsAppContact('floating_whatsapp_button');
     const url = `https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent(
       'Hello Nenshi Foods! I would like to inquire about your sweets and gift boxes.'
     )}`;

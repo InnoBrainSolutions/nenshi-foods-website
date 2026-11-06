@@ -11,6 +11,7 @@ import CartDrawer from './components/CartDrawer';
 import WhatsAppButton from './components/WhatsAppButton';
 import MouseEffects from './components/MouseEffects';
 import { useScrollReveal } from './hooks/useScrollReveal';
+import { trackViewContent, trackAddToCart } from './utils/analytics';
 import './App.css';
 
 const INITIAL_CART = [
@@ -48,17 +49,15 @@ export default function App() {
     setCurrency(prev => prev === "INR" ? "USD" : "INR");
   };
 
-  const handleAddToCart = (product, qty = 1) => {
-    if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
-      const unitValue = currency === 'INR' ? product.priceINR : product.priceUSD;
-      window.fbq('track', 'AddToCart', {
-        content_ids: [product.id],
-        content_name: product.name,
-        content_type: 'product',
-        value: unitValue * qty,
-        currency
-      });
+  const handleSelectProduct = (product) => {
+    if (product) {
+      trackViewContent(product, currency);
     }
+    setSelectedProduct(product);
+  };
+
+  const handleAddToCart = (product, qty = 1) => {
+    trackAddToCart(product, qty, currency);
 
     setCartItems(prev => {
       const existing = prev.find(item => item.id === product.id);
@@ -143,7 +142,7 @@ export default function App() {
         {/* Signature Mithai Collection */}
         <Collection 
           currency={currency}
-          onSelectProduct={(product) => setSelectedProduct(product)}
+          onSelectProduct={handleSelectProduct}
           onAddToCart={handleAddToCart}
         />
 
