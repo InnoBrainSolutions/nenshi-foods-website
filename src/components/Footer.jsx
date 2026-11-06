@@ -116,7 +116,7 @@ export default function Footer() {
             <div className="footer-fssai-box">
               <span className="fssai-tag">Govt. Food Safety License</span>
               <span className="fssai-number">
-                FSSAI Lic. No: <strong>21426990001615</strong>
+                FSSAI Lic. No: <strong>{STORE_CONFIG.fssaiNumber}</strong>
               </span>
             </div>
           </div>
@@ -173,11 +173,11 @@ export default function Footer() {
             © {new Date().getFullYear()} Nenshi Foods Private Limited. All rights reserved.
           </span>
           <div className="bottom-links">
-            <a href="#purity">FSSAI Lic. No: 21426990001615</a>
+            <a href="#purity">FSSAI Lic. No: {STORE_CONFIG.fssaiNumber}</a>
             <span>·</span>
             <a href={STORE_CONFIG.facebookUrl} target="_blank" rel="noopener noreferrer">Facebook Page</a>
             <span>·</span>
-            <a href="#gifting">Gifting Inquiries</a>
+            <a href="#unboxing">Gift Boxes</a>
             <span>·</span>
             <a href="#">Privacy & Terms</a>
           </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { ShieldCheck, Leaf, Sparkles } from 'lucide-react';
+import { STORE_CONFIG } from '../config/store';
 
 const PURITY_PILLARS = [
   {
@@ -67,7 +68,7 @@ export default function PurityPromise() {
           <div className="purity-seal-strip">
             <div className="strip-item">
               <ShieldCheck size={18} className="strip-icon" />
-              <span>FSSAI Certified · Lic. No. 21426990001615</span>
+              <span>FSSAI Certified · Lic. No. {STORE_CONFIG.fssaiNumber}</span>
             </div>
             <div className="strip-divider">✦</div>
             <div className="strip-item">

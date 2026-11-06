@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { UNBOXING_COMPARTMENTS } from '../data/products';
 import { Plus } from 'lucide-react';
 
-export default function UnboxingSection({ onQuickAdd }) {
+export default function UnboxingSection({ currency = "INR", onQuickAdd }) {
   const [activeTab, setActiveTab] = useState(0);
   const [selectedSize, setSelectedSize] = useState('250g');
   const current = UNBOXING_COMPARTMENTS[activeTab];
@@ -10,6 +10,9 @@ export default function UnboxingSection({ onQuickAdd }) {
 
   const activePriceINR = selectedSize === '500g' ? (current.price500INR || 300) : (current.priceINR || 150);
   const activePriceUSD = selectedSize === '500g' ? (current.price500USD || 5) : (current.priceUSD || 3);
+  const formatted250Price = currency === "INR" ? `₹${current.priceINR}` : `$${current.priceUSD}`;
+  const formatted500Price = currency === "INR" ? `₹${current.price500INR || 300}` : `$${current.price500USD || 5}`;
+  const formattedActivePrice = currency === "INR" ? `₹${activePriceINR}` : `$${activePriceUSD}`;
 
   const handleBoxMouseMove = (e) => {
     if (window.matchMedia('(pointer: coarse)').matches) return;
@@ -76,7 +79,7 @@ export default function UnboxingSection({ onQuickAdd }) {
                       onClick={() => setSelectedSize('250g')}
                     >
                       <span>250g Box</span>
-                      <span className="unboxing-size-price">₹{current.priceINR}</span>
+                      <span className="unboxing-size-price">{formatted250Price}</span>
                     </button>
                     <button
                       type="button"
@@ -84,7 +87,7 @@ export default function UnboxingSection({ onQuickAdd }) {
                       onClick={() => setSelectedSize('500g')}
                     >
                       <span>500g Box</span>
-                      <span className="unboxing-size-price">₹{current.price500INR || 300}</span>
+                      <span className="unboxing-size-price">{formatted500Price}</span>
                     </button>
                   </div>
                 </div>
@@ -103,7 +106,7 @@ export default function UnboxingSection({ onQuickAdd }) {
                     })}
                   >
                     <Plus size={15} />
-                    <span>Add to Bag · ₹{activePriceINR}</span>
+                    <span>Add to Bag · {formattedActivePrice}</span>
                   </button>
                 </div>
               </div>

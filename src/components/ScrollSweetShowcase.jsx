@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { SCROLL_SHOWCASE_SWEETS } from '../data/products';
 import { ArrowRight, Plus, Award, ChevronDown } from 'lucide-react';
 
-export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
+export default function ScrollSweetShowcase({ currency = "INR", onQuickAdd, onExploreClick }) {
   const trackRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -365,7 +365,7 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
                   onClick={() => setSelectedSize('250g')}
                   data-magnetic
                 >
-                  250g (₹{currentSweet.priceINR})
+                  250g ({currency === "INR" ? `₹${currentSweet.priceINR}` : `$${currentSweet.priceUSD}`})
                 </button>
                 <button
                   type="button"
@@ -373,7 +373,7 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
                   onClick={() => setSelectedSize('500g')}
                   data-magnetic
                 >
-                  500g (₹{currentSweet.price500INR || 300})
+                  500g ({currency === "INR" ? `₹${currentSweet.price500INR || 300}` : `$${currentSweet.price500USD || 5}`})
                 </button>
               </div>
             </div>
@@ -479,7 +479,7 @@ export default function ScrollSweetShowcase({ onQuickAdd, onExploreClick }) {
             >
               <Plus size={14} />
               <span>
-                Order {currentSweet.name} ({selectedSize}) · ₹{selectedSize === '500g' ? (currentSweet.price500INR || 300) : currentSweet.priceINR}
+                Order {currentSweet.name} ({selectedSize}) · {currency === "INR" ? `₹${selectedSize === '500g' ? (currentSweet.price500INR || 300) : currentSweet.priceINR}` : `$${selectedSize === '500g' ? (currentSweet.price500USD || 5) : currentSweet.priceUSD}`}
               </span>
             </button>
 

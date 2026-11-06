@@ -82,7 +82,10 @@ export default function CartDrawer({ isOpen, onClose, cartItems, currency, onUpd
       .map((item, i) => {
         const unitPrice = currency === 'INR' ? `₹${item.priceINR}` : `$${item.priceUSD}`;
         const itemTotal = currency === 'INR' ? `₹${item.priceINR * item.quantity}` : `$${item.priceUSD * item.quantity}`;
-        return `${i + 1}️⃣ *${item.name}*\n   ▫️ Pack: ${item.weight || 'Artisanal Box'}\n   ▫️ Qty: ${item.quantity} × ${unitPrice}\n   ▫️ Subtotal: *${itemTotal}*`;
+        const customLines = item.customDetails
+          ? `\n   ▫️ Custom: Ribbon (${item.customDetails.ribbon}), Seal (${item.customDetails.seal})${item.customDetails.recipient ? `, To: ${item.customDetails.recipient}` : ''}`
+          : '';
+        return `${i + 1}️⃣ *${item.name}*\n   ▫️ Pack: ${item.weight || 'Artisanal Box'}${customLines}\n   ▫️ Qty: ${item.quantity} × ${unitPrice}\n   ▫️ Subtotal: *${itemTotal}*`;
       })
       .join('\n\n');
 

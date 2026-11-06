@@ -49,6 +49,17 @@ export default function App() {
   };
 
   const handleAddToCart = (product, qty = 1) => {
+    if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+      const unitValue = currency === 'INR' ? product.priceINR : product.priceUSD;
+      window.fbq('track', 'AddToCart', {
+        content_ids: [product.id],
+        content_name: product.name,
+        content_type: 'product',
+        value: unitValue * qty,
+        currency
+      });
+    }
+
     setCartItems(prev => {
       const existing = prev.find(item => item.id === product.id);
       if (existing) {
@@ -115,6 +126,7 @@ export default function App() {
       <main id="main-content">
         {/* Pinned Scrollytelling Sweet Showcase (Desserto Inspired) */}
         <ScrollSweetShowcase 
+          currency={currency}
           onQuickAdd={handleAddToCart}
           onExploreClick={() => {
             const el = document.getElementById('collection');
@@ -124,6 +136,7 @@ export default function App() {
 
         {/* The Unboxing Ritual */}
         <UnboxingSection 
+          currency={currency}
           onQuickAdd={handleAddToCart}
         />
 
