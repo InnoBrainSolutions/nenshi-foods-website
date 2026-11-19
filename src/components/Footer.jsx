@@ -169,6 +169,27 @@ export default function Footer() {
 
       </div>
 
+      {/* Prominent DPIIT Startup India Recognition Showcase */}
+      <div className="container">
+        <div className="footer-recognition-banner">
+          <div className="recognition-copy">
+            <span className="recognition-eyebrow">✦ GOVERNMENT OF INDIA RECOGNITION ✦</span>
+            <h4 className="recognition-title font-royal">DPIIT Recognized Startup</h4>
+            <p className="recognition-desc font-serif">
+              Officially recognized by the Department for Promotion of Industry and Internal Trade (DPIIT) under the <strong>#StartupIndia</strong> initiative for preserving traditional Indian confectionery craftsmanship.
+            </p>
+          </div>
+          <div className="recognition-plaque">
+            <img
+              src="/images/dpiit-startup-india.png"
+              alt="DPIIT #startupindia — Government of India Recognized Startup"
+              className="recognition-logo-large"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+
       {/* Bottom Bar */}
       <div className="footer-bottom-bar">
         <div className="container bottom-content">
